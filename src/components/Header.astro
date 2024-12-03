@@ -1,0 +1,139 @@
+---
+const imageSrc = "/images/header-image.png"; // Replace with your image path
+const whatsappLink = "https://wa.me/1234567890"; // Replace with your WhatsApp number
+---
+<header id="home" class="hero">
+  <div class="hero-content">
+    <!-- Text Content -->
+    <h1 class="hero-title">Limpios. Frescos. Vibrantes.</h1>
+    <p class="small-text">La limpieza que le devuelve la vida a tus zapatillas</p>
+    <div class="cta-buttons">
+      <!-- WhatsApp Button -->
+      <a href={whatsappLink} target="_blank" class="btn btn-primary">
+        <img src="/images/whatsapp-icon.png" alt="WhatsApp" class="btn-icon" />
+        Agenda Ya!
+      </a>
+      <!-- Cómo Funciona Button -->
+      <a href="#about" class="btn btn-secondary">Cómo Funciona?</a>
+    </div>
+  </div>
+  
+  <!-- Image -->
+  <div class="hero-image">
+    <img src={imageSrc} alt="Sneaker Cleaning Experts" class="hero-logo" />
+  </div>
+</header>
+
+<style>
+  /* Overall Header Container */
+  .hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f7f7f7; /* Light gray */
+    padding: 3rem 2rem;
+    height: 70vh; /* Adjusted height */
+    box-sizing: border-box;
+  }
+
+  /* Left Content Section */
+  .hero-content {
+    flex: 1;
+    max-width: 50%;
+  }
+
+  .small-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #6b705c; /* Olive green */
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #000; /* Bold Black */
+    margin-bottom: 1rem;
+  }
+
+  /* Call-to-Action Buttons */
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .btn {
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    padding: 0.75rem 2rem;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    transition: all 0.3s ease;
+    font-weight: 600;
+  }
+
+  /* WhatsApp Button */
+  .btn-primary {
+    background-color: #25d366; /* WhatsApp green */
+    color: #fff; /* White text */
+    border: none;
+  }
+
+  .btn-primary:hover {
+    background-color: #1da653; /* Darker green */
+  }
+
+  .btn-icon {
+    height: 20px; /* Icon size */
+    width: 20px;
+  }
+
+  /* Cómo Funciona Button */
+  .btn-secondary {
+    background-color: transparent;
+    border: 2px solid #000; /* Black border */
+    color: #000; /* Black text */
+  }
+
+  .btn-secondary:hover {
+    background-color: #000;
+    color: #fff; /* White text */
+  }
+
+  /* Right Image Section */
+  .hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hero-image img {
+    max-width: 150%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .hero {
+      flex-direction: column;
+      text-align: center;
+      height: auto;
+    }
+
+    .hero-content {
+      max-width: 100%;
+      margin-bottom: 2rem;
+    }
+
+    .hero-image {
+      max-width: 100%;
+    }
+  }
+</style>
