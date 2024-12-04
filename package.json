@@ -7,7 +7,7 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "deploy": "astro build && gh-pages -d dist"
+    "deploy": "npm run build && cp -r dist/* . && git add . && git commit -m 'Deploy build' && git push origin main1"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
