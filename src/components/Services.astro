@@ -1,77 +1,134 @@
 ---
+const services = [
+  {
+    title: "Limpieza Premium",
+    description: "Perfecta para tus sneakers de gamuza y delicados.",
+    image: "/images/sneaker-cleaning.png", 
+    buttonText: "Explorar Más",
+  },
+  {
+    title: "Cuidado de Alta Gama",
+    description: "Protege tus zapatillas de lujo con materiales especiales.",
+    image: "/images/luxury-sneaker-care.png", 
+    buttonText: "Ver Detalles",
+  },
+  {
+    title: "Limpieza para Deportes",
+    description: "Adaptado para running, fútbol y otros deportes.",
+    image: "/images/sports-shoes-cleaning.png", 
+    buttonText: "Aprender Más",
+  },
+];
 ---
 
-<section id="services" class="services">
-  <h2>Nuestros Servicios</h2>
+<section id="services" class="services-section">
+  <h2 class="section-title">Nuestros Servicios</h2>
   <div class="services-grid">
-    <div class="service-card">
-      <img src="/images/sneaker-cleaning.png" alt="Limpieza de Sneakers" />
-      <h3>Limpieza de Sneakers</h3>
-      <p>Especializados en limpiar tus sneakers deportivos para dejarlos como nuevos.</p>
-    </div>
-    <div class="service-card">
-      <img src="/images/sneaker-cleaning.png" alt="Cuidado de Sneakers de Alta Gama" />
-      <h3>Cuidado de Alta Gama</h3>
-      <p>Tratamos sneakers de lujo con materiales exclusivos y técnicas delicadas.</p>
-    </div>
-    <div class="service-card">
-      <img src="/images/sneaker-cleaning.png" alt="Limpieza para Deportes" />
-      <h3>Limpieza para Deportes</h3>
-      <p>Servicios para running, padel, fútbol y tenis, adaptados a tus necesidades.</p>
-    </div>
+    {services.map((service) => (
+      <div class="service-card">
+        <img src={service.image} alt={service.title} class="service-image" />
+        <div class="service-overlay">
+          <h3 class="service-title">{service.title}</h3>
+          <p class="service-description">{service.description}</p>
+          <button class="service-button">{service.buttonText}</button>
+        </div>
+      </div>
+    ))}
   </div>
 </section>
-  
-  <style>
-    .services {
-      padding: 2rem;
-      text-align: center;
-      background-color: #f9f9f9;
-    }
-  
-    .services h2 {
-      font-size: 2rem;
-      margin-bottom: 1.5rem;
-      color: #000;
-      font-family: 'Inter', sans-serif;
-    }
-  
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      justify-items: center;
-    }
-  
-    .service-card {
-      background: #fff;
-      border-radius: 8px;
-      padding: 1.5rem;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s, box-shadow 0.3s;
-      text-align: center;
-      width: 100%;
-      max-width: 300px;
-    }
-  
-    .service-card img {
-      width: 80px;
-      margin-bottom: 1rem;
-    }
-  
-    .service-card h3 {
-      font-size: 1.25rem;
-      margin-bottom: 0.5rem;
-      color: #000;
-    }
-  
-    .service-card p {
-      font-size: 0.9rem;
-      color: #555;
-    }
-  
-    .service-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    }
-  </style>
+
+<style>
+  /* Services Section */
+  .services-section {
+    padding: 4rem 2rem;
+    background-color: var(--background-color, #fff);
+    text-align: center;
+  }
+
+  .section-title {
+    font-family: var(--primary-font, 'Inter', sans-serif);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color, #000);
+    margin-bottom: 2rem;
+  }
+
+  /* Grid Layout */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+
+  /* Service Card */
+  .service-card {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .service-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Overlay */
+  .service-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  .service-card:hover .service-overlay {
+    opacity: 1;
+  }
+
+  .service-title {
+    font-family: var(--primary-font, 'Inter', sans-serif);
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    text-align: center;
+  }
+
+  .service-description {
+    font-family: var(--primary-font, 'Inter', sans-serif);
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  /* Button */
+  .service-button {
+    font-family: var(--primary-font, 'Inter', sans-serif);
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    background-color: #fff;
+    color: #000;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+
+  .service-button:hover {
+    background-color: var(--primary-color, #000);
+    color: #fff;
+    transform: scale(1.05);
+  }
+</style>
