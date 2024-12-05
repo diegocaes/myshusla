@@ -1,69 +1,52 @@
-<section id="about" class="about-section">
-  <div class="about-container">
-    <!-- Left Text Section -->
-    <div class="about-text">
-      <h2 class="about-title">
-        Lograr que tus zapatillas se vean increíblemente limpias, <span class="highlight">nunca había sido tan fácil</span>. Sigue estos tres pasos:
-      </h2>
+<section id="about" class="how-it-works">
+  <h2 class="section-title">
+    Lograr que tus zapatillas se vean increíblemente limpias, <span class="highlight">nunca había sido tan fácil</span>. Sigue estos tres pasos:
+  </h2>
+  <div class="steps-container">
+    <!-- Step 1 -->
+    <div class="step">
+      <img src="/images/schedule-icon.png" alt="Agenda tu limpieza" class="step-icon" />
+      <h3 class="step-title">Agenda tu limpieza</h3>
+      <p class="step-description">
+        Escríbenos y agenda una fecha para que recojamos tus zapatillas. Indícanos el tipo de limpieza que deseas y los servicios extras que quieras.
+      </p>
     </div>
 
-    <!-- Right Steps Section -->
-    <div class="steps-container">
-      <!-- Step 1 -->
-      <div class="step">
-        <img src="/images/schedule-icon.png" alt="Agenda tu limpieza" class="step-icon" />
-        <h3 class="step-title">Agenda tu limpieza</h3>
-        <p class="step-description">
-          Escríbenos y agenda una fecha para que recojamos tus zapatillas. Indícanos el tipo de limpieza que deseas y los servicios extras que quieras.
-        </p>
-      </div>
+    <!-- Step 2 -->
+    <div class="step">
+      <img src="/images/hand-in-icon.png" alt="Recogemos tus zapatillas" class="step-icon" />
+      <h3 class="step-title">Recogemos tus Zapatillas</h3>
+      <p class="step-description">
+        Empaca tus zapatillas y nosotros las recogeremos en la fecha acordada. El arte de la limpieza ocurre en nuestra tienda.
+      </p>
+    </div>
 
-      <!-- Step 2 -->
-      <div class="step">
-        <img src="/images/hand-in-icon.png" alt="Recogemos tus zapatillas" class="step-icon" />
-        <h3 class="step-title">Recogemos tus zapatillas</h3>
-        <p class="step-description">
-          Empaca tus zapatillas y nosotros las recogeremos en la fecha acordada. El arte de la limpieza ocurre en nuestra tienda.
-        </p>
-      </div>
-
-      <!-- Step 3 -->
-      <div class="step">
-        <img src="/images/receive-icon.png" alt="Recibe tus zapatillas relucientes" class="step-icon" />
-        <h3 class="step-title">Recibe tus zapatillas relucientes</h3>
-        <p class="step-description">
-          Te notificaremos una vez las zapatillas estén listas y su fecha de entrega. Puedes recogerlas en nuestra tienda si lo deseas.
-        </p>
-      </div>
+    <!-- Step 3 -->
+    <div class="step">
+      <img src="/images/receive-icon.png" alt="Recibe tus zapatillas relucientes" class="step-icon" />
+      <h3 class="step-title">Recibe tus Zapatillas Relucientes</h3>
+      <p class="step-description">
+        Te notificaremos una vez las zapatillas estén listas y su fecha de entrega. Puedes recogerlas en nuestra tienda si lo deseas!
+      </p>
     </div>
   </div>
 </section>
 
 <style>
-  .about-section {
-    padding: 4rem 2rem;
-    background-color: #bebebe48;
+  .how-it-works {
+    text-align: center;
+    padding: 3rem 2rem;
+    background-color: #ebebeb;
+    border-top: 4px solid #25d366;
+    border-bottom: 4px solid #25d366;
   }
 
-  .about-container {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 2rem;
-  }
-
-  /* Left Text Section */
-  .about-text {
-    flex: 1;
-    max-width: 40%;
-  }
-
-  .about-title {
+  .section-title {
     font-family: 'Inter', sans-serif;
-    font-size: 2rem;
-    font-weight: 700;
+    font-size: 1.5rem;
+    font-weight: 600;
     color: #000;
+    margin-bottom: 2rem;
     line-height: 1.5;
   }
 
@@ -72,58 +55,74 @@
     font-weight: bold;
   }
 
-  /* Steps Section */
   .steps-container {
-    flex: 2;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Smaller cards */
-    gap: 1rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
   }
 
   .step {
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
+    flex: 1;
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-    padding: 1rem;
+    padding: 1.5rem;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
 
   .step:hover {
-    transform: translateY(-3px); /* Less lift for smaller size */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   }
 
   .step-icon {
-    width: 60px; /* Smaller icon size */
-    height: 60px;
-    margin-bottom: 0.75rem;
+    height: 80px;
+    margin-bottom: 1rem;
   }
 
   .step-title {
     font-family: 'Inter', sans-serif;
-    font-size: 1rem; /* Smaller title */
+    font-size: 1.25rem;
     font-weight: 600;
     color: #000;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
   }
 
   .step-description {
     font-family: 'Inter', sans-serif;
-    font-size: 0.9rem; /* Smaller description */
+    font-size: 1rem;
     font-weight: 400;
     color: #555;
-    line-height: 1.4;
+    line-height: 1.5;
   }
 
+  /* Responsive Adjustments */
   @media (max-width: 768px) {
-    .about-container {
-      flex-direction: column;
+    .section-title {
+      font-size: 1.2rem; /* Reduce font size */
+      text-align: center; /* Keep it centered */
     }
 
     .steps-container {
-      grid-template-columns: 1fr;
+      flex-direction: column;
+      gap: 2rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .section-title {
+      font-size: 1rem; /* Further reduce font size for very small screens */
+    }
+
+    .highlight {
+      font-size: 1rem;
     }
   }
 </style>
