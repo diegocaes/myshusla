@@ -1,6 +1,6 @@
 <section id="contact" class="contact-section">
   <div class="contact-container">
-    <!-- Left: Logo and Contact Info -->
+    <!-- Left: Logo -->
     <div class="contact-left">
       <img
         src="/images/myshus-logo-hori.png"
@@ -14,54 +14,30 @@
       <div class="contact-column">
         <h3 class="column-title">Empresa</h3>
         <ul>
+          <li><a href="#services">Servicios Destacados</a></li>
           <li><a href="javascript:void(0);">Nuestra Historia</a></li>
-          <li><a href="javascript:void(0);">Servicios Destacados</a></li>
-          <li><a href="javascript:void(0);">Puntos de Venta</a></li>
         </ul>
       </div>
       <div class="contact-column">
         <h3 class="column-title">Soporte</h3>
         <ul>
-          <li><a href="javascript:void(0);">FAQ</a></li>
-          <li><a href="javascript:void(0);">Contáctanos</a></li>
+          <li><a href="/contact-form">Contáctanos</a></li>
           <li><a href="javascript:void(0);">Información de Envíos</a></li>
-          <li><a href="javascript:void(0);">Devoluciones</a></li>
+          <li><a href="javascript:void(0);">Términos y Condiciones</a></li>
         </ul>
       </div>
     </div>
 
-    <!-- Right: Newsletter and Social Media -->
+    <!-- Right: Social Media -->
     <div class="contact-right">
-      <h3 class="column-title">Únete a Nuestra Lista</h3>
-      <p>Mantente actualizado sobre nuevos productos y ofertas.</p>
-      <form
-        action="https://formspree.io/f/myzylozq"
-        method="POST"
-        class="contact-form"
-      >
-        <input
-          type="email"
-          name="email"
-          placeholder="Tu correo electrónico"
-          required
-        />
-        <button type="submit">Suscribirse</button>
-      </form>
+      <h3 class="column-title">Síguenos</h3>
       <div class="social-icons">
-        <a href="javascript:void(0);"
-          ><img src="/images/facebook-icon.png" alt="Facebook" /></a
-        >
         <a
           href="https://www.instagram.com/myshusla?igsh=MWxwZzd6ajdyeGxjaA=="
           target="_blank"
-          ><img src="/images/instagram-icon.png" alt="Instagram" /></a
         >
-        <a href="javascript:void(0);"
-          ><img src="/images/youtube-icon.png" alt="YouTube" /></a
-        >
-        <a href="javascript:void(0);"
-          ><img src="/images/tiktok-icon.png" alt="TikTok" /></a
-        >
+          <img src="/images/instagram-icon.png" alt="Instagram" />
+        </a>
       </div>
     </div>
   </div>
@@ -104,7 +80,7 @@
   }
 
   .column-title {
-    font-family: var(--primary-font, "Inter", sans-serif);
+    font-family: "Inter", sans-serif;
     font-size: 1.2rem;
     font-weight: 600;
     margin-bottom: 1rem;
@@ -122,53 +98,14 @@
 
   .contact-column a {
     text-decoration: none;
+    font-family: "Inter", sans-serif;
+    font-size: 1rem;
     color: #fff;
     transition: color 0.3s ease;
   }
 
   .contact-column a:hover {
     color: #e2c6a4; /* Accent color */
-  }
-
-  /* Newsletter Section */
-  .contact-right {
-    text-align: left;
-  }
-
-  .contact-form {
-    display: flex;
-    gap: 0.5rem;
-    margin-top: 1rem;
-  }
-
-  .contact-form input {
-    flex: 1;
-    padding: 0.5rem;
-    border: none;
-    border-radius: 5px;
-    outline: none;
-    font-family: var(--primary-font, "Inter", sans-serif);
-  }
-
-  .contact-form button {
-    background-color: #fff;
-    color: #000;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-
-  .contact-column ul li,
-  .contact-column ul li a,
-  .contact-column ul li a p  {
-    font-family: "Inter", sans-serif;
-    font-size: 1rem;
-    color: #fff;
-  }
-  .contact-form button:hover {
-    background-color: #e2c6a4;
   }
 
   /* Social Icons */

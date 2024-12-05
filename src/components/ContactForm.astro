@@ -1,0 +1,131 @@
+---
+const whatsappLink = "https://wa.me/64439110"; // Reemplaza con tu número de WhatsApp
+const formAction = "https://formspree.io/f/myzylozq"; // Reemplaza con tu URL de Formspree
+---
+
+<section id="contact-form" class="contact-form-section">
+  <div class="contact-form-container">
+    <h2 class="form-title">Déjanos tu Sugerencia</h2>
+    <p class="form-description">Nos encantaría saber tu opinión o sugerencia para mejorar nuestros servicios.</p>
+    <form action={formAction} method="POST" class="form">
+      <label for="name">Nombre</label>
+      <input type="text" id="name" name="name" placeholder="Tu Nombre" required />
+
+      <label for="email">Correo Electrónico</label>
+      <input type="email" id="email" name="email" placeholder="Tu Correo Electrónico" required />
+
+      <label for="message">Mensaje</label>
+      <textarea id="message" name="message" placeholder="Escribe tu sugerencia aquí..." required></textarea>
+
+      <button type="submit">Enviar Sugerencia</button>
+    </form>
+
+    <!-- WhatsApp Section -->
+    <div class="whatsapp-section">
+      <p class="whatsapp-text">¿Prefieres escribirnos directamente por WhatsApp? ¡Haz clic abajo!</p>
+      <a href={whatsappLink} target="_blank" class="whatsapp-button">
+        Escríbenos por WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-form-section {
+    padding: 4rem 2rem;
+    background-color: #f9f9f9; /* Fondo claro */
+    color: #333; /* Texto oscuro */
+    text-align: center;
+  }
+
+  .contact-form-container {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .form-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .form-description {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    color: #555;
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .form label {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+    text-align: left;
+  }
+
+  .form input,
+  .form textarea {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .form button {
+    background-color: #25d366;
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+  }
+
+  .form button:hover {
+    background-color: #1da653;
+  }
+
+  /* WhatsApp Section */
+  .whatsapp-section {
+    margin-top: 2rem;
+    text-align: center;
+  }
+
+  .whatsapp-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 1rem;
+  }
+
+  .whatsapp-button {
+    display: inline-block;
+    background-color: #25d366;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+
+  .whatsapp-button:hover {
+    background-color: #1da653;
+  }
+</style>

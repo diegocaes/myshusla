@@ -1,71 +1,64 @@
----
----
 <nav class="navbar">
-    <!-- Left: Logo -->
-    <div class="navbar-logo">
-      <img src="/images/myshus-logo-hori.png" alt="MyShus Logo horizontal" />
-    </div>
-  
-    <!-- Right: Navigation Links -->
-    <ul class="navbar-links">
-      <li><a href="#home" class="navbar-link">Home</a></li>
-      <li><a href="#about" class="navbar-link">About</a></li>
-      <li><a href="#services" class="navbar-link">Services</a></li>
-      <li><a href="#contact" class="navbar-link">Contact</a></li>
-    </ul>
-  </nav>
-  
-  <style>
-    /* Navbar Container */
+  <div class="navbar-logo">
+    <!-- Logo redirige a la raíz -->
+    <a href="/">
+      <img src="/images/myshus-logo-hori.png" alt="MyShus Logo" class="logo" />
+    </a>
+  </div>
+  <ul class="navbar-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<style>
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000; /* Fondo negro */
+    padding: 1rem 2rem;
+    color: #fff;
+  }
+
+  .navbar-logo a {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo {
+    max-height: 40px; /* Tamaño del logo */
+    object-fit: contain;
+  }
+
+  .navbar-links {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .navbar-links a {
+    text-decoration: none;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+
+  .navbar-links a:hover {
+    color: #e2c6a4; /* Color de hover */
+  }
+
+  @media (max-width: 768px) {
     .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      background-color: #000000; /* black */
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+      flex-direction: column;
     }
-  
-    /* Logo */
-    .navbar-logo img {
-      height: 42px; /* Adjust logo size */
-      object-fit: contain;
-    }
-  
-    /* Navigation Links */
+
     .navbar-links {
-      display: flex;
-      gap: 2rem; /* Space between links */
-      list-style: none;
-      margin: 0;
-      padding: 0;
+      flex-direction: column;
+      gap: 1rem;
     }
-  
-    .navbar-link {
-      text-decoration: none;
-      font-family: 'Inter', sans-serif;
-      font-size: 1rem;
-      font-weight: 600;
-      color: #fff; /* white */
-      transition: color 0.3s ease;
-    }
-  
-    .navbar-link:hover {
-      color: #25d366; /* */
-    }
-  
-    .navbar-link:active {
-      font-weight: bold; /* Highlight active link */
-    }
-  
-    /* Responsive Adjustments */
-    @media (max-width: 768px) {
-      .navbar-links {
-        gap: 1rem;
-        font-size: 0.9rem;
-      }
-    }
-  </style>
+  }
+</style>

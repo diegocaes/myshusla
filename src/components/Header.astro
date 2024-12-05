@@ -2,11 +2,14 @@
 const imageSrc = "/images/header-image.png"; // Replace with your image path
 const whatsappLink = "https://wa.me/64439110"; // Replace with your WhatsApp number
 ---
+
 <header id="home" class="hero">
   <div class="hero-content">
     <!-- Text Content -->
     <h1 class="hero-title">Limpios. Frescos. Vibrantes.</h1>
-    <p class="small-text">La limpieza que le devuelve la vida a tus zapatillas</p>
+    <p class="small-text">
+      La limpieza que le devuelve la vida a tus zapatillas
+    </p>
     <div class="cta-buttons">
       <!-- WhatsApp Button -->
       <a href={whatsappLink} target="_blank" class="btn btn-primary">
@@ -17,7 +20,7 @@ const whatsappLink = "https://wa.me/64439110"; // Replace with your WhatsApp num
       <a href="#about" class="btn btn-secondary">Cómo Funciona?</a>
     </div>
   </div>
-  
+
   <!-- Image -->
   <div class="hero-image">
     <img src={imageSrc} alt="Sneaker Cleaning Experts" class="hero-logo" />
@@ -43,7 +46,7 @@ const whatsappLink = "https://wa.me/64439110"; // Replace with your WhatsApp num
   }
 
   .small-text {
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.1rem;
     font-weight: 500;
     color: #6b705c; /* Olive green */
@@ -51,7 +54,7 @@ const whatsappLink = "https://wa.me/64439110"; // Replace with your WhatsApp num
   }
 
   .hero-title {
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 3.5rem;
     font-weight: 700;
     color: #000; /* Bold Black */
@@ -66,7 +69,7 @@ const whatsappLink = "https://wa.me/64439110"; // Replace with your WhatsApp num
 
   .btn {
     text-decoration: none;
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1rem;
     padding: 0.75rem 2rem;
     border-radius: 5px;
@@ -119,6 +122,12 @@ const whatsappLink = "https://wa.me/64439110"; // Replace with your WhatsApp num
     object-fit: contain;
   }
 
+  .hero-image img {
+    max-width: 100%; /* Ajusta al ancho del contenedor */
+    height: auto;
+    object-fit: contain; /* Mantén la proporción */
+  }
+  
   /* Responsive Adjustments */
   @media (max-width: 768px) {
     .hero {
