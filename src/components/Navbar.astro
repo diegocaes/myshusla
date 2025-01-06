@@ -1,35 +1,69 @@
-<nav class="navbar">
+<nav class="navbar" aria-label="Navegación principal">
   <div class="navbar-logo">
     <a href="/" aria-label="Ir a Inicio">
-      <img src="/images/myshus-logo-hori.png" alt="MyShus Logo" />
+      <img 
+        src="/images/myshus-logo-hori.png" 
+        alt="MyShus Logo" 
+        width="150"
+        height="50"
+        loading="eager"
+      />
     </a>
   </div>
-  <ul class="navbar-links">
-    <li><a href="/">Inicio</a></li>
-    <li><a href="#services">Servicios</a></li>
+  
+  <button class="mobile-menu-btn" aria-label="Menú" aria-expanded="false">
+    <span class="hamburger"></span>
+  </button>
+
+  <ul class="navbar-links" role="menubar">
+    <li role="none"><a href="/" role="menuitem">Inicio</a></li>
+    <li role="none"><a href="#services" role="menuitem">Servicios</a></li>
   </ul>
 </nav>
 
+<script>
+  const mobileBtn = document.querySelector('.mobile-menu-btn');
+  const navLinks = document.querySelector('.navbar-links');
+
+  mobileBtn?.addEventListener('click', () => {
+    const isExpanded = mobileBtn.getAttribute('aria-expanded') === 'true';
+    mobileBtn.setAttribute('aria-expanded', (!isExpanded).toString());
+    navLinks?.classList.toggle('active');
+  });
+</script>
+
 <style>
+  :root {
+    --navbar-height: 60px;
+    --navbar-bg: #000;
+    --navbar-text: #fff;
+    --accent-color: #25d366;
+    --transition-speed: 0.3s;
+  }
+
   .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
-    background-color: #000; /* Black background */
-    color: #fff;
+    padding: 0.5rem 2rem;
+    background-color: var(--navbar-bg);
+    color: var(--navbar-text);
     position: sticky;
     top: 0;
     z-index: 1000;
+    height: var(--navbar-height);
   }
 
-  /* Logo Styling */
   .navbar-logo img {
-    max-height: 50px; /* Smaller logo size */
-    transition: all 0.3s ease-in-out;
+    height: 40px;
+    width: auto;
+    transition: transform var(--transition-speed) ease;
   }
 
-  /* Navbar Links */
+  .navbar-logo:hover img {
+    transform: scale(1.05);
+  }
+
   .navbar-links {
     display: flex;
     gap: 1.5rem;
@@ -38,31 +72,114 @@
     padding: 0;
   }
 
-  .navbar-links li a {
+  .navbar-links a {
     text-decoration: none;
     font-family: 'Inter', sans-serif;
     font-size: 1rem;
     font-weight: 600;
-    color: #fff;
-    transition: color 0.3s ease-in-out;
+    color: var(--navbar-text);
+    transition: color var(--transition-speed) ease;
+    position: relative;
   }
 
-  .navbar-links li a:hover {
-    color: #25d366; /* Green accent */
+  .navbar-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: var(--accent-color);
+    transition: width var(--transition-speed) ease;
   }
 
-  /* Mobile Styles */
+  .navbar-links a:hover::after {
+    width: 100%;
+  }
+
+  .mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+  }
+
   @media (max-width: 768px) {
-    .navbar-logo img {
-      max-height: 40px; /* Smaller logo on mobile */
+    .navbar {
+      padding: 0.5rem 1rem;
+    }
+
+    .mobile-menu-btn {
+      display: block;
+      z-index: 100;
     }
 
     .navbar-links {
-      gap: 1rem; /* Less space between links */
+      position: fixed;
+      top: var(--navbar-height);
+      right: -100%;
+      flex-direction: column;
+      background: var(--navbar-bg);
+      width: 100%;
+      text-align: center;
+      transition: right var(--transition-speed) ease;
+      padding: 2rem;
+      gap: 2rem;
     }
 
-    .navbar-links li a {
-      font-size: 0.9rem; /* Smaller font on mobile */
+    .navbar-links.active {
+      right: 0;
+    }
+
+    .hamburger {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--navbar-text);
+      position: relative;
+      transition: background var(--transition-speed) ease;
+    }
+
+    .hamburger::before,
+    .hamburger::after {
+      content: '';
+      position: absolute;
+      width: 24px;
+      height: 2px;
+      background: var(--navbar-text);
+      transition: transform var(--transition-speed) ease;
+    }
+
+    .hamburger::before {
+      top: -8px;
+    }
+
+    .hamburger::after {
+      bottom: -8px;
+    }
+
+    [aria-expanded="true"] .hamburger {
+      background: transparent;
+    }
+
+    [aria-expanded="true"] .hamburger::before {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    [aria-expanded="true"] .hamburger::after {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .navbar-logo img,
+    .navbar-links,
+    .navbar-links a::after,
+    .hamburger,
+    .hamburger::before,
+    .hamburger::after {
+      transition: none;
     }
   }
 </style>
