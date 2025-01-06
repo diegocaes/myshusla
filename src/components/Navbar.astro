@@ -101,8 +101,36 @@
     display: none;
     background: none;
     border: none;
+    padding: 8px;
     cursor: pointer;
-    padding: 0.5rem;
+  }
+
+  .hamburger {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--navbar-text);
+    position: relative;
+    transition: background-color 0.2s ease;
+  }
+
+  .hamburger::before,
+  .hamburger::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 22px;
+    height: 2px;
+    background: var(--navbar-text);
+    transition: transform 0.2s ease;
+  }
+
+  .hamburger::before {
+    top: -7px;
+  }
+
+  .hamburger::after {
+    bottom: -7px;
   }
 
   @media (max-width: 768px) {
@@ -111,52 +139,9 @@
     }
 
     .mobile-menu-btn {
-      display: block;
-      z-index: 100;
-    }
-
-    .navbar-links {
-      position: fixed;
-      top: var(--navbar-height);
-      right: -100%;
-      flex-direction: column;
-      background: var(--navbar-bg);
-      width: 100%;
-      text-align: center;
-      transition: right var(--transition-speed) ease;
-      padding: 2rem;
-      gap: 2rem;
-    }
-
-    .navbar-links.active {
-      right: 0;
-    }
-
-    .hamburger {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: var(--navbar-text);
-      position: relative;
-      transition: background var(--transition-speed) ease;
-    }
-
-    .hamburger::before,
-    .hamburger::after {
-      content: '';
-      position: absolute;
-      width: 24px;
-      height: 2px;
-      background: var(--navbar-text);
-      transition: transform var(--transition-speed) ease;
-    }
-
-    .hamburger::before {
-      top: -8px;
-    }
-
-    .hamburger::after {
-      bottom: -8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     [aria-expanded="true"] .hamburger {
@@ -169,6 +154,30 @@
 
     [aria-expanded="true"] .hamburger::after {
       transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    .navbar-links {
+      position: fixed;
+      top: var(--navbar-height);
+      right: -100%;
+      flex-direction: column;
+      background: var(--navbar-bg);
+      width: 100%;
+      height: auto;
+      text-align: center;
+      transition: right var(--transition-speed) ease;
+      padding: 1rem 0;
+      gap: 1.5rem;
+    }
+
+    .navbar-links.active {
+      right: 0;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-links a {
+      display: block;
+      padding: 0.5rem 0;
     }
   }
 
