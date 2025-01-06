@@ -41,17 +41,12 @@
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JESF85NFZ1"></script>
     <script>
-      // Declaración global de dataLayer para TypeScript
       declare global {
         interface Window {
           dataLayer: any[];
         }
       }
-
-      // Definir dataLayer si no existe
       window.dataLayer = window.dataLayer || [];
-
-      // Función gtag corregida
       function gtag(...args: any[]) {
         window.dataLayer.push(args);
       }
@@ -61,9 +56,25 @@
 
     <!-- Canonical URL (SEO) -->
     <link rel="canonical" href="https://myshusla.com" />
+
+    <!-- Preload important resources -->
+    <link rel="preload" href="/images/hero-image.png" as="image" />
+    <link rel="preload" href="/styles/global.css" as="style" />
   </head>
 
   <body>
     <slot />
+
+    <!-- Lazy Load Images -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const lazyImages = document.querySelectorAll("img[data-src]");
+        lazyImages.forEach(img => {
+          const dataSrc = img.getAttribute("data-src") || "";
+          img.setAttribute("src", dataSrc);
+          img.removeAttribute("data-src");
+        });
+      });
+    </script>
   </body>
 </html>

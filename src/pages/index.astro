@@ -5,6 +5,7 @@ import Ticker from "../components/Ticker.astro";
 import About from "../components/About.astro";
 import Services from "../components/Services.astro";
 import Contact from "../components/Contact.astro";
+const whatsappLink = "https://wa.me/64439110"; // Your WhatsApp number
 ---
 
 <html lang="es">
@@ -20,5 +21,40 @@ import Contact from "../components/Contact.astro";
 		<Services />
 		<About />
 		<Contact />
+
+		<!-- Floating WhatsApp Button -->
+		<a href={whatsappLink} class="whatsapp-float" target="_blank" aria-label="Chatea con nosotros por WhatsApp">
+			<img src="/images/whatsapp-icon.png" alt="WhatsApp" />
+		</a>
 	</body>
+
+	<style>
+		/* Floating WhatsApp Button */
+		.whatsapp-float {
+			position: fixed;
+			bottom: 20px;
+			right: 20px;
+			width: auto;
+			height: auto;
+			z-index: 1000;
+		}
+
+		.whatsapp-float img {
+			width: 50px;
+			height: 50px;
+			object-fit: contain; /* Keep the icon’s proportions */
+		}
+
+		.whatsapp-float:hover {
+			transform: scale(1.1);
+			opacity: 0.85;
+		}
+
+		@media (max-width: 768px) {
+			.whatsapp-float img {
+				width: 45px;
+				height: 45px;
+			}
+		}
+	</style>
 </html>
