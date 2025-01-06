@@ -1,191 +1,217 @@
-<section id="about" class="how-it-works" aria-label="Pasos para limpieza de zapatillas">
-  <h2 class="section-title">
-    Lograr que tus zapatillas se vean increíblemente limpias, <span class="highlight">nunca había sido tan fácil</span>. Sigue estos tres pasos:
-  </h2>
-  
-  <div class="steps-container">
-    <!-- Step 1 -->
-    <div class="step" role="article">
-      <div class="step-icon-container">
-        <img 
-          src="/images/schedule-icon.png" 
-          alt="Icono de calendario para agendar limpieza de zapatillas" 
-          class="step-icon"
-          loading="lazy"
-          width="45"
-          height="45"
-        />
+<section id="about" class="how-it-works">
+  <div class="container">
+    <h2 class="section-title">¿Cómo Funciona?</h2>
+    
+    <div class="steps-container">
+      <!-- Step 1 -->
+      <div class="step">
+        <div class="step-icon-container">
+          <img 
+            src="/images/schedule-icon.png" 
+            alt="Icono de calendario"
+            class="step-icon"
+            loading="lazy"
+            width="40"
+            height="40"
+          />
+        </div>
+        <h3>Agenda tu servicio</h3>
+        <p>Contáctanos por WhatsApp para programar la limpieza de tus zapatillas.</p>
       </div>
-      <h3 class="step-title">Agenda tu limpieza de zapatillas</h3>
-      <p class="step-description">
-        Escríbenos y agenda una fecha para que recojamos tus zapatillas. Indícanos el tipo de limpieza que deseas y los servicios extras que quieras.
-      </p>
-    </div>
 
-    <!-- Step 2 -->
-    <div class="step" role="article">
-      <div class="step-icon-container">
-        <img 
-          src="/images/hand-in-icon.png" 
-          alt="Recogida de zapatillas en casa" 
-          class="step-icon"
-          loading="lazy"
-          width="45"
-          height="45"
-        />
+      <!-- Step 2 -->
+      <div class="step">
+        <div class="step-icon-container">
+          <img 
+            src="/images/hand-in-icon.png" 
+            alt="Icono de recogida"
+            class="step-icon"
+            loading="lazy"
+            width="40"
+            height="40"
+          />
+        </div>
+        <h3>Recogemos tus zapatillas</h3>
+        <p>Retiramos tus zapatillas desde la comodidad de tu hogar.</p>
       </div>
-      <h3 class="step-title">Servicio de Recogida de Zapatillas</h3>
-      <p class="step-description">
-        Empaca tus zapatillas y nosotros las recogeremos en la fecha acordada. El arte de la limpieza ocurre en nuestra tienda.
-      </p>
-    </div>
 
-    <!-- Step 3 -->
-    <div class="step" role="article">
-      <div class="step-icon-container">
-        <img 
-          src="/images/receive-icon.png" 
-          alt="Entrega de zapatillas limpias y relucientes" 
-          class="step-icon"
-          loading="lazy"
-          width="45"
-          height="45"
-        />
+      <!-- Step 3 -->
+      <div class="step">
+        <div class="step-icon-container">
+          <img 
+            src="/images/receive-icon.png" 
+            alt="Icono de entrega"
+            class="step-icon"
+            loading="lazy"
+            width="40"
+            height="40"
+          />
+        </div>
+        <h3>Entrega a domicilio</h3>
+        <p>Te devolvemos tus zapatillas limpias y como nuevas.</p>
       </div>
-      <h3 class="step-title">Recibe tus Zapatillas Relucientes</h3>
-      <p class="step-description">
-        Te notificaremos una vez las zapatillas estén listas y su fecha de entrega. Puedes recogerlas en nuestra tienda si lo deseas.
-      </p>
     </div>
   </div>
 </section>
 
-<!-- Estilos CSS -->
 <style>
-  /* CSS Custom Properties */
   :root {
-    --primary-color: #25d366;
-    --text-dark: #000;
-    --text-light: #555;
-    --bg-light: #f5f5f5;
-    --bg-white: #fff;
-    --spacing-base: 1rem;
-    --border-radius: 15px;
-    --transition-speed: 0.3s;
+    --primary-green: #25d366;
+    --primary-green-hover: #22c35e;
+    --font-primary: 'Inter', sans-serif;
   }
 
   .how-it-works {
-    text-align: center;
-    padding: calc(var(--spacing-base) * 4) calc(var(--spacing-base) * 2);
-    background-color: var(--bg-light);
-    border-top: 4px solid var(--primary-color);
-    border-bottom: 4px solid var(--primary-color);
+    background-color: #ffffff;
+    border-top: 3px solid var(--primary-green);
+    border-bottom: 3px solid var(--primary-green);
+    padding: 3rem 0;
+    width: 100%;
+    font-family: var(--font-primary);
+    position: relative;
+    z-index: 1;
+    margin-bottom: 80px;
+  }
+
+  .container {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    background-color: #ffffff;
   }
 
   .section-title {
-    font-family: 'Inter', sans-serif;
+    text-align: center;
     font-size: 2rem;
-    font-weight: 700;
-    color: #000;
     margin-bottom: 3rem;
-    line-height: 1.4;
+    color: #333;
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
-  .highlight {
-    color: #25d366;
-    font-weight: bold;
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background-color: var(--primary-green);
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   .steps-container {
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
-    flex-wrap: wrap;
   }
 
   .step {
-    flex: 1;
-    max-width: 320px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 1.5rem;
     text-align: center;
-    padding: 2rem;
-    background: #fff;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform var(--transition-speed) ease-out, 
-                box-shadow var(--transition-speed) ease-out;
-    will-change: transform, box-shadow;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
 
   .step:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(37, 211, 102, 0.15);
   }
 
   .step-icon-container {
-    width: 90px;
-    height: 90px;
-    margin-bottom: 1.5rem;
-    background: #25d366;
+    background: #f8f8f8;
+    width: 65px;
+    height: 65px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 0 auto 1.25rem;
+    transition: background-color 0.3s ease;
   }
 
-  .step-icon {
-    width: 50%;
-    height: auto;
+  .step:hover .step-icon-container {
+    background-color: #e8f8ed;
   }
 
-  .step-title {
-    font-family: 'Inter', sans-serif;
-    font-size: 1.3rem;
+  .step h3 {
+    margin: 0 0 0.75rem;
+    color: var(--primary-green);
+    font-size: 1.2rem;
+    font-family: var(--font-primary);
     font-weight: 600;
-    color: #000;
-    margin-bottom: 1rem;
   }
 
-  .step-description {
-    font-family: 'Inter', sans-serif;
-    font-size: 1rem;
-    color: #555;
-    line-height: 1.6;
+  .step p {
+    margin: 0;
+    color: #666;
+    line-height: 1.4;
+    font-size: 0.95rem;
   }
 
-  /* Add animation utility classes */
-  .fade-in {
-    opacity: 0;
-    animation: fadeIn 0.5s ease-out forwards;
-  }
-
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  /* Improved responsive design */
   @media (max-width: 768px) {
+    .how-it-works {
+      padding: 2rem 0;
+      margin-bottom: 100px;
+    }
+
+    .container {
+      padding: 0 1rem;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
     .steps-container {
-      flex-direction: column;
-      align-items: center;
-      gap: calc(var(--spacing-base) * 2);
+      grid-template-columns: 1fr;
+      gap: 1rem;
     }
 
     .step {
-      width: 100%;
-      max-width: 400px;
+      padding: 1.25rem;
+    }
+
+    .step-icon-container {
+      width: 55px;
+      height: 55px;
+      margin-bottom: 1rem;
+    }
+
+    .step-icon {
+      width: 30px;
+      height: 30px;
+    }
+
+    .step h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .step p {
+      font-size: 0.9rem;
+      line-height: 1.3;
     }
   }
 
-  /* Add support for reduced motion */
+  @media (max-width: 480px) {
+    .how-it-works {
+      margin-bottom: 120px;
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
-    .step {
+    .step, .step-icon-container {
       transition: none;
     }
-    
     .step:hover {
       transform: none;
     }
