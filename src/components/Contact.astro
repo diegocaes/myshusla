@@ -1,48 +1,104 @@
-<section id="contact" class="contact-section">
+<section id="contact" class="contact-section" aria-labelledby="contact-title">
   <div class="contact-container">
     <!-- Left: Logo -->
     <div class="contact-left">
-      <img
-        src="/images/myshus-logo-hori.png"
-        alt="MyShus Logo"
-        class="contact-logo"
-      />
+      <a href="/" aria-label="Volver al inicio">
+        <img
+          src="/images/myshus-logo-hori.png"
+          alt="Logo de MyShus"
+          class="contact-logo"
+        />
+      </a>
     </div>
 
     <!-- Center: Links -->
     <div class="contact-links">
       <div class="contact-column">
-        <h3 class="column-title">Empresa</h3>
-        <ul>
+        <h3 class="column-title" id="empresa-title">Empresa</h3>
+        <ul aria-labelledby="empresa-title">
           <li><a href="#services">Servicios Destacados</a></li>
-          <li><a href="javascript:void(0);">Nuestra Historia</a></li>
+          <li>
+            <a href="javascript:void(0);" onclick="featureComingSoon()">
+              Nuestra Historia
+            </a>
+          </li>
         </ul>
       </div>
       <div class="contact-column">
-        <h3 class="column-title">Soporte</h3>
-        <ul>
+        <h3 class="column-title" id="soporte-title">Soporte</h3>
+        <ul aria-labelledby="soporte-title">
           <li><a href="/contact-form">Contáctanos</a></li>
-          <li><a href="javascript:void(0);">Información de Envíos</a></li>
-          <li><a href="javascript:void(0);">Términos y Condiciones</a></li>
+          <li>
+            <a href="javascript:void(0);" onclick="featureComingSoon()">
+              Información de Envíos
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0);" onclick="featureComingSoon()">
+              Términos y Condiciones
+            </a>
+          </li>
         </ul>
       </div>
     </div>
 
     <!-- Right: Social Media -->
     <div class="contact-right">
-      <h3 class="column-title">Síguenos</h3>
-      <div class="social-icons">
+      <h3 class="column-title" id="social-title">Síguenos</h3>
+      <div class="social-icons" aria-labelledby="social-title">
+        <!-- Instagram -->
         <a
           href="https://www.instagram.com/myshusla?igsh=MWxwZzd6ajdyeGxjaA=="
           target="_blank"
+          aria-label="Visita nuestro Instagram"
+          class="social-btn"
         >
           <img src="/images/instagram-icon.png" alt="Instagram" />
         </a>
+
+        <!-- WhatsApp -->
+        <a
+          href="https://wa.me/64439110"
+          target="_blank"
+          aria-label="Contáctanos por WhatsApp"
+          class="social-btn"
+        >
+          <img src="/images/whatsapp-icon.png" alt="WhatsApp" />
+        </a>
       </div>
     </div>
+
+    <!-- CSS para Social Icons (Ajustado para WhatsApp) -->
+    <!-- CSS (Ajustado para Alineación Horizontal) -->
+    <style>
+      .social-icons {
+        display: flex;
+        align-items: center;
+        gap: 1rem; /* Espaciado horizontal entre iconos */
+        margin-top: 1rem;
+      }
+
+      .social-btn img {
+        width: 28px;
+        height: 28px;
+        transition: transform 0.3s ease;
+      }
+
+      .social-btn:hover img {
+        transform: scale(1.1);
+      }
+    </style>
   </div>
 </section>
 
+<!-- JavaScript para Links Inactivos -->
+<script>
+  function featureComingSoon() {
+    alert("¡Pronto estará disponible esta sección!");
+  }
+</script>
+
+<!-- Estilos CSS -->
 <style>
   .contact-section {
     background-color: #000;
@@ -108,6 +164,26 @@
     color: #e2c6a4; /* Accent color */
   }
 
+  /* WhatsApp Button */
+  .whatsapp-btn a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    background-color: #25d366;
+    color: #fff;
+    padding: 0.8rem 1.5rem;
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+
+  .whatsapp-btn a:hover {
+    background-color: #1da851;
+  }
+
   /* Social Icons */
   .social-icons {
     display: flex;
@@ -128,6 +204,26 @@
 
     .contact-links {
       grid-template-columns: 1fr;
+    }
+
+    .contact-left,
+    .contact-right {
+      align-items: center;
+      text-align: center;
+    }
+
+    .whatsapp-btn {
+      margin-top: 1.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .contact-section {
+      padding: 2rem 1rem;
+    }
+
+    .contact-column ul {
+      text-align: center;
     }
   }
 </style>

@@ -1,14 +1,19 @@
-<section id="about" class="how-it-works">
+<section id="about" class="how-it-works" aria-label="Pasos para limpieza de zapatillas">
   <h2 class="section-title">
     Lograr que tus zapatillas se vean increíblemente limpias, <span class="highlight">nunca había sido tan fácil</span>. Sigue estos tres pasos:
   </h2>
+  
   <div class="steps-container">
     <!-- Step 1 -->
     <div class="step">
       <div class="step-icon-container">
-        <img src="/images/schedule-icon.png" alt="Agenda tu limpieza" class="step-icon" />
+        <img 
+          src="/images/schedule-icon.png" 
+          alt="Icono de calendario para agendar limpieza de zapatillas" 
+          class="step-icon" 
+        />
       </div>
-      <h3 class="step-title">Agenda tu limpieza</h3>
+      <h3 class="step-title">Agenda tu limpieza de zapatillas</h3>
       <p class="step-description">
         Escríbenos y agenda una fecha para que recojamos tus zapatillas. Indícanos el tipo de limpieza que deseas y los servicios extras que quieras.
       </p>
@@ -17,9 +22,13 @@
     <!-- Step 2 -->
     <div class="step">
       <div class="step-icon-container">
-        <img src="/images/hand-in-icon.png" alt="Recogemos tus zapatillas" class="step-icon" />
+        <img 
+          src="/images/hand-in-icon.png" 
+          alt="Recogida de zapatillas en casa" 
+          class="step-icon" 
+        />
       </div>
-      <h3 class="step-title">Recogemos tus Zapatillas</h3>
+      <h3 class="step-title">Servicio de Recogida de Zapatillas</h3>
       <p class="step-description">
         Empaca tus zapatillas y nosotros las recogeremos en la fecha acordada. El arte de la limpieza ocurre en nuestra tienda.
       </p>
@@ -28,16 +37,21 @@
     <!-- Step 3 -->
     <div class="step">
       <div class="step-icon-container">
-        <img src="/images/receive-icon.png" alt="Recibe tus zapatillas relucientes" class="step-icon" />
+        <img 
+          src="/images/receive-icon.png" 
+          alt="Entrega de zapatillas limpias y relucientes" 
+          class="step-icon" 
+        />
       </div>
       <h3 class="step-title">Recibe tus Zapatillas Relucientes</h3>
       <p class="step-description">
-        Te notificaremos una vez las zapatillas estén listas y su fecha de entrega. Puedes recogerlas en nuestra tienda si lo deseas!
+        Te notificaremos una vez las zapatillas estén listas y su fecha de entrega. Puedes recogerlas en nuestra tienda si lo deseas.
       </p>
     </div>
   </div>
 </section>
 
+<!-- Estilos CSS -->
 <style>
   .how-it-works {
     text-align: center;
@@ -70,7 +84,7 @@
 
   .step {
     flex: 1;
-    max-width: 280px;
+    max-width: 320px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -88,8 +102,8 @@
   }
 
   .step-icon-container {
-    width: 80px;
-    height: 80px;
+    width: 90px;
+    height: 90px;
     margin-bottom: 1.5rem;
     background: #25d366;
     border-radius: 50%;
@@ -105,7 +119,7 @@
 
   .step-title {
     font-family: 'Inter', sans-serif;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-weight: 600;
     color: #000;
     margin-bottom: 1rem;
@@ -118,7 +132,7 @@
     line-height: 1.6;
   }
 
-  /* Responsive Adjustments */
+  /* Ajustes Responsivos */
   @media (max-width: 768px) {
     .steps-container {
       flex-direction: column;
@@ -126,7 +140,7 @@
     }
 
     .section-title {
-      font-size: 1.5rem;
+      font-size: 1.6rem;
     }
   }
 
@@ -136,7 +150,7 @@
     }
 
     .section-title {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
     }
   }
 </style>

@@ -3,17 +3,28 @@
 }
 
 * {
-  font-family: var(--primary-font);
-}
-
-body, h1, h2, h3, h4, h5, h6, p, ul, ol, li, a, button, input, textarea {
-  font-family: 'Inter', sans-serif;
-  line-height: 1.5;
+  font-family: var(--primary-font) !important;  /* Forzamos el uso de la fuente */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
+  font-family: 'Inter', sans-serif !important;  /* Aseguramos que el body use Inter */
   font-weight: 400;
   line-height: 1.6;
-  color: #000; /* Adjust if needed */
-  background-color: #fff; /* Adjust if needed */
+  color: #000;
+  background-color: #fff;
+}
+
+h1, h2, h3, h4, h5, h6, p, a, button, input, textarea {
+  font-family: 'Inter', sans-serif !important;
+}
+
+button {
+  font-weight: 600;
+}
+
+input, textarea {
+  font-size: 1rem;
 }

@@ -1,24 +1,24 @@
 <html lang="es">
   <head>
-    <!-- Metadata básica -->
+    <!-- Metadata esencial -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="description" content="MyShus ofrece limpieza profesional de zapatillas deportivas, de lujo y más. Agenda tu limpieza y recibe un servicio premium en Panamá." />
-    <meta name="keywords" content="limpieza zapatillas, servicio premium, limpieza deportiva, Panamá, MyShus" />
+    <meta name="description" content="Limpieza premium de zapatillas deportivas y de lujo en Panamá. Deja tus zapatillas como nuevas con MyShus." />
+    <meta name="keywords" content="limpieza zapatillas, cuidado de calzado, limpieza de lujo, Panamá, MyShus" />
     <meta name="author" content="MyShus" />
 
-    <!-- Open Graph Metadata (para redes sociales como Facebook y LinkedIn) -->
+    <!-- Open Graph (para redes sociales) -->
     <meta property="og:title" content="MyShus - Limpieza Premium de Zapatillas" />
-    <meta property="og:description" content="Ofrecemos limpieza profesional y cuidado especializado para tus zapatillas. Agenda tu limpieza hoy mismo." />
+    <meta property="og:description" content="Limpieza profesional y especializada para todo tipo de zapatillas. Reserva ahora y disfruta del mejor servicio en Panamá." />
     <meta property="og:image" content="https://myshusla.com/images/preview-image.png" />
     <meta property="og:url" content="https://myshusla.com" />
     <meta property="og:type" content="website" />
 
-    <!-- Twitter Cards Metadata -->
+    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="MyShus - Limpieza Premium de Zapatillas" />
-    <meta name="twitter:description" content="Ofrecemos limpieza profesional y cuidado especializado para tus zapatillas." />
+    <meta name="twitter:description" content="Tu servicio confiable de limpieza para zapatillas de lujo y deportivas." />
     <meta name="twitter:image" content="https://myshusla.com/images/preview-image.png" />
 
     <!-- Favicon -->
@@ -27,26 +27,39 @@
     <!-- Fuente Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+    <link 
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" 
       rel="stylesheet"
     />
 
-    <!-- Título de la página -->
-    <title>MyShus - Limpieza Premium de Zapatillas</title>
+    <!-- CSS Global -->
+    <link rel="stylesheet" href="/styles/global.css" />
+
+    <!-- Título -->
+    <title>MyShus - Limpieza Profesional de Zapatillas</title>
 
     <!-- Google Analytics -->
-    <script async is:inline src="https://www.googletagmanager.com/gtag/js?id=G-JESF85NFZ1"></script>
-    <script is:inline>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JESF85NFZ1"></script>
+    <script>
+      // Declaración global de dataLayer para TypeScript
+      declare global {
+        interface Window {
+          dataLayer: any[];
+        }
+      }
+
+      // Definir dataLayer si no existe
       window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
+
+      // Función gtag corregida
+      function gtag(...args: any[]) {
+        window.dataLayer.push(args);
       }
       gtag('js', new Date());
       gtag('config', 'G-JESF85NFZ1');
     </script>
 
-    <!-- SEO Extra: Canonical URL -->
+    <!-- Canonical URL (SEO) -->
     <link rel="canonical" href="https://myshusla.com" />
   </head>
 
