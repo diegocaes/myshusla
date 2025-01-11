@@ -1,0 +1,119 @@
+---
+import Navbar from "../components/Navbar.astro";
+---
+
+<Navbar />
+
+<section id="about" class="about-section">
+  <div class="about-container">
+    <h1 class="about-title">Nuestra Historia</h1>
+    <p class="about-intro">
+      En MyShus nos dimos cuenta de que en Panamá hacía falta un servicio especializado en limpieza de zapatillas. Sabemos que unos tenis bien limpios no solo mejoran tu imagen, sino que también contribuyen a la sostenibilidad al extender la vida útil de tus zapatos y reducir el consumo innecesario.
+    </p>
+
+    <div class="about-details">
+      <h2>¿Por qué limpiar tus zapatillas?</h2>
+      <p>
+        Investigaciones muestran que mantener tus zapatos limpios refleja profesionalismo, cuidado personal y atención al detalle. Además, al mantenerlos en buen estado, reduces la necesidad de comprar con tanta frecuencia, apoyando así un consumo más responsable y sostenible.
+      </p>
+
+      <h2>Compromiso con la calidad</h2>
+      <p>
+        Llevamos meses estudiando y probando diferentes productos, jabones y técnicas para cuidar tus zapatillas de la mejor manera posible. Desde materiales delicados como gamuza hasta sneakers deportivos, garantizamos el uso de productos especializados que protegen y alargan la vida de tus zapatillas.
+      </p>
+
+      <h2>¿Qué nos hace diferentes?</h2>
+      <ul>
+        <li>Uso de materiales y productos de alta calidad.</li>
+        <li>Compromiso con el cuidado y la protección de cada par de zapatillas.</li>
+        <li>Un enfoque sostenible que fomenta un consumo más consciente.</li>
+      </ul>
+    </div>
+
+    <div class="about-closing">
+      <p>
+        En MyShus nos apasiona cuidar tus zapatillas y asegurarnos de que cada par reciba el mejor tratamiento posible. Estamos aquí para que camines con confianza y estilo.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-section {
+    padding: 4rem 2rem;
+    background-color: var(--background-color, #f9f9f9);
+    color: #333;
+    font-family: var(--font-primary, 'Inter', sans-serif);
+  }
+
+  .about-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .about-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    text-align: center;
+    color: #000;
+  }
+
+  .about-intro {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    text-align: justify;
+  }
+
+  .about-details h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: #000;
+  }
+
+  .about-details p,
+  .about-details ul {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    text-align: justify;
+  }
+
+  .about-details ul {
+    padding-left: 1.5rem;
+    list-style: disc;
+  }
+
+  .about-closing {
+    text-align: center;
+    margin-top: 3rem;
+  }
+
+  .about-closing p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #555;
+    font-weight: 600;
+  }
+
+  @media (max-width: 768px) {
+    .about-title {
+      font-size: 2rem;
+    }
+
+    .about-details h2 {
+      font-size: 1.5rem;
+    }
+
+    .about-intro,
+    .about-details p {
+      font-size: 1rem;
+    }
+
+    .about-closing p {
+      font-size: 1rem;
+    }
+  }
+</style>
