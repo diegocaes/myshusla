@@ -5,56 +5,55 @@ import Ticker from "../components/Ticker.astro";
 import About from "../components/About.astro";
 import Services from "../components/Services.astro";
 import Contact from "../components/Contact.astro";
-const whatsappLink = "https://wa.me/+50764439110"; // 
+const whatsappLink = "https://wa.me/+50764439110";
 ---
 
 <html lang="es">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>MyShus</title>
-	</head>
-	<body>
-		<Navbar />
-		<Header />
-		<Ticker />
-		<Services />
-		<About />
-		<Contact />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MyShus</title>
+  </head>
+  <body>
+    <Navbar />
+    <Header />
+    <Ticker />
+    <Services />
+    <About />
+    <Contact />
 
-		<!-- Floating WhatsApp Button -->
-		<a href={whatsappLink} class="whatsapp-float" target="_blank" aria-label="Chatea con nosotros por WhatsApp">
-			<img src="/images/whatsapp-icon.png" alt="WhatsApp" />
-		</a>
-	</body>
+    <!-- Floating WhatsApp Button -->
+    <a href={whatsappLink} class="whatsapp-float" target="_blank" aria-label="Chatea con nosotros por WhatsApp">
+      <img src="/images/whatsapp-icon.png" alt="WhatsApp" />
+    </a>
+  </body>
 
-	<style>
-		/* Floating WhatsApp Button */
-		.whatsapp-float {
-			position: fixed;
-			bottom: 20px;
-			right: 20px;
-			width: auto;
-			height: auto;
-			z-index: 1000;
-		}
+  <style>
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: auto;
+      height: auto;
+      z-index: 1000;
+    }
 
-		.whatsapp-float img {
-			width: 50px;
-			height: 50px;
-			object-fit: contain; /* Keep the icon’s proportions */
-		}
+    .whatsapp-float img {
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+    }
 
-		.whatsapp-float:hover {
-			transform: scale(1.1);
-			opacity: 0.85;
-		}
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      opacity: 0.85;
+    }
 
-		@media (max-width: 768px) {
-			.whatsapp-float img {
-				width: 45px;
-				height: 45px;
-			}
-		}
-	</style>
+    @media (max-width: 768px) {
+      .whatsapp-float img {
+        width: 45px;
+        height: 45px;
+      }
+    }
+  </style>
 </html>
