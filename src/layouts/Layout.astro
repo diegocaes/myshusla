@@ -1,5 +1,8 @@
 <html lang="es">
   <head>
+    
+
+
     <!-- Metadata esencial -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -41,15 +44,19 @@
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JESF85NFZ1"></script>
     <script>
+      // Declare global dataLayer interface
       declare global {
         interface Window {
           dataLayer: any[];
         }
       }
+    
+      // Initialize the dataLayer
       window.dataLayer = window.dataLayer || [];
       function gtag(...args: any[]) {
         window.dataLayer.push(args);
       }
+    
       gtag('js', new Date());
       gtag('config', 'G-JESF85NFZ1');
     </script>
