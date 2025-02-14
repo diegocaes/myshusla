@@ -1,3 +1,4 @@
+<!-- src/layouts/Layout.astro -->
 <html lang="es">
   <head>
     <!-- Codificación y Viewport -->
@@ -11,42 +12,30 @@
       content="Limpieza premium de zapatillas deportivas y de lujo en Panamá. Deja tus zapatillas como nuevas con MyShus."
     />
 
-    <!-- Canonical URL (para evitar contenido duplicado) -->
+    <!-- Canonical URL -->
     <link rel="canonical" href="https://myshusla.com" />
 
     <!-- Favicon -->
     <link rel="icon" href="/favicon.ico" />
 
-    <!-- Open Graph (Facebook, LinkedIn, etc.) -->
-    <meta
-      property="og:title"
-      content="MyShus - Limpieza Premium de Zapatillas"
-    />
+    <!-- Open Graph -->
+    <meta property="og:title" content="MyShus - Limpieza Profesional de Zapatillas" />
     <meta
       property="og:description"
       content="Limpieza profesional y especializada para todo tipo de zapatillas. Reserva ahora y disfruta del mejor servicio en Panamá."
     />
-    <meta
-      property="og:image"
-      content="https://myshusla.com/images/preview-image.png"
-    />
+    <meta property="og:image" content="https://myshusla.com/images/preview-image.png" />
     <meta property="og:url" content="https://myshusla.com" />
     <meta property="og:type" content="website" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta
-      name="twitter:title"
-      content="MyShus - Limpieza Premium de Zapatillas"
-    />
+    <meta name="twitter:title" content="MyShus - Limpieza Profesional de Zapatillas" />
     <meta
       name="twitter:description"
       content="Tu servicio confiable de limpieza para zapatillas de lujo y deportivas."
     />
-    <meta
-      name="twitter:image"
-      content="https://myshusla.com/images/preview-image.png"
-    />
+    <meta name="twitter:image" content="https://myshusla.com/images/preview-image.png" />
 
     <!-- Google Fonts (Inter) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -62,24 +51,21 @@
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JESF85NFZ1"></script>
     <script>
-      // Convierte window a "any" para que no se queje
+      // Utilizamos "as any" para evitar errores en TypeScript
       (window as any).dataLayer = (window as any).dataLayer || [];
-
       function gtag(...args: any[]) {
         (window as any).dataLayer.push(args);
       }
-
       gtag("js", new Date());
       gtag("config", "G-JESF85NFZ1");
     </script>
   </head>
 
   <body>
-    <!-- Contenido dinámico de tus páginas Astro -->
+    <!-- Aquí se inyectará el contenido de cada página -->
     <slot />
 
     <!-- (Opcional) Lazy Load para imágenes con data-src -->
-    <!-- Quita este script si no usas la técnica de data-src en tus <img> -->
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         const lazyImages = document.querySelectorAll("img[data-src]");
