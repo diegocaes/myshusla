@@ -20,26 +20,42 @@
         <nav class="contact-column" aria-labelledby="empresa-title">
           <h3 class="column-title" id="empresa-title">Empresa</h3>
           <ul>
-            <li><a href="#services" class="hover-effect">Servicios Destacados</a></li>
             <li>
-              <a href="#" class="hover-effect" data-feature="historia">
+              <a href="#services" class="hover-effect">Servicios Destacados</a>
+            </li>
+            <li>
+              <a
+                href="#"
+                class="hover-effect coming-soon"
+                data-feature="historia"
+              >
                 About us
               </a>
             </li>
           </ul>
         </nav>
-        
+
         <nav class="contact-column" aria-labelledby="soporte-title">
           <h3 class="column-title" id="soporte-title">Soporte</h3>
           <ul>
-            <li><a href="/contact-form" class="hover-effect">Contáctanos</a></li>
             <li>
-              <a href="/pickup-delivery" class="hover-effect" data-feature="envios">
+              <a href="/contact-form" class="hover-effect">Contáctanos</a>
+            </li>
+            <li>
+              <a
+                href="/pickup-delivery"
+                class="hover-effect coming-soon"
+                data-feature="envios"
+              >
                 Información de Recogida y Entrega
               </a>
             </li>
             <li>
-              <a href="/terms" class="hover-effect" data-feature="terminos">
+              <a
+                href="/terms"
+                class="hover-effect coming-soon"
+                data-feature="terminos"
+              >
                 Términos y Condiciones
               </a>
             </li>
@@ -59,7 +75,13 @@
           aria-label="Visita nuestro Instagram"
           class="social-btn"
         >
-          <img src="/images/instagram-icon.png" alt="" width="28" height="28" loading="lazy" />
+          <img
+            src="/images/instagram-icon.png"
+            alt=""
+            width="28"
+            height="28"
+            loading="lazy"
+          />
         </a>
 
         <a
@@ -69,66 +91,78 @@
           aria-label="Contáctanos por WhatsApp"
           class="social-btn"
         >
-          <img src="/images/whatsapp-icon.png" alt="" width="28" height="28" loading="lazy" />
+          <img
+            src="/images/whatsapp-icon.png"
+            alt=""
+            width="28"
+            height="28"
+            loading="lazy"
+          />
         </a>
       </div>
     </div>
   </div>
 </section>
 
+<!-- Footer Profesional -->
+<footer class="site-footer">
+  <p>&copy; MyShus SA 2025. All rights reserved.</p>
+</footer>
+
+<!-- Script para Toast y mensajes "Coming Soon" -->
+
 <script>
   class Toast {
-    private static show(message: string) {
-      const toast = document.createElement('div');
-      toast.className = 'toast';
+    static show(message) {
+      const toast = document.createElement("div");
+      toast.className = "toast";
       toast.textContent = message;
       document.body.appendChild(toast);
-      
-      // Trigger animation
-      setTimeout(() => toast.classList.add('show'), 10);
+
+      // Activar animación
+      setTimeout(() => toast.classList.add("show"), 10);
       setTimeout(() => {
-        toast.classList.remove('show');
+        toast.classList.remove("show");
         setTimeout(() => toast.remove(), 300);
       }, 3000);
     }
 
-    static error(message: string) {
+    static error(message) {
       this.show(message);
     }
   }
 
-  document.addEventListener('DOMContentLoaded', () => {
-    const comingSoonLinks = document.querySelectorAll('.coming-soon');
-    
-    const messages: Record<string, string> = {
-      historia: '¡Pronto podrás conocer nuestra historia!',
-      envios: '¡Información de envíos estará disponible próximamente!',
-      terminos: '¡Términos y condiciones en construcción!'
+  document.addEventListener("DOMContentLoaded", () => {
+    const comingSoonLinks = document.querySelectorAll(".coming-soon");
+
+    const messages = {
+      historia: "¡Pronto podrás conocer nuestra historia!",
+      envios: "¡Información de envíos estará disponible próximamente!",
+      terminos: "¡Términos y condiciones en construcción!",
     };
 
-    comingSoonLinks.forEach(link => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        try {
-          const feature = (link as HTMLElement).dataset.feature as keyof typeof messages;
-          Toast.error(messages[feature] || '¡Pronto estará disponible esta sección!');
-        } catch (error) {
-          console.error('Error showing coming soon message:', error);
-        }
-      });
+    comingSoonLinks.forEach((link) => {
+      if (link instanceof HTMLElement) {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          const feature = link.dataset.feature;
+          console.log(feature);
+          // ...
+        });
+      }
     });
   });
 </script>
 
 <style>
-  /* Import Inter font */
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+  /* Variables y fuentes */
+  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
 
   :root {
     --color-primary: #000;
     --color-secondary: #fff;
     --color-accent: #e2c6a4;
-    --font-primary: 'Inter', sans-serif;
+    --font-primary: "Inter", sans-serif;
     --spacing-sm: 0.5rem;
     --spacing-md: 1rem;
     --spacing-lg: 2rem;
@@ -136,7 +170,7 @@
     --transition-duration: 0.3s;
   }
 
-  /* Apply font family to all text */
+  /* Contact Section */
   .contact-section {
     font-family: var(--font-primary);
     background-color: var(--color-primary);
@@ -144,9 +178,34 @@
     padding: var(--spacing-xl) var(--spacing-lg);
   }
 
-  /* Fix the links grid layout */
-  .contact-links {
-    width: 100%;
+  .contact-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1.3fr;
+    gap: var(--spacing-lg);
+    align-items: start;
+  }
+
+  .contact-left,
+  .contact-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .contact-right {
+    margin-left: 2rem; /* Ajusta según el espacio que quieras */
+  }
+
+  .contact-logo {
+    max-width: 150px;
+    height: auto;
+    transition: transform var(--transition-duration) ease;
+  }
+
+  .contact-logo:hover {
+    transform: scale(1.05);
   }
 
   .links-grid {
@@ -168,38 +227,7 @@
   .column-title {
     margin-bottom: var(--spacing-md);
     font-weight: 600;
-  }
-
-  .contact-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-    gap: var(--spacing-lg);
-    align-items: start;
-  }
-
-  .contact-left,
-  .contact-right {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .social-icons {
-    display: flex;
-    gap: var(--spacing-md);
-    margin-top: var(--spacing-sm);
-  }
-
-  .contact-logo {
-    max-width: 150px;
-    height: auto;
-    transition: transform var(--transition-duration) ease;
-  }
-
-  .contact-logo:hover {
-    transform: scale(1.05);
+    margin-top: 0;
   }
 
   .hover-effect {
@@ -210,7 +238,7 @@
   }
 
   .hover-effect::after {
-    content: '';
+    content: "";
     position: absolute;
     width: 0;
     height: 2px;
@@ -224,19 +252,55 @@
     width: 100%;
   }
 
+  .social-icons {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-sm);
+  }
+
   .social-btn {
     display: inline-flex;
     padding: var(--spacing-sm);
     border-radius: 50%;
     transition: transform var(--transition-duration) ease;
-    will-change: transform;
   }
 
   .social-btn:hover {
     transform: translateY(-2px);
   }
 
-  /* Update mobile styles */
+  /* Footer Profesional */
+  .site-footer {
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+    text-align: center;
+    padding: var(--spacing-md);
+    font-size: 0.875rem;
+    font-family: var(--font-primary);
+  }
+
+  /* Toast */
+  .toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--color-primary);
+    color: var(--color-secondary);
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .toast.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+
+  /* Media Queries */
   @media (max-width: 768px) {
     .contact-container {
       grid-template-columns: 1fr;
@@ -246,9 +310,12 @@
     .contact-left,
     .contact-right,
     .contact-links {
-      width: 100%;
       align-items: center;
       text-align: center;
+    }
+
+    .contact-right {
+      margin-left: 0;
     }
 
     .links-grid {
@@ -282,32 +349,7 @@
   @media (prefers-reduced-motion: reduce) {
     .hover-effect::after,
     .contact-logo,
-    .social-btn {
-      transition: none;
-    }
-  }
-
-  .toast {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%) translateY(100px);
-    background: var(--color-primary);
-    color: var(--color-secondary);
-    padding: 1rem 2rem;
-    border-radius: 8px;
-    opacity: 0;
-    transition: all 0.3s ease;
-    z-index: 1000;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  }
-
-  .toast.show {
-    transform: translateX(-50%) translateY(0);
-    opacity: 1;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
+    .social-btn,
     .toast {
       transition: none;
     }

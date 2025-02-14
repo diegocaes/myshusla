@@ -8,16 +8,16 @@ import Navbar from "../components/Navbar.astro";
   <div class="pickup-delivery-container">
     <h1 class="pickup-delivery-title">Información de Recogida y Entrega</h1>
     <p class="pickup-delivery-intro">
-      En MyShus ofrecemos la comodidad de recoger y entregar tus zapatillas si no deseas llevarlas directamente a nuestro local. Conoce cómo funciona este servicio:
+      En MyShus ofrecemos la comodidad de recoger y entregar tus zapatillas en caso de que no deseas llevarlas directamente a nuestro local. Conoce cómo funciona este servicio:
     </p>
 
     <div class="pickup-delivery-details">
       <h2>¿Cómo funciona?</h2>
       <p>
-        Nuestro equipo coordinará contigo el día y la hora para recoger tus zapatillas en la dirección que nos indiques. Una vez que las zapatillas estén limpias y listas, las entregaremos en el lugar acordado.
+        Nuestro equipo coordinará contigo el día y la hora para recoger tus zapatillas en la dirección que nos indiques. Una vez que las zapatillas estén limpias y listas, las entregaremos en el lugar acordado inicialmente.
       </p>
 
-      <h2>Tiempos de lavado estimados</h2>
+      <h2>Tiempos de entrega estimados</h2>
       <ul>
         <li><strong>Limpieza Standard:</strong> 2-3 días hábiles.</li>
         <li><strong>Limpieza Completa:</strong> 3-4 días hábiles.</li>
@@ -26,13 +26,13 @@ import Navbar from "../components/Navbar.astro";
 
       <h2>Costos del servicio</h2>
       <p>
-        Este servicio es <strong>gratuito*</strong> en pedidos dentro de Panamá ciudad para ciertos sectores. Para otras áreas, por favor contáctanos para conocer la disponibilidad y costos.
+        Este servicio es <strong>gratuito*</strong> para ciertos sectores de la ciudad Panamá. Para otras áreas, por favor contáctanos para conocer la disponibilidad y costos.
       </p>
-      <p>* Sujeto a un mínimo de dos pares de zapatillas por pedido.</p>
+      <p>* Sujeto a un mínimo de dos pares de zapatillas por pedido en Costa Del Este, Santa María, San Francisco y Coco del Mar</p>
     </div>
 
     <div class="pickup-delivery-contact">
-      <h2>¿Listo para agendar tu recogida?</h2>
+      <h2>¿Listo para agendar tu servicio?</h2>
       <p>
         Escríbenos por WhatsApp o llena nuestro <a href="/contact-form" class="hover-effect">formulario de contacto</a> para coordinar el servicio.
       </p>
@@ -48,11 +48,12 @@ import Navbar from "../components/Navbar.astro";
 </section>
 
 <style>
+  /* Estilos generales */
   .pickup-delivery-section {
     padding: 4rem 2rem;
     background-color: var(--background-color, #f9f9f9);
     color: #333;
-    font-family: var(--font-primary, 'Inter', sans-serif);
+    font-family: var(--primary-font, 'Inter', sans-serif);
   }
 
   .pickup-delivery-container {
@@ -140,9 +141,19 @@ import Navbar from "../components/Navbar.astro";
     background-color: #1da653;
   }
 
+  /* Media Queries para dispositivos más pequeños */
   @media (max-width: 768px) {
+    .pickup-delivery-section {
+      padding: 2rem 1rem;
+    }
+
     .pickup-delivery-title {
       font-size: 2rem;
+    }
+
+    .pickup-delivery-intro {
+      font-size: 1.1rem;
+      text-align: left; /* Opcional: cambiar a left para mayor legibilidad */
     }
 
     .pickup-delivery-details h2 {
@@ -151,11 +162,39 @@ import Navbar from "../components/Navbar.astro";
 
     .pickup-delivery-details p,
     .pickup-delivery-details ul {
-      font-size: 1rem;
+      font-size: 0.95rem;
     }
 
     .pickup-delivery-contact h2 {
       font-size: 1.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .pickup-delivery-title {
+      font-size: 1.75rem;
+    }
+
+    .pickup-delivery-intro {
+      font-size: 1rem;
+    }
+
+    .pickup-delivery-details h2 {
+      font-size: 1.3rem;
+    }
+
+    .pickup-delivery-details p,
+    .pickup-delivery-details ul {
+      font-size: 0.9rem;
+    }
+
+    .pickup-delivery-contact h2 {
+      font-size: 1.3rem;
+    }
+
+    .whatsapp-button {
+      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
     }
   }
 </style>

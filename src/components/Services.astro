@@ -1,8 +1,11 @@
 ---
+const promoActive = true; // Cambia a false para volver a la normalidad
+
 const services = [
   {
     title: "Limpieza Standard",
-    price: "$18",
+    price: "$18", // precio original
+    promoPrice: "$15 Por Lanzamiento", // precio con descuento
     description: [
       "Limpieza externa (upper, suela, y midsole).",
       "Cordones y eliminación de suciedad superficial."
@@ -12,6 +15,7 @@ const services = [
   {
     title: "Limpieza Completa",
     price: "$28",
+    promoPrice: "$24 Por Lanzamiento",
     description: [
       "Standard +",
       "Limpieza interna (plantillas y forros interiores).",
@@ -22,11 +26,12 @@ const services = [
   {
     title: "Servicios Extras",
     price: "$$",
+    promoPrice: "$$", // o si deseas modificarlo, actualízalo aquí
     description: [
-      "Impermeabilización: $5.",
-      "Blanqueamiento de suelas: $7.",
-      "Desoxidación: $7.",
-      "Restauración de gamuza: $6."
+      "Impermeabilización: $5 (ahora $4).",
+      "Blanqueamiento de suelas: $7 (ahora $6).",
+      "Desoxidación: $7 (ahora $6).",
+      "Restauración de gamuza: $6 (ahora $5)."
     ],
     image: "/images/sports-shoes-cleaning.png",
   },
@@ -41,7 +46,14 @@ const services = [
         <img src={service.image} alt={service.title} class="service-image" />
         <div class="service-content">
           <h3 class="service-title">{service.title}</h3>
-          {service.price && <p class="service-price">{service.price}</p>}
+          {promoActive ? (
+            <p class="service-price">
+              <span class="original-price">{service.price}</span>
+              <span class="promo-price">{service.promoPrice}</span>
+            </p>
+          ) : (
+            <p class="service-price">{service.price}</p>
+          )}
           <ul class="service-description">
             {service.description.map((line) => (
               <li>{line}</li>
@@ -107,9 +119,22 @@ const services = [
   .service-price {
     font-size: 1.2rem;
     font-weight: 600;
-    color: #25d366;
     margin-bottom: 1rem;
     font-family: var(--primary-font, 'Inter', sans-serif);
+  }
+
+  /* Precio original tachado */
+  .original-price {
+    text-decoration: line-through;
+    color: #999;
+    margin-right: 0.5rem;
+  }
+
+  /* Precio promocional destacado */
+  .promo-price {
+    color: #25d366;
+    font-weight: bold;
+    font-size: 2rem;
   }
 
   .service-description {
