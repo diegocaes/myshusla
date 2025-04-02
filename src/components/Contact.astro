@@ -1,0 +1,348 @@
+<section id="contact" class="contact-section" aria-labelledby="contact-title">
+  <div class="contact-container">
+    <!-- Left: Logo -->
+    <div class="contact-left">
+      <a href="/" aria-label="Volver al inicio">
+        <img
+          src="/images/myshus-logo-hori.png"
+          alt="Logo de MyShus"
+          class="contact-logo"
+          loading="lazy"
+          width="150"
+          height="auto"
+        />
+      </a>
+    </div>
+
+    <!-- Center: Links -->
+    <div class="contact-links">
+      <div class="links-grid">
+        <nav class="contact-column" aria-labelledby="empresa-title">
+          <h3 class="column-title" id="empresa-title">Empresa</h3>
+          <ul>
+            <li>
+              <a href="#services" class="hover-effect">Servicios Destacados</a>
+            </li>
+            <li>
+              <li>
+                <a href="/refunds" class="hover-effect">Refunds</a>
+              </li>
+          </ul>
+        </nav>
+
+        <nav class="contact-column" aria-labelledby="soporte-title">
+          <h3 class="column-title" id="soporte-title">Soporte</h3>
+          <ul>
+            <li>
+              <a href="/contact-form" class="hover-effect">Contáctanos</a>
+            </li>
+            <li>
+              <a
+                href="/pickup-delivery"
+                class="hover-effect"
+                data-feature="envios"
+              >
+                Información de Recogida y Entrega
+              </a>
+            </li>
+            <li>
+              <a href="/terms" class="hover-effect" data-feature="terminos">
+                Términos y Condiciones
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Right: Social Media -->
+    <div class="contact-right">
+      <h3 class="column-title" id="social-title">Síguenos</h3>
+      <div class="social-icons" aria-labelledby="social-title">
+        <a
+          href="https://www.instagram.com/myshusla"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Visita nuestro Instagram"
+          class="social-btn"
+        >
+          <img
+            src="/images/instagram-icon.png"
+            alt=""
+            width="28"
+            height="28"
+            loading="lazy"
+          />
+        </a>
+
+        <a
+          href="https://wa.me/+50764439110"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Contáctanos por WhatsApp"
+          class="social-btn"
+        >
+          <img
+            src="/images/whatsapp-icon.png"
+            alt=""
+            width="28"
+            height="28"
+            loading="lazy"
+          />
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer Profesional -->
+<footer class="site-footer">
+  <p>&copy; MyShus SA 2025. All rights reserved.</p>
+</footer>
+
+<!-- Script para Toast y mensajes "Coming Soon" -->
+
+<script>
+  class Toast {
+    static show(message) {
+      const toast = document.createElement("div");
+      toast.className = "toast";
+      toast.textContent = message;
+      document.body.appendChild(toast);
+
+      // Activar animación
+      setTimeout(() => toast.classList.add("show"), 10);
+      setTimeout(() => {
+        toast.classList.remove("show");
+        setTimeout(() => toast.remove(), 300);
+      }, 3000);
+    }
+
+    static error(message) {
+      this.show(message);
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const comingSoonLinks = document.querySelectorAll(".coming-soon");
+
+    const messages = {
+      historia: "¡Pronto podrás conocer nuestra historia!",
+      envios: "¡Información de envíos estará disponible próximamente!",
+      terminos: "¡Términos y condiciones en construcción!",
+    };
+
+    comingSoonLinks.forEach((link) => {
+      if (link instanceof HTMLElement) {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          const feature = link.dataset.feature;
+          console.log(feature);
+          // ...
+        });
+      }
+    });
+  });
+</script>
+
+<style>
+  /* Variables y fuentes */
+  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
+
+  :root {
+    --color-primary: #000;
+    --color-secondary: #fff;
+    --color-accent: #e2c6a4;
+    --font-primary: "Inter", sans-serif;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --transition-duration: 0.3s;
+  }
+
+  /* Contact Section */
+  .contact-section {
+    font-family: var(--font-primary);
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+    padding: var(--spacing-xl) var(--spacing-lg);
+  }
+
+  .contact-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1.3fr;
+    gap: var(--spacing-lg);
+    align-items: start;
+  }
+
+  .contact-left,
+  .contact-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .contact-right {
+    margin-left: 2rem; /* Ajusta según el espacio que quieras */
+  }
+
+  .contact-logo {
+    max-width: 150px;
+    height: auto;
+    transition: transform var(--transition-duration) ease;
+  }
+
+  .contact-logo:hover {
+    transform: scale(1.05);
+  }
+
+  .links-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-lg);
+  }
+
+  .contact-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .contact-column li {
+    margin-bottom: var(--spacing-md);
+  }
+
+  .column-title {
+    margin-bottom: var(--spacing-md);
+    font-weight: 600;
+    margin-top: 0;
+  }
+
+  .hover-effect {
+    position: relative;
+    text-decoration: none;
+    color: var(--color-secondary);
+    transition: color var(--transition-duration) ease;
+  }
+
+  .hover-effect::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--color-accent);
+    transition: width var(--transition-duration) ease;
+  }
+
+  .hover-effect:hover::after {
+    width: 100%;
+  }
+
+  .social-icons {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-sm);
+  }
+
+  .social-btn {
+    display: inline-flex;
+    padding: var(--spacing-sm);
+    border-radius: 50%;
+    transition: transform var(--transition-duration) ease;
+  }
+
+  .social-btn:hover {
+    transform: translateY(-2px);
+  }
+
+  /* Footer Profesional */
+  .site-footer {
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+    text-align: center;
+    padding: var(--spacing-md);
+    font-size: 0.875rem;
+    font-family: var(--font-primary);
+  }
+
+  /* Toast */
+  .toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--color-primary);
+    color: var(--color-secondary);
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .toast.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+
+  /* Media Queries */
+  @media (max-width: 768px) {
+    .contact-container {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-xl);
+    }
+
+    .contact-left,
+    .contact-right,
+    .contact-links {
+      align-items: center;
+      text-align: center;
+    }
+
+    .contact-right {
+      margin-left: 0;
+    }
+
+    .links-grid {
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--spacing-xl) var(--spacing-lg);
+    }
+
+    .contact-column {
+      text-align: left;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .contact-section {
+      padding: var(--spacing-lg) var(--spacing-md);
+    }
+
+    .links-grid {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-lg);
+    }
+
+    .contact-column {
+      text-align: center;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hover-effect::after,
+    .contact-logo,
+    .social-btn,
+    .toast {
+      transition: none;
+    }
+  }
+</style>

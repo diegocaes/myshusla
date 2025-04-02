@@ -1,0 +1,112 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from "../components/Navbar.astro";
+---
+
+
+<Layout>
+<Navbar />
+  <section id="terms" class="terms-section">
+    <div class="container">
+      <h1 class="section-title">Términos y Condiciones</h1>
+      <p class="intro-text">
+        Bienvenido a MyShus. Al utilizar nuestros servicios, aceptas los siguientes términos y condiciones. Por favor, léelos detenidamente.
+      </p>
+
+      <div class="terms-content">
+        <h2>1. General</h2>
+        <p>
+          Estos términos y condiciones regulan el uso del sitio web y los servicios ofrecidos por MyShus. Al acceder o utilizar este sitio, aceptas estar sujeto a estos términos.
+        </p>
+
+        <h2>2. Servicios</h2>
+        <p>
+          Ofrecemos servicios de limpieza y mantenimiento de calzado. Toda la información relacionada con precios, tiempos de entrega y garantías está sujeta a cambios sin previo aviso.
+        </p>
+
+        <h2>3. Responsabilidades del Usuario</h2>
+        <p>
+          El cliente es responsable de proporcionar información precisa sobre el calzado y las condiciones específicas necesarias para su limpieza o restauración.
+        </p>
+
+        <h2>4. Limitaciones de Responsabilidad</h2>
+        <p>
+          No nos hacemos responsables por daños menores o desgaste natural que pueda ocurrir durante el proceso de limpieza.
+        </p>
+
+        <h2>5. Pagos</h2>
+        <p>
+          Todos los pagos deben realizarse en el momento de la entrega del calzado o antes del inicio del servicio.
+        </p>
+
+        <h2>6. Política de Reembolsos</h2>
+        <p>
+          No se ofrecen reembolsos una vez que el servicio ha comenzado, excepto en casos específicos a discreción de MyShus.
+        </p>
+
+        <h2>7. Cambios en los Términos</h2>
+        <p>
+          MyShus se reserva el derecho de modificar estos términos y condiciones en cualquier momento. Las modificaciones serán publicadas en este sitio.
+        </p>
+
+        <h2>8. Contacto</h2>
+        <p>
+          Si tienes preguntas sobre estos términos, puedes contactarnos en <a href="mailto:admin@myshusla.com">admin@myshusla.com</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .terms-section {
+      padding: 4rem 2rem;
+      background-color: #f9f9f9;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-align: center;
+      color: #333;
+      margin-bottom: 2rem;
+    }
+
+    .intro-text {
+      font-size: 1rem;
+      text-align: center;
+      color: #555;
+      margin-bottom: 2rem;
+    }
+
+    .terms-content h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #333;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .terms-content p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #555;
+      margin-bottom: 1rem;
+    }
+
+    .terms-content a {
+      color: #25d366;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .terms-content a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</Layout>

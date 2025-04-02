@@ -1,0 +1,200 @@
+---
+const whatsappLink = "https://wa.me/+50764439110";
+const formAction = "https://formspree.io/f/myzylozq";
+---
+
+<section id="contact-form" class="contact-form-section">
+  <div class="contact-form-container">
+    <h2 class="form-title">Déjanos tu Sugerencia</h2>
+    <p class="form-description">
+      Nos encantaría saber tu opinión o sugerencia para mejorar nuestros
+      servicios.
+    </p>
+
+    <!-- Formulario -->
+    <form
+      action={formAction}
+      method="POST"
+      class="form"
+      id="sugerencia-form"
+      onsubmit="return showThankYouMessage(event)"
+    >
+      <label for="name">Nombre</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        placeholder="Tu Nombre"
+        required
+      />
+
+      <label for="email">Correo Electrónico</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="Tu Correo Electrónico"
+        required
+      />
+
+      <label for="message">Mensaje</label>
+      <textarea
+        id="message"
+        name="message"
+        placeholder="Escribe tu sugerencia aquí..."
+        required></textarea>
+
+      <button type="submit">Enviar Sugerencia</button>
+    </form>
+
+    <!-- Mensaje de Agradecimiento (Oculto) -->
+    <div
+      class="thank-you-message"
+      id="thank-you-message"
+      style="display: none;"
+    >
+      <p>
+        ¡Gracias por escribirnos! 😊 Te responderemos de una cuando veamos tu
+        mensaje.
+      </p>
+    </div>
+
+    <!-- WhatsApp Section -->
+    <div class="whatsapp-section">
+      <p class="whatsapp-text">
+        ¿Prefieres escribirnos directamente por WhatsApp? ¡Haz clic abajo!
+      </p>
+      <a href={whatsappLink} target="_blank" class="whatsapp-button">
+        Escríbenos por WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- JavaScript para Mostrar Mensaje -->
+<script>
+  function showThankYouMessage() {
+    const thankYouMessage = document.getElementById("thank-you-message");
+    const form = document.getElementById(
+      "sugerencia-form"
+    ) as HTMLFormElement | null;
+
+    if (thankYouMessage && form) {
+      thankYouMessage.style.display = "block";
+      form.reset();
+
+      // Envía el formulario después de 2 segundos
+      setTimeout(() => {
+        form.submit();
+      }, 2000);
+    }
+
+    return false; // Prevenir envío inmediato
+  }
+</script>
+
+<!-- Estilos CSS -->
+
+<style>
+  .contact-form-section {
+    padding: 4rem 2rem;
+    background-color: #f9f9f9;
+    color: #333;
+    text-align: center;
+  }
+
+  .contact-form-container {
+    font-family: "Inter", sans-serif;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .form-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .form-description {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    color: #555;
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .form input,
+  .form textarea {
+    font-size: 1rem;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
+  }
+
+  .form input:focus,
+  .form textarea:focus {
+    border-color: #25d366;
+    box-shadow: 0 0 5px rgba(37, 211, 102, 0.5);
+  }
+
+  .form button {
+    background-color: #25d366;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+  }
+
+  .form button:hover {
+    background-color: #1da653;
+  }
+
+  /* WhatsApp Section */
+  .whatsapp-section {
+    margin-top: 2rem;
+    text-align: center;
+  }
+
+  .whatsapp-text {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 1.5rem; /* Añadimos más margen para separar el texto del botón */
+  }
+
+  .whatsapp-button {
+    background-color: #25d366;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+
+  .whatsapp-button:hover {
+    background-color: #1da653;
+  }
+  /* Mensaje de agradecimiento */
+  .thank-you-message {
+    margin-top: 2rem;
+    font-size: 1.1rem;
+    color: #25d366;
+    font-weight: 600;
+  }
+</style>

@@ -1,0 +1,37 @@
+<div class="launch-banner">
+    <p>ESTAMOS DE LANZAMIENTO!</p>
+  </div>
+  
+  <style>
+    .launch-banner {
+      background: linear-gradient(90deg, #28a745, #2ecc71); /* Degradado verde llamativo */
+      color: #fff;
+      text-align: center;
+      padding: 0.5rem 0.5rem; /* Ajuste para que no sea demasiado alto */
+      font-size: 1.2rem;
+      font-weight: bold;
+      border-radius: 5px;
+      margin: 0.2rem 0;
+      animation: fadeIn 1s ease-out;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    
+    .launch-banner p {
+      margin: 0;
+      padding: 0;
+      line-height: 1;
+      text-transform: uppercase;
+      font-family: "Inter", sans-serif;
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>

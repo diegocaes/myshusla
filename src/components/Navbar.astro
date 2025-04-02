@@ -1,0 +1,196 @@
+
+<meta charset="UTF-8" />
+<nav class="navbar" aria-label="Navegación principal">
+  <div class="navbar-logo">
+    <a href="/" aria-label="Ir a Inicio">
+      <img 
+        src="/images/myshus-logo-hori.png" 
+        alt="MyShus Logo" 
+        width="150"
+        height="50"
+        loading="eager"
+      />
+    </a>
+  </div>
+  
+  <button class="mobile-menu-btn" aria-label="Menú" aria-expanded="false">
+    <span class="hamburger"></span>
+  </button>
+
+  <ul class="navbar-links" role="menubar">
+    <li role="none"><a href="/" role="menuitem">Inicio</a></li>
+    <li role="none"><a href="#services" role="menuitem">Servicios</a></li>
+  </ul>
+</nav>
+
+<script>
+  const mobileBtn = document.querySelector('.mobile-menu-btn');
+  const navLinks = document.querySelector('.navbar-links');
+
+  mobileBtn?.addEventListener('click', () => {
+    const isExpanded = mobileBtn.getAttribute('aria-expanded') === 'true';
+    mobileBtn.setAttribute('aria-expanded', (!isExpanded).toString());
+    navLinks?.classList.toggle('active');
+  });
+</script>
+
+<style>
+  :root {
+    --navbar-height: 60px;
+    --navbar-bg: #000;
+    --navbar-text: #fff;
+    --accent-color: #25d366;
+    --transition-speed: 0.3s;
+  }
+
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 2rem;
+    background-color: var(--navbar-bg);
+    color: var(--navbar-text);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    height: var(--navbar-height);
+  }
+
+  .navbar-logo img {
+    height: 40px;
+    width: auto;
+    transition: transform var(--transition-speed) ease;
+  }
+
+  .navbar-logo:hover img {
+    transform: scale(1.05);
+  }
+
+  .navbar-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .navbar-links a {
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--navbar-text);
+    transition: color var(--transition-speed) ease;
+    position: relative;
+  }
+
+  .navbar-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: var(--accent-color);
+    transition: width var(--transition-speed) ease;
+  }
+
+  .navbar-links a:hover::after {
+    width: 100%;
+  }
+
+  .mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+  }
+
+  .hamburger {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--navbar-text);
+    position: relative;
+    transition: background-color 0.2s ease;
+  }
+
+  .hamburger::before,
+  .hamburger::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 22px;
+    height: 2px;
+    background: var(--navbar-text);
+    transition: transform 0.2s ease;
+  }
+
+  .hamburger::before {
+    top: -7px;
+  }
+
+  .hamburger::after {
+    bottom: -7px;
+  }
+
+  @media (max-width: 768px) {
+    .navbar {
+      padding: 0.5rem 1rem;
+    }
+
+    .mobile-menu-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    [aria-expanded="true"] .hamburger {
+      background: transparent;
+    }
+
+    [aria-expanded="true"] .hamburger::before {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    [aria-expanded="true"] .hamburger::after {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    .navbar-links {
+      position: fixed;
+      top: var(--navbar-height);
+      right: -100%;
+      flex-direction: column;
+      background: var(--navbar-bg);
+      width: 100%;
+      height: auto;
+      text-align: center;
+      transition: right var(--transition-speed) ease;
+      padding: 1rem 0;
+      gap: 1.5rem;
+    }
+
+    .navbar-links.active {
+      right: 0;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-links a {
+      display: block;
+      padding: 0.5rem 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .navbar-logo img,
+    .navbar-links,
+    .navbar-links a::after,
+    .hamburger,
+    .hamburger::before,
+    .hamburger::after {
+      transition: none;
+    }
+  }
+</style>

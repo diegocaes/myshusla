@@ -1,0 +1,70 @@
+<div class="ticker-container">
+  <div class="ticker">
+    <div class="ticker-track">
+      <span class="ticker-item">Rápido. Limpio. Fresco.</span>
+      <span class="ticker-item">Recogida y entrega Gratis*</span>
+      <span class="ticker-item">Zapatillas Deportivas</span>
+      <span class="ticker-item">Zapatillas de Lujo</span>
+
+      <!-- Duplicado para el efecto infinito -->
+      <span class="ticker-item">Rápido. Limpio. Fresco.</span>
+      <span class="ticker-item">Recogida y entrega Gratis*</span>
+      <span class="ticker-item">Zapatillas Deportivas</span>
+      <span class="ticker-item">Zapatillas de Lujo</span>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Ticker Container */
+  .ticker-container {
+    overflow: hidden;
+    background-color: #fff; /* White background */
+    border: 1px solid #ddd; /* Optional border for separation */
+    height: 50px;
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  /* Ticker Track */
+  .ticker {
+    display: flex;
+    align-items: center;
+    white-space: nowrap; /* Prevent line wrapping */
+  }
+
+  .ticker-track {
+    display: flex;
+    animation: scroll-left 10s linear infinite; /* Infinite scrolling */
+  }
+
+  /* Ticker Items */
+  .ticker-item {
+    font-family: "Inter", sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0 2rem;
+    white-space: nowrap; /* Prevent text wrapping */
+    color: #333; /* Default dark gray text */
+  }
+
+  /* Alternate colors for items */
+  .ticker-item:nth-child(odd) {
+    color: #000; /* Black */
+  }
+
+  .ticker-item:nth-child(even) {
+    color: #555; /* Dark gray */
+  }
+
+  /* Scrolling Animation */
+  @keyframes scroll-left {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%); /* Moves by the full track's width */
+    }
+  }
+</style>

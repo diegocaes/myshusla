@@ -1,0 +1,194 @@
+---
+import Navbar from "../components/Navbar.astro";
+---
+
+<Navbar />
+
+<section id="pickup-delivery" class="pickup-delivery-section">
+  <div class="pickup-delivery-container">
+    <h1 class="pickup-delivery-title">Información de Recogida y Entrega</h1>
+    <p class="pickup-delivery-intro">
+      En MyShus ofrecemos la comodidad de recoger y entregar tus zapatillas en caso de que no desees llevarlas directamente a nuestro local. Conoce cómo funciona este servicio:
+    </p>
+
+    <div class="pickup-delivery-details">
+      <h2>¿Cómo funciona?</h2>
+      <p>
+        Nuestro equipo coordinará contigo el día y la hora para recoger tus zapatillas en la dirección que nos indiques. Una vez que las zapatillas estén limpias y listas, las entregaremos en el lugar acordado inicialmente.
+      </p>
+
+      <h2>Tiempos de entrega estimados</h2>
+      <ul>
+        <li><strong>Limpieza Standard:</strong> 4-5 días hábiles.</li>
+        <li><strong>Limpieza Completa:</strong> 5-7 días hábiles.</li>
+        <li><strong>Servicios Extras:</strong> +1 día adicional dependiendo del servicio.</li>
+      </ul>
+
+      <h2>Costos del servicio</h2>
+      <p>
+        Este servicio es <strong>gratuito*</strong> para ciertos sectores de la ciudad Panamá. Para otras áreas, por favor contáctanos para conocer la disponibilidad y costos.
+      </p>
+      <p class="disclaimer">* Sujeto a un mínimo de dos pares de zapatillas por pedido en Costa Del Este, Santa María, San Francisco y Coco del Mar</p>
+    </div>
+
+    <div class="pickup-delivery-contact">
+      <h2>¿Listo para agendar tu servicio?</h2>
+      <p>
+        Escríbenos por WhatsApp o llena nuestro <a href="/contact-form" class="hover-effect">formulario de contacto</a> para coordinar el servicio.
+      </p>
+      <a href="https://wa.me/+50764439110" target="_blank" class="whatsapp-button">
+        Escríbenos por WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Variables de tipografía y colores */
+  :root {
+    --heading-font: 'Montserrat', sans-serif;
+    --body-font: 'Inter', sans-serif;
+    --base-color: #333;
+    --primary-color: #000;
+    --accent-color: #25d366;
+  }
+
+  /* Contenedor general */
+  .pickup-delivery-section {
+    padding: 4rem 2rem;
+    background-color: var(--background-color, #f9f9f9);
+    color: var(--base-color);
+    font-family: var(--body-font);
+  }
+
+  .pickup-delivery-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  /* Estilos para títulos */
+  .pickup-delivery-title {
+    font-family: var(--heading-font);
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: var(--primary-color);
+  }
+
+  .pickup-delivery-details h2,
+  .pickup-delivery-contact h2 {
+    font-family: var(--heading-font);
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+  }
+
+  /* Estilos para párrafos y textos */
+  .pickup-delivery-intro,
+  .pickup-delivery-details p,
+  .pickup-delivery-details ul,
+  .pickup-delivery-contact p {
+    font-family: var(--body-font);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    text-align: justify;
+  }
+
+  .pickup-delivery-details ul {
+    padding-left: 1.5rem;
+    list-style: disc;
+  }
+
+  /* Estilo para disclaimer */
+  .disclaimer {
+    font-size: 0.95rem;
+    font-style: italic;
+  }
+
+  /* Estilos para enlaces con hover */
+  .hover-effect {
+    color: var(--accent-color);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: all 0.3s ease;
+  }
+
+  .hover-effect:hover {
+    border-bottom: 1px solid var(--accent-color);
+  }
+
+  /* Botón de WhatsApp */
+  .whatsapp-button {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    font-family: var(--heading-font);
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+
+  .whatsapp-button:hover {
+    background-color: #1da653;
+  }
+
+  /* Media Queries para dispositivos más pequeños */
+  @media (max-width: 768px) {
+    .pickup-delivery-section {
+      padding: 2rem 1rem;
+    }
+
+    .pickup-delivery-title {
+      font-size: 2rem;
+    }
+
+    .pickup-delivery-intro {
+      font-size: 1.05rem;
+      text-align: left;
+    }
+
+    .pickup-delivery-details h2,
+    .pickup-delivery-contact h2 {
+      font-size: 1.5rem;
+    }
+
+    .pickup-delivery-details p,
+    .pickup-delivery-details ul,
+    .pickup-delivery-contact p {
+      font-size: 1rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .pickup-delivery-title {
+      font-size: 1.75rem;
+    }
+
+    .pickup-delivery-intro {
+      font-size: 1rem;
+    }
+
+    .pickup-delivery-details h2,
+    .pickup-delivery-contact h2 {
+      font-size: 1.3rem;
+    }
+
+    .pickup-delivery-details p,
+    .pickup-delivery-details ul,
+    .pickup-delivery-contact p {
+      font-size: 0.9rem;
+    }
+
+    .whatsapp-button {
+      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
+    }
+  }
+</style>

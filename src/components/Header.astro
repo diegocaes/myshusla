@@ -1,0 +1,152 @@
+---
+const imageSrc = "/images/header-image.png"; // 
+const whatsappLink = "https://wa.me/+50764439110"; // 
+---
+
+<header id="home" class="hero">
+  <div class="hero-content">
+    <h1 class="hero-title">Limpios. Frescos. Vibrantes.</h1>
+    <p class="small-text">
+      La limpieza que le devuelve la vida a tus zapatillas
+    </p>
+    <div class="cta-buttons">
+      <a href={whatsappLink} target="_blank" class="btn btn-primary">
+        <img src="/images/whatsapp-icon.png" alt="WhatsApp" class="btn-icon" />
+        Agenda Ya!
+      </a>
+      <a href="#about" class="btn btn-secondary">Cómo Funciona?</a>
+    </div>
+  </div>
+
+  <!-- Image Section -->
+  <div class="hero-image">
+    <img src={imageSrc} alt="Sneaker Cleaning Experts" class="hero-logo" />
+  </div>
+</header>
+
+<style>
+  .hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f7f7f7;
+    padding: 5rem 2rem;
+    box-sizing: border-box;
+    overflow: hidden; /* Ensures no overflow */
+    position: relative;
+  }
+
+  /* Hero Content Section */
+  .hero-content {
+    flex: 1;
+    max-width: 50%;
+    padding-bottom: 1rem; /* Adjust for spacing */
+  }
+
+  .small-text {
+    font-family: "Inter", sans-serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #6b705c;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-title {
+    font-family: "Inter", sans-serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 1.5rem;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-start; /* Aligns buttons to the left */
+    margin-top: 1rem; /* Ensures space between the text and buttons */
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-family: "Inter", sans-serif;
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+
+  .btn-primary {
+    background-color: #25d366;
+    color: #fff;
+    border: none;
+  }
+
+  .btn-secondary {
+    border: 2px solid #000;
+    color: #000;
+    background-color: transparent;
+  }
+
+  .btn-primary:hover,
+  .btn-secondary:hover {
+    transform: scale(1.05);
+  }
+
+  .btn-icon {
+    height: 20px;
+    width: 20px;
+    object-fit: contain;
+  }
+
+  /* Hero Image Section */
+  .hero-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hero-image img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  /* Hide header image on screens smaller than 768px */
+  @media (max-width: 768px) {
+    .hero-image {
+      display: none;
+    }
+
+    .hero {
+      height: auto; /* Adjust height to avoid empty space */
+      padding: 3rem 1.5rem;
+    }
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .hero {
+      flex-direction: column;
+      text-align: center;
+      padding: 3rem 1.5rem;
+    }
+
+    .hero-content {
+      max-width: 100%;
+      margin-bottom: 2rem;
+    }
+
+    .hero-image {
+      max-width: 90%;
+    }
+
+    .hero-image img {
+      max-height: 280px;
+    }
+  }
+</style>
