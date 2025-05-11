@@ -1,24 +1,22 @@
-<!-- src/layouts/Layout.astro -->
+---
+// src/layouts/Layout.astro
+const GA_TRACKING_ID = "G-JESF85NFZ1"; // Tu ID de Google Analytics
+---
 <html lang="es">
   <head>
-    <!-- Codificación y Viewport -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- SEO Básico -->
     <title>MyShus - Limpieza Profesional de Zapatillas</title>
     <meta
       name="description"
       content="Limpieza premium de zapatillas deportivas y de lujo en Panamá. Deja tus zapatillas como nuevas con MyShus."
     />
 
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://myshusla.com/">
+    <link rel="canonical" href="https://myshusla.com/" />
 
-    <!-- Favicon -->
     <link rel="icon" href="/favicon.ico" />
 
-    <!-- Open Graph -->
     <meta property="og:title" content="MyShus - Limpieza Profesional de Zapatillas" />
     <meta
       property="og:description"
@@ -28,7 +26,6 @@
     <meta property="og:url" content="https://myshusla.com" />
     <meta property="og:type" content="website" />
 
-    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="MyShus - Limpieza Profesional de Zapatillas" />
     <meta
@@ -37,7 +34,6 @@
     />
     <meta name="twitter:image" content="https://myshusla.com/images/preview-image.png" />
 
-    <!-- Google Fonts (Inter) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -45,32 +41,29 @@
       rel="stylesheet"
     />
 
-    <!-- CSS Global -->
     <link rel="stylesheet" href="/styles/global.css" />
 
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JESF85NFZ1"></script>
-    <script>
-      // Utilizamos "as any" para evitar errores en TypeScript
-      (window as any).dataLayer = (window as any).dataLayer || [];
-      function gtag(...args: any[]) {
-        (window as any).dataLayer.push(args);
+    <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}></script>
+    <script define:vars={{ GA_TRACKING_ID }}>
+      window.dataLayer = window.dataLayer || [];
+      // Usamos 'arguments' directamente, es la forma más común y robusta para gtag.
+      // Astro procesará este script y lo incluirá tal cual en el HTML final.
+      function gtag() {
+        dataLayer.push(arguments);
       }
       gtag("js", new Date());
-      gtag("config", "G-JESF85NFZ1");
+      gtag("config", GA_TRACKING_ID);
     </script>
   </head>
 
   <body>
-    <!-- Aquí se inyectará el contenido de cada página -->
     <slot />
 
-    <!-- (Opcional) Lazy Load para imágenes con data-src -->
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         const lazyImages = document.querySelectorAll("img[data-src]");
         lazyImages.forEach((img) => {
-          const imageEl = img as HTMLImageElement;
+          const imageEl = img as HTMLImageElement; // Type assertion para TypeScript
           const dataSrc = imageEl.getAttribute("data-src");
           if (dataSrc) {
             imageEl.src = dataSrc;
