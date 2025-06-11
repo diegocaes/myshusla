@@ -1,4 +1,7 @@
 ---
+import '../styles/global.css';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+
 // src/layouts/Layout.astro
 const GA_TRACKING_ID = "G-JESF85NFZ1"; // Tu ID de Google Analytics
 ---
@@ -41,8 +44,6 @@ const GA_TRACKING_ID = "G-JESF85NFZ1"; // Tu ID de Google Analytics
       rel="stylesheet"
     />
 
-    <link rel="stylesheet" href="/styles/global.css" />
-
     <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}></script>
     <script define:vars={{ GA_TRACKING_ID }}>
       window.dataLayer = window.dataLayer || [];
@@ -58,6 +59,7 @@ const GA_TRACKING_ID = "G-JESF85NFZ1"; // Tu ID de Google Analytics
 
   <body>
     <slot />
+    <WhatsAppButton />
 
     <script>
       document.addEventListener("DOMContentLoaded", () => {

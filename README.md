@@ -1,24 +1,51 @@
-# MyShus Web
+# MyShus - Sitio Web Oficial
 
-Este repositorio contiene el código fuente de la página web de **MyShus**, desarrollada con [Astro](https://astro.build) y desplegada en [Vercel](https://vercel.com).
+Este es el repositorio del código fuente para el sitio web oficial de **MyShus**, una plataforma dedicada a la limpieza profesional y premium de zapatillas deportivas y de lujo en Panamá.
 
-## 🔁 Transición de ramas
+## Descripción del Proyecto
 
-Inicialmente, este proyecto tenía una versión anterior en local que contenía:
-- Sección de promociones activas.
-- Un error en el deployment que impedía la visualización correcta en producción.
+MyShus ofrece un servicio especializado para dejar tus zapatillas como nuevas, contribuyendo a la sostenibilidad al extender la vida útil de tu calzado. El sitio web proporciona información sobre los servicios, la historia de la empresa, políticas de entrega y reembolso, y métodos de contacto.
 
-Para resolver esto:
-1. Se creó la rama `legacy-version`, donde se desactivaron las promociones y se corrigió el error de deployment.
-2. Esta rama fue probada exitosamente en Vercel con un deploy tipo **preview**.
-3. Tras la validación, se designó como nueva rama principal (`main`) del repositorio.
+## 🚀 Tecnologías Utilizadas
 
-## 🚀 Tecnologías
+El proyecto está construido con un enfoque moderno y de alto rendimiento, utilizando las siguientes tecnologías:
 
-- [Astro](https://astro.build/)
-- [Vercel](https://vercel.com/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- Node.js v20+ (LTS recomendado)
+-   **[Astro](https://astro.build/)**: El framework web principal, enfocado en la velocidad y el rendimiento.
+-   **HTML & CSS**: Estructura y estilos puros, sin frameworks de CSS.
+-   **JavaScript/TypeScript**: Para la lógica del lado del cliente y la seguridad de tipos en el desarrollo.
+-   **[Node.js](https://nodejs.org/)**: El entorno de ejecución para el desarrollo y la compilación. Se recomienda la versión LTS (v20+).
+
+## ☁️ Despliegue
+
+El sitio está desplegado y alojado en **[Vercel](https://vercel.com/)**, que se integra directamente con este repositorio para despliegues continuos y automáticos en cada `push` a la rama `legacy-version`.
+
+## 🛠️ Scripts Disponibles
+
+Para trabajar con el proyecto en un entorno local, puedes utilizar los siguientes scripts de `npm`:
+
+```bash
+# Instala todas las dependencies del proyecto
+npm install
+
+# Inicia el servidor de desarrollo en http://localhost:4321
+npm run dev
+
+# Compila el sitio para producción en el directorio `dist/`
+npm run build
+
+# Previsualiza la compilación de producción localmente
+npm run preview
+```
+
+## 📂 Estructura del Proyecto
+
+El código fuente está organizado de la siguiente manera:
+
+-   `src/pages/`: Contiene todas las páginas del sitio. Cada archivo `.astro` corresponde a una ruta.
+-   `src/components/`: Almacena todos los componentes reutilizables (Navbar, botones, secciones, etc.).
+-   `src/layouts/`: Define la estructura base de las páginas, incluyendo el `<head>`, metatags, y scripts globales.
+-   `src/styles/`: Contiene los archivos de estilos globales, como `global.css`.
+-   `public/`: Para todos los activos estáticos que no necesitan ser procesados (imágenes, favicons, etc.).
 
 ## 🛠 Scripts disponibles
 
