@@ -1,5 +1,21 @@
 :root {
   --primary-font: 'Inter', sans-serif;
+  --primary-green: #25d366;
+  --primary-green-hover: #22c35e;
+  --color-primary: #000;
+  --color-secondary: #fff;
+  --color-accent: #e2c6a4;
+  --navbar-height: 60px;
+  --navbar-bg: #000;
+  --navbar-text: #fff;
+  --accent-color: #25d366;
+  --background-color: #f9f9f9;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  --transition-speed: 0.3s;
+  --transition-duration: 0.3s;
 }
 
 *,

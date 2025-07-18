@@ -9,7 +9,7 @@ const whatsappLink = "https://wa.me/+50764439110";
   target="_blank"
   aria-label="Chatea con nosotros por WhatsApp"
 >
-  <img src="/images/whatsapp-icon.png" alt="WhatsApp" />
+  <img src="/images/whatsapp-icon.png" alt="WhatsApp" width="50" height="50" loading="lazy" />
 </a>
 
 <style>
@@ -35,9 +35,23 @@ const whatsappLink = "https://wa.me/+50764439110";
   }
 
   @media (max-width: 768px) {
+    .whatsapp-float {
+      bottom: 80px; /* Avoid overlap with mobile UI */
+    }
+    
     .whatsapp-float img {
       width: 45px;
       height: 45px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .whatsapp-float {
+      transition: none;
+    }
+    
+    .whatsapp-float:hover {
+      transform: none;
     }
   }
 </style> 

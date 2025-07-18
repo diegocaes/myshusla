@@ -69,4 +69,21 @@
       transform: translateX(-100%); /* Moves by the full track's width */
     }
   }
+
+  @media (max-width: 768px) {
+    .ticker-track {
+      animation-duration: 15s; /* Slower on mobile */
+    }
+    
+    .ticker-item {
+      font-size: 0.9rem;
+      padding: 0 1.5rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ticker-track {
+      animation: none;
+    }
+  }
 </style>

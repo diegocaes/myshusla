@@ -55,6 +55,56 @@ const GA_TRACKING_ID = "G-JESF85NFZ1"; // Tu ID de Google Analytics
       gtag("js", new Date());
       gtag("config", GA_TRACKING_ID);
     </script>
+
+    <!-- Structured Data for Local Business -->
+    <script type="application/ld+json" is:inline>
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "MyShus",
+        "description": "Limpieza profesional y especializada de zapatillas deportivas y de lujo en Panamá. Servicio de recogida y entrega a domicilio.",
+        "url": "https://myshusla.com",
+        "telephone": "+507-6443-9110",
+        "areaServed": {
+          "@type": "Country",
+          "name": "Panama"
+        },
+        "serviceType": "Sneaker Cleaning Service",
+        "openingHours": [
+          "Mo-Fr 08:00-16:30"
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Servicios de Limpieza",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "name": "Limpieza Sencilla",
+              "description": "Limpieza externa (upper, suela, y midsole). Eliminación de suciedad superficial.",
+              "price": "18",
+              "priceCurrency": "USD"
+            },
+            {
+              "@type": "Offer", 
+              "name": "Limpieza Completa",
+              "description": "Limpieza externa + interna (plantillas y forros interiores). Cordones y eliminación de malos olores.",
+              "price": "25",
+              "priceCurrency": "USD"
+            }
+          ]
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+507-6443-9110",
+          "contactType": "Customer Service",
+          "availableLanguage": "Spanish"
+        },
+        "sameAs": [
+          "https://www.instagram.com/myshusla",
+          "https://wa.me/+50764439110"
+        ]
+      }
+    </script>
   </head>
 
   <body>
