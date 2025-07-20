@@ -1,0 +1,222 @@
+---
+const whatsappLink = "https://wa.me/+50764439110?text=Hola%21%20Llegué%20desde%20la%20web%20myshusla.com%20por%20la%20oferta%20de%2050%25%20descuento%20%f0%9f%94%a5";
+---
+
+<section class="urgency-cta">
+  <div class="container">
+    <div class="urgency-content">
+      <div class="urgency-text">
+        <h2>🔥 ¡Oferta Limitada!</h2>
+        <p class="main-text"><strong>30% DESCUENTO</strong> en tu primer servicio</p>
+        <p class="subtext">Solo por tiempo limitado para nuevos clientes en Panamá Ciudad</p>
+        <div class="benefits">
+          <span class="benefit">✅ Sin costos ocultos</span>
+          <span class="benefit">✅ Garantía incluida</span>
+          <span class="benefit">✅ Servicio profesional</span>
+        </div>
+      </div>
+      <div class="urgency-action">
+        <a href={whatsappLink} target="_blank" class="urgent-btn" data-track="urgency-cta">
+          <span class="btn-text">¡QUIERO MI 30% DESCUENTO!</span>
+          <span class="btn-subtext">Agenda ahora por WhatsApp</span>
+        </a>
+        <p class="urgency-note">⏰ Últimos cupos disponibles hoy</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .urgency-cta {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 50%, #ff6b6b 100%);
+    padding: 3rem var(--spacing-lg);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .urgency-cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.1"/><circle cx="10" cy="50" r="0.5" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+    animation: sparkle 3s ease-in-out infinite;
+  }
+
+  @keyframes sparkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.6; }
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  .urgency-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .urgency-text {
+    color: white;
+  }
+
+  .urgency-text h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+  }
+
+  .main-text {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  }
+
+  .subtext {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-bottom: 1.5rem;
+  }
+
+  .benefits {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .benefit {
+    font-weight: 500;
+    font-size: 1rem;
+  }
+
+  .urgency-action {
+    text-align: center;
+  }
+
+  .urgent-btn {
+    display: inline-block;
+    background: white;
+    color: #ff6b6b;
+    padding: 1.5rem 2rem;
+    border-radius: 15px;
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 1rem;
+  }
+
+  .urgent-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.6s ease;
+  }
+
+  .urgent-btn:hover::before {
+    left: 100%;
+  }
+
+  .urgent-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+  }
+
+  .btn-text {
+    display: block;
+    font-size: 1.2rem;
+    line-height: 1.2;
+  }
+
+  .btn-subtext {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    opacity: 0.8;
+    text-transform: none;
+  }
+
+  .urgency-note {
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin: 0;
+    animation: blink 2s ease-in-out infinite;
+  }
+
+  @keyframes blink {
+    0%, 50%, 100% { opacity: 1; }
+    25%, 75% { opacity: 0.7; }
+  }
+
+  @media (max-width: 768px) {
+    .urgency-cta {
+      padding: 2rem 1rem;
+    }
+
+    .urgency-content {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      text-align: center;
+    }
+
+    .urgency-text h2 {
+      font-size: 2rem;
+    }
+
+    .main-text {
+      font-size: 1.3rem;
+    }
+
+    .benefits {
+      align-items: center;
+    }
+
+    .urgent-btn {
+      padding: 1.25rem 1.5rem;
+    }
+
+    .btn-text {
+      font-size: 1.1rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .urgency-cta::before,
+    .urgency-text h2,
+    .urgency-note {
+      animation: none;
+    }
+    
+    .urgent-btn:hover {
+      transform: none;
+    }
+
+    .urgent-btn::before {
+      display: none;
+    }
+  }
+</style>

@@ -1,54 +1,62 @@
 <section id="about" class="how-it-works">
   <div class="container">
-    <h2 class="section-title">¿Cómo Funciona?</h2>
+    <h2 class="section-title">¿Cómo Funciona Nuestro Servicio a Domicilio?</h2>
     
     <div class="steps-container">
       <!-- Step 1 -->
       <div class="step">
+        <div class="step-number">1</div>
         <div class="step-icon-container">
-          <img 
-            src="/images/schedule-icon.png" 
-            alt="Icono de calendario"
-            class="step-icon"
-            loading="lazy"
-            width="40"
-            height="40"
-          />
+          <div class="step-emoji">📱</div>
         </div>
-        <h3>Agenda tu servicio</h3>
-        <p>Contáctanos por WhatsApp para programar la limpieza de tus zapatillas.</p>
+        <h3>Agenda por WhatsApp</h3>
+        <p>Escríbenos al +507 6443-9110 con fotos de tus zapatillas. Te daremos un presupuesto inmediato y coordinaremos la recogida.</p>
+        <div class="step-details">
+          <span class="detail-item">• Respuesta en menos de 1 hora</span>
+          <span class="detail-item">• Presupuesto sin compromiso</span>
+        </div>
       </div>
 
       <!-- Step 2 -->
       <div class="step">
+        <div class="step-number">2</div>
         <div class="step-icon-container">
-          <img 
-            src="/images/hand-in-icon.png" 
-            alt="Icono de recogida"
-            class="step-icon"
-            loading="lazy"
-            width="40"
-            height="40"
-          />
+          <div class="step-emoji">🚚</div>
         </div>
-        <h3>Recogemos tus zapatillas</h3>
-        <p>Retiramos tus zapatillas desde la comodidad de tu hogar.</p>
+        <h3>Recogida GRATIS*</h3>
+        <p>Pasamos por tu casa u oficina en el horario acordado. Revisamos tus zapatillas y confirmamos el servicio contigo.</p>
+        <div class="step-details">
+          <span class="detail-item">• Horarios flexibles</span>
+          <span class="detail-item">• Áreas seleccionadas de Panamá</span>
+        </div>
       </div>
 
       <!-- Step 3 -->
       <div class="step">
+        <div class="step-number">3</div>
         <div class="step-icon-container">
-          <img 
-            src="/images/receive-icon.png" 
-            alt="Icono de entrega"
-            class="step-icon"
-            loading="lazy"
-            width="40"
-            height="40"
-          />
+          <div class="step-emoji">🧡</div>
         </div>
-        <h3>Entrega a domicilio</h3>
-        <p>Te devolvemos tus zapatillas limpias y como nuevas.</p>
+        <h3>Limpieza Profesional</h3>
+        <p>Llevamos tus zapatillas a nuestro taller donde aplicamos técnicas especializadas y productos profesionales para cada material.</p>
+        <div class="step-details">
+          <span class="detail-item">• 4-7 días de proceso</span>
+          <span class="detail-item">• Seguimiento por WhatsApp</span>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="step">
+        <div class="step-number">4</div>
+        <div class="step-icon-container">
+          <div class="step-emoji">🎆</div>
+        </div>
+        <h3>Entrega a Domicilio</h3>
+        <p>Te devolvemos tus zapatillas limpias, desinfectadas y como nuevas. Pago al recibir el trabajo terminado.</p>
+        <div class="step-details">
+          <span class="detail-item">• Inspección antes del pago</span>
+          <span class="detail-item">• Garantía de satisfacción</span>
+        </div>
       </div>
     </div>
   </div>
@@ -107,17 +115,21 @@
 
   .steps-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
   }
 
   .step {
     background: #ffffff;
-    border-radius: 12px;
-    padding: 1.5rem;
-    text-align: center;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: left;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    border-left: 4px solid var(--primary-green);
   }
 
   .step:hover {
@@ -125,35 +137,73 @@
     box-shadow: 0 6px 12px rgba(37, 211, 102, 0.15);
   }
 
-  .step-icon-container {
-    background: #f8f8f8;
-    width: 65px;
-    height: 65px;
+  .step-number {
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    background: var(--primary-green);
+    color: white;
+    width: 35px;
+    height: 35px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 1.25rem;
-    transition: background-color 0.3s ease;
+    font-weight: 700;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+  }
+
+  .step-icon-container {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+  }
+
+  .step-emoji {
+    font-size: 2.5rem;
   }
 
   .step:hover .step-icon-container {
-    background-color: #e8f8ed;
+    background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-green-hover) 100%);
+    transform: scale(1.1);
+  }
+
+  .step:hover .step-emoji {
+    filter: grayscale(0) brightness(1.2);
   }
 
   .step h3 {
-    margin: 0 0 0.75rem;
-    color: var(--primary-green);
-    font-size: 1.2rem;
+    margin: 0 0 1rem;
+    color: var(--color-primary);
+    font-size: 1.4rem;
     font-family: var(--font-primary);
-    font-weight: 600;
+    font-weight: 700;
   }
 
   .step p {
-    margin: 0;
-    color: #666;
-    line-height: 1.4;
-    font-size: 0.95rem;
+    margin: 0 0 1rem;
+    color: #555;
+    line-height: 1.6;
+    font-size: 1rem;
+  }
+
+  .step-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .detail-item {
+    font-size: 0.9rem;
+    color: var(--primary-green);
+    font-weight: 500;
   }
 
   @media (max-width: 768px) {
@@ -173,22 +223,26 @@
 
     .steps-container {
       grid-template-columns: 1fr;
-      gap: 1rem;
+      gap: 2rem;
     }
 
     .step {
-      padding: 1.25rem;
+      padding: 1.5rem;
+      text-align: center;
     }
 
     .step-icon-container {
-      width: 55px;
-      height: 55px;
-      margin-bottom: 1rem;
+      width: 70px;
+      height: 70px;
+      margin: 0 auto 1rem;
     }
 
-    .step-icon {
-      width: 30px;
-      height: 30px;
+    .step-emoji {
+      font-size: 2rem;
+    }
+
+    .step-details {
+      align-items: center;
     }
 
     .step h3 {

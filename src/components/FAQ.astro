@@ -1,0 +1,261 @@
+---
+const faqs = [
+  {
+    question: "¿En qué zonas de Panamá ofrecen el servicio a domicilio?",
+    answer: "Actualmente ofrecemos servicio de recogida y entrega gratis en las siguientes zonas de Panamá: Costa del Este, Santa Maria, Coco del Mar, San Francisco, Punta Pacífica, Paitilla, Entre otros. Contáctanos para confirmar si llegamos a tu zona."
+  },
+  {
+    question: "¿Cuánto tiempo toma la limpieza de mis zapatillas?",
+    answer: "El proceso típico toma entre 4-5 días hábiles para limpieza sencilla y 5-7 días hábiles para limpieza completa, desde la recogida hasta la entrega. Para servicios urgentes, contáctanos y evaluaremos la posibilidad de acelerar el proceso."
+  },
+  {
+    question: "¿Qué tipos de zapatillas pueden limpiar?",
+    answer: "Limpiamos todo tipo de calzado: zapatillas deportivas (Nike, Adidas, Puma, etc.), zapatillas de lujo, zapatos de cuero, zapatillas blancas, y calzado casual. Cada material requiere técnicas específicas que dominamos."
+  },
+  {
+    question: "¿Es seguro el proceso de limpieza para mis zapatillas?",
+    answer: "Absolutamente. Usamos productos profesionales especializados que son seguros para todos los materiales. Nuestro proceso ha sido probado en más de 70 pares de zapatillas sin daños."
+  },
+  {
+    question: "¿Ofrecen garantía en el servicio?",
+    answer: "Sí, ofrecemos garantía de satisfacción 100%. Si no quedas completamente satisfecho con el resultado, repetimos el servicio sin costo adicional."
+  },
+  {
+    question: "¿Cómo programo una recogida?",
+    answer: "Es muy fácil: contáctanos por WhatsApp al +507 6443-9110, nos cuentas qué necesitas y coordinamos la recogida en tu domicilio u oficina sin costo adicional."
+  }
+];
+---
+
+<section class="faq-section" id="faq">
+  <div class="container">
+    <h2 class="section-title">Preguntas Frecuentes sobre Nuestro Servicio</h2>
+    <div class="faq-grid">
+      {faqs.map((faq, index) => (
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false" data-faq={index}>
+            <span>{faq.question}</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer" data-answer={index}>
+            <p>{faq.answer}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+    
+    <div class="faq-cta">
+      <h3>¿Tienes más preguntas?</h3>
+      <a href="https://wa.me/+50764439110?text=Hola%21%20Llegué%20desde%20la%20web%20myshusla.com%20(sección%20FAQ)%20y%20tengo%20preguntas%20sobre%20el%20servicio" target="_blank" class="whatsapp-btn" data-track="faq-whatsapp">
+        📱 Chatea con nosotros en WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const faqButtons = document.querySelectorAll('.faq-question');
+    
+    faqButtons.forEach(button => {
+      if (button instanceof HTMLElement) {
+        button.addEventListener('click', () => {
+          const faqIndex = button.getAttribute('data-faq');
+          const answer = document.querySelector(`[data-answer="${faqIndex}"]`);
+          const icon = button.querySelector('.faq-icon');
+          const isExpanded = button.getAttribute('aria-expanded') === 'true';
+          
+          // Close all other FAQs
+          faqButtons.forEach(otherButton => {
+            if (otherButton !== button) {
+              otherButton.setAttribute('aria-expanded', 'false');
+              const otherIcon = otherButton.querySelector('.faq-icon');
+              const otherIndex = otherButton.getAttribute('data-faq');
+              const otherAnswer = document.querySelector(`[data-answer="${otherIndex}"]`);
+              
+              if (otherIcon) otherIcon.textContent = '+';
+              if (otherAnswer instanceof HTMLElement) {
+                otherAnswer.style.maxHeight = '0';
+                otherAnswer.style.opacity = '0';
+              }
+            }
+          });
+          
+          // Toggle current FAQ
+          if (!isExpanded) {
+            button.setAttribute('aria-expanded', 'true');
+            if (icon) icon.textContent = '−';
+            if (answer instanceof HTMLElement) {
+              answer.style.maxHeight = answer.scrollHeight + 'px';
+              answer.style.opacity = '1';
+            }
+          } else {
+            button.setAttribute('aria-expanded', 'false');
+            if (icon) icon.textContent = '+';
+            if (answer instanceof HTMLElement) {
+              answer.style.maxHeight = '0';
+              answer.style.opacity = '0';
+            }
+          }
+        });
+      }
+    });
+  });
+</script>
+
+<style>
+  .faq-section {
+    padding: var(--spacing-xl) var(--spacing-lg);
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--color-primary);
+    font-weight: 700;
+    font-family: var(--primary-font);
+  }
+
+  .faq-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .faq-item {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+  }
+
+  .faq-item:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .faq-question {
+    width: 100%;
+    padding: 1.5rem;
+    background: none;
+    border: none;
+    text-align: left;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--primary-font);
+    transition: background-color 0.3s ease;
+  }
+
+  .faq-question:hover {
+    background-color: #f8f9fa;
+  }
+
+  .faq-question:focus {
+    outline: 2px solid var(--primary-green);
+    outline-offset: -2px;
+  }
+
+  .faq-icon {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--primary-green);
+    transition: transform 0.3s ease;
+  }
+
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.3s ease;
+    background-color: #f8f9fa;
+  }
+
+  .faq-answer p {
+    padding: 0 1.5rem 1.5rem 1.5rem;
+    margin: 0;
+    line-height: 1.6;
+    color: #666;
+  }
+
+  .faq-cta {
+    text-align: center;
+    background: var(--primary-green);
+    padding: 2rem;
+    border-radius: 20px;
+    color: white;
+  }
+
+  .faq-cta h3 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  .whatsapp-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: white;
+    color: var(--primary-green);
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  }
+
+  .whatsapp-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  @media (max-width: 768px) {
+    .faq-section {
+      padding: 2rem 1rem;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .faq-question {
+      padding: 1.25rem;
+      font-size: 1rem;
+    }
+
+    .faq-answer p {
+      padding: 0 1.25rem 1.25rem 1.25rem;
+    }
+
+    .faq-cta {
+      padding: 1.5rem;
+    }
+
+    .faq-cta h3 {
+      font-size: 1.3rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .faq-answer,
+    .faq-icon,
+    .whatsapp-btn {
+      transition: none;
+    }
+  }
+</style>

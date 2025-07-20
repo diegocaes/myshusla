@@ -1,6 +1,6 @@
 ---
 // src/components/WhatsAppButton.astro
-const whatsappLink = "https://wa.me/+50764439110";
+const whatsappLink = "https://wa.me/+50764439110?text=Hola%21%20Llegué%20desde%20la%20web%20myshusla.com%20(botón%20flotante)%20y%20quiero%20información%20sobre%20limpieza%20de%20zapatillas";
 ---
 
 <a
@@ -8,6 +8,7 @@ const whatsappLink = "https://wa.me/+50764439110";
   class="whatsapp-float"
   target="_blank"
   aria-label="Chatea con nosotros por WhatsApp"
+  data-track="whatsapp-float"
 >
   <img src="/images/whatsapp-icon.png" alt="WhatsApp" width="50" height="50" loading="lazy" />
 </a>

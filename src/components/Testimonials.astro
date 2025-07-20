@@ -1,0 +1,173 @@
+---
+const testimonials = [
+  {
+    name: "Cliente Satisfecho",
+    location: "Panamá Ciudad",
+    text: "Excelente servicio de limpieza profesional. Mis zapatillas quedaron como nuevas y el servicio a domicilio es muy conveniente.",
+    rating: 5
+  },
+  {
+    name: "Cliente Verificado", 
+    location: "San Francisco",
+    text: "Muy profesionales y puntuales. El resultado superó mis expectativas. Definitivamente volvería a usar el servicio.",
+    rating: 5
+  }
+];
+---
+
+<section class="testimonials-section">
+  <div class="container">
+    <h2 class="section-title">Lo Que Dicen Nuestros Clientes</h2>
+    <div class="testimonials-grid">
+      {testimonials.map((testimonial) => (
+        <div class="testimonial-card">
+          <div class="stars">
+            {Array.from({length: testimonial.rating}, () => (
+              <span class="star">⭐</span>
+            ))}
+          </div>
+          <p class="testimonial-text">"{testimonial.text}"</p>
+          <div class="testimonial-author">
+            <strong>{testimonial.name}</strong>
+            <span class="location">{testimonial.location}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+    <div class="google-reviews-cta">
+      <a href="https://g.page/r/CesHlga5eub2EAI/review" target="_blank" class="reviews-btn">
+        Ver Más Reseñas en Google
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonials-section {
+    padding: var(--spacing-xl) var(--spacing-lg);
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--color-primary);
+    font-weight: 700;
+    font-family: var(--primary-font);
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .testimonial-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 4px solid var(--primary-green);
+  }
+
+  .testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+  }
+
+  .stars {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+  }
+
+  .star {
+    margin-right: 0.2rem;
+  }
+
+  .testimonial-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+  }
+
+  .testimonial-author {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .testimonial-author strong {
+    color: var(--color-primary);
+    font-weight: 600;
+  }
+
+  .location {
+    color: var(--primary-green);
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .google-reviews-cta {
+    text-align: center;
+  }
+
+  .reviews-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--primary-green);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+  }
+
+  .reviews-btn:hover {
+    background: var(--primary-green-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+  }
+
+  @media (max-width: 768px) {
+    .testimonials-section {
+      padding: 2rem 1rem;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .testimonial-card {
+      padding: 1.5rem;
+    }
+
+    .testimonials-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .testimonial-card {
+      transition: none;
+    }
+    
+    .testimonial-card:hover {
+      transform: none;
+    }
+  }
+</style>
