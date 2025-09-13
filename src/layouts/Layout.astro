@@ -45,8 +45,8 @@ const GA_TRACKING_ID = "G-JESF85NFZ1"; // Tu ID de Google Analytics
       rel="stylesheet"
     />
 
-    <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}></script>
-    <script define:vars={{ GA_TRACKING_ID }}>
+    <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}></script>
+    <script is:inline define:vars={{ GA_TRACKING_ID }}>
       window.dataLayer = window.dataLayer || [];
       // Usamos 'arguments' directamente, es la forma más común y robusta para gtag.
       // Astro procesará este script y lo incluirá tal cual en el HTML final.

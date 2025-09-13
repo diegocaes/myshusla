@@ -104,7 +104,7 @@
 
 <script>
   class Toast {
-    static show(message) {
+    static show(message: string) {
       const toast = document.createElement("div");
       toast.className = "toast";
       toast.textContent = message;
@@ -118,7 +118,7 @@
       }, 3000);
     }
 
-    static error(message) {
+    static error(message: string) {
       this.show(message);
     }
   }
@@ -126,11 +126,11 @@
   document.addEventListener("DOMContentLoaded", () => {
     const comingSoonLinks = document.querySelectorAll(".coming-soon");
 
-    const messages = {
-      historia: "¡Pronto podrás conocer nuestra historia!",
-      envios: "¡Información de envíos estará disponible próximamente!",
-      terminos: "¡Términos y condiciones en construcción!",
-    };
+    // const messages = {
+    //   historia: "¡Pronto podrás conocer nuestra historia!",
+    //   envios: "¡Información de envíos estará disponible próximamente!",
+    //   terminos: "¡Términos y condiciones en construcción!",
+    // };
 
     comingSoonLinks.forEach((link) => {
       if (link instanceof HTMLElement) {

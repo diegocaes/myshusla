@@ -73,24 +73,24 @@ const formAction = "https://formspree.io/f/myzylozq";
 
 <!-- JavaScript para Mostrar Mensaje -->
 <script>
-  function showThankYouMessage() {
-    const thankYouMessage = document.getElementById("thank-you-message");
-    const form = document.getElementById(
-      "sugerencia-form"
-    ) as HTMLFormElement | null;
+  // function showThankYouMessage() {
+  //   const thankYouMessage = document.getElementById("thank-you-message");
+  //   const form = document.getElementById(
+  //     "sugerencia-form"
+  //   ) as HTMLFormElement | null;
 
-    if (thankYouMessage && form) {
-      thankYouMessage.style.display = "block";
-      form.reset();
+  //   if (thankYouMessage && form) {
+  //     thankYouMessage.style.display = "block";
+  //     form.reset();
 
-      // Envía el formulario después de 2 segundos
-      setTimeout(() => {
-        form.submit();
-      }, 2000);
-    }
+  //     // Envía el formulario después de 2 segundos
+  //     setTimeout(() => {
+  //       form.submit();
+  //     }, 2000);
+  //   }
 
-    return false; // Prevenir envío inmediato
-  }
+  //   return false; // Prevenir envío inmediato
+  // }
 </script>
 
 <!-- Estilos CSS -->
