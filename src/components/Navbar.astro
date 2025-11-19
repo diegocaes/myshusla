@@ -26,23 +26,34 @@
 <script>
   const mobileBtn = document.querySelector('.mobile-menu-btn');
   const navLinks = document.querySelector('.navbar-links');
+  const navLinkItems = document.querySelectorAll('.navbar-links a');
 
+  // Toggle menu on button click
   mobileBtn?.addEventListener('click', () => {
     const isExpanded = mobileBtn.getAttribute('aria-expanded') === 'true';
     mobileBtn.setAttribute('aria-expanded', (!isExpanded).toString());
     navLinks?.classList.toggle('active');
   });
+
+  // Close menu when clicking on any link
+  navLinkItems.forEach(link => {
+    link.addEventListener('click', () => {
+      mobileBtn?.setAttribute('aria-expanded', 'false');
+      navLinks?.classList.remove('active');
+    });
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+    if (!target.closest('.navbar') && navLinks?.classList.contains('active')) {
+      mobileBtn?.setAttribute('aria-expanded', 'false');
+      navLinks?.classList.remove('active');
+    }
+  });
 </script>
 
 <style>
-  :root {
-    --navbar-height: 60px;
-    --navbar-bg: #000;
-    --navbar-text: #fff;
-    --accent-color: #25d366;
-    --transition-speed: 0.3s;
-  }
-
   .navbar {
     display: flex;
     justify-content: space-between;

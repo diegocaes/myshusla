@@ -100,66 +100,8 @@
   <p>&copy; MyShus SA 2025. All rights reserved.</p>
 </footer>
 
-<!-- Script para Toast y mensajes "Coming Soon" -->
-
-<script>
-  class Toast {
-    static show(message: string) {
-      const toast = document.createElement("div");
-      toast.className = "toast";
-      toast.textContent = message;
-      document.body.appendChild(toast);
-
-      // Activar animación
-      setTimeout(() => toast.classList.add("show"), 10);
-      setTimeout(() => {
-        toast.classList.remove("show");
-        setTimeout(() => toast.remove(), 300);
-      }, 3000);
-    }
-
-    static error(message: string) {
-      this.show(message);
-    }
-  }
-
-  document.addEventListener("DOMContentLoaded", () => {
-    const comingSoonLinks = document.querySelectorAll(".coming-soon");
-
-    // const messages = {
-    //   historia: "¡Pronto podrás conocer nuestra historia!",
-    //   envios: "¡Información de envíos estará disponible próximamente!",
-    //   terminos: "¡Términos y condiciones en construcción!",
-    // };
-
-    comingSoonLinks.forEach((link) => {
-      if (link instanceof HTMLElement) {
-        link.addEventListener("click", (e) => {
-          e.preventDefault();
-          const feature = link.dataset.feature;
-          console.log(feature);
-          // ...
-        });
-      }
-    });
-  });
-</script>
 
 <style>
-  /* Variables y fuentes */
-
-  :root {
-    --color-primary: #000;
-    --color-secondary: #fff;
-    --color-accent: #e2c6a4;
-    --font-primary: "Inter", sans-serif;
-    --spacing-sm: 0.5rem;
-    --spacing-md: 1rem;
-    --spacing-lg: 2rem;
-    --spacing-xl: 3rem;
-    --transition-duration: 0.3s;
-  }
-
   /* Contact Section */
   .contact-section {
     font-family: var(--font-primary);
@@ -259,7 +201,7 @@
     transform: translateY(-2px);
   }
 
-  /* Footer Profesional */
+  /* Footer */
   .site-footer {
     background-color: var(--color-primary);
     color: var(--color-secondary);
@@ -267,27 +209,6 @@
     padding: var(--spacing-md);
     font-size: 0.875rem;
     font-family: var(--font-primary);
-  }
-
-  /* Toast */
-  .toast {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%) translateY(100px);
-    background: var(--color-primary);
-    color: var(--color-secondary);
-    padding: 1rem 2rem;
-    border-radius: 8px;
-    opacity: 0;
-    transition: all 0.3s ease;
-    z-index: 1000;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  }
-
-  .toast.show {
-    transform: translateX(-50%) translateY(0);
-    opacity: 1;
   }
 
   /* Media Queries */

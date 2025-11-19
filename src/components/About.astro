@@ -63,17 +63,11 @@
 </section>
 
 <style>
-  :root {
-    --primary-green: #25d366;
-    --primary-green-hover: #22c35e;
-    --font-primary: 'Inter', sans-serif;
-  }
-
   .how-it-works {
-    background-color: #ffffff;
+    background-color: var(--background-white);
     border-top: 3px solid var(--primary-green);
     border-bottom: 3px solid var(--primary-green);
-    padding: 3rem 0;
+    padding: var(--spacing-xl) 0;
     width: 100%;
     font-family: var(--font-primary);
     position: relative;
@@ -86,15 +80,15 @@
     z-index: 2;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 1.5rem;
-    background-color: #ffffff;
+    padding: 0 var(--spacing-md);
+    background-color: var(--background-white);
   }
 
   .section-title {
     text-align: center;
     font-size: 2rem;
-    margin-bottom: 3rem;
-    color: #333;
+    margin-bottom: var(--spacing-xl);
+    color: var(--color-text);
     position: relative;
     display: inline-block;
     left: 50%;
@@ -122,12 +116,12 @@
   }
 
   .step {
-    background: #ffffff;
-    border-radius: 20px;
-    padding: 2rem;
+    background: var(--background-white);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-lg);
     text-align: left;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: var(--shadow-lg);
+    transition: transform var(--transition-duration) ease, box-shadow var(--transition-duration) ease;
     position: relative;
     border-left: 4px solid var(--primary-green);
   }
@@ -180,7 +174,7 @@
   }
 
   .step h3 {
-    margin: 0 0 1rem;
+    margin: 0 0 var(--spacing-md);
     color: var(--color-primary);
     font-size: 1.4rem;
     font-family: var(--font-primary);
@@ -188,8 +182,8 @@
   }
 
   .step p {
-    margin: 0 0 1rem;
-    color: #555;
+    margin: 0 0 var(--spacing-md);
+    color: var(--color-text-light);
     line-height: 1.6;
     font-size: 1rem;
   }

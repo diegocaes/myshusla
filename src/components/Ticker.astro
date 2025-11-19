@@ -1,18 +1,23 @@
+---
+import { siteConfig } from '../config';
+---
+
 <div class="ticker-container">
-  <div class="ticker">
+  <div class="ticker-wrapper">
     <div class="ticker-track">
       <span class="ticker-item">⚡ Servicio en 24-48 Horas</span>
       <span class="ticker-item">🚚 Recogida y Entrega GRATIS en Panamá</span>
       <span class="ticker-item">👟 Especialistas en Zapatillas Deportivas</span>
       <span class="ticker-item">🛡️ Garantía 100% de Satisfacción</span>
-      <span class="ticker-item">💯 +70 Zapatillas Limpiadas</span>
-
-      <!-- Duplicado para el efecto infinito -->
+      <span class="ticker-item">💯 +{siteConfig.stats.sneakersCleaned} Zapatillas Limpiadas</span>
+    </div>
+    <!-- Duplicado para el efecto infinito seamless -->
+    <div class="ticker-track" aria-hidden="true">
       <span class="ticker-item">⚡ Servicio en 24-48 Horas</span>
       <span class="ticker-item">🚚 Recogida y Entrega GRATIS en Panamá</span>
       <span class="ticker-item">👟 Especialistas en Zapatillas Deportivas</span>
       <span class="ticker-item">🛡️ Garantía 100% de Satisfacción</span>
-      <span class="ticker-item">💯 +70 Zapatillas Limpiadas</span>
+      <span class="ticker-item">💯 +{siteConfig.stats.sneakersCleaned} Zapatillas Limpiadas</span>
     </div>
   </div>
 </div>
@@ -21,24 +26,26 @@
   /* Ticker Container */
   .ticker-container {
     overflow: hidden;
-    background-color: #fff; /* White background */
-    border: 1px solid #ddd; /* Optional border for separation */
+    background-color: #fff;
+    border: 1px solid #ddd;
     height: 50px;
     display: flex;
     align-items: center;
     position: relative;
+    width: 100%;
+  }
+
+  /* Ticker Wrapper */
+  .ticker-wrapper {
+    display: flex;
+    width: fit-content;
+    animation: scroll-left 20s linear infinite;
   }
 
   /* Ticker Track */
-  .ticker {
-    display: flex;
-    align-items: center;
-    white-space: nowrap; /* Prevent line wrapping */
-  }
-
   .ticker-track {
     display: flex;
-    animation: scroll-left 10s linear infinite; /* Infinite scrolling */
+    flex-shrink: 0;
   }
 
   /* Ticker Items */
@@ -66,15 +73,15 @@
       transform: translateX(0);
     }
     100% {
-      transform: translateX(-100%); /* Moves by the full track's width */
+      transform: translateX(-50%);
     }
   }
 
   @media (max-width: 768px) {
-    .ticker-track {
-      animation-duration: 15s; /* Slower on mobile */
+    .ticker-wrapper {
+      animation-duration: 30s;
     }
-    
+
     .ticker-item {
       font-size: 0.9rem;
       padding: 0 1.5rem;
@@ -82,7 +89,7 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .ticker-track {
+    .ticker-wrapper {
       animation: none;
     }
   }

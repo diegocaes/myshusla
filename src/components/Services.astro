@@ -34,7 +34,8 @@ const services = [
     description: [
       "Impermeabilización: $10",
       "Blanqueamiento de suelas: $10",
-      "Restauración de materiales: cotizar"
+      "Restauración de materiales: cotizar",
+      "Servicio Express (24-48 horas): +$5"
     ],
     image: "/images/sports-shoes-cleaning.png",
     popular: false
@@ -70,17 +71,17 @@ const services = [
 
 <style>
   .services-section {
-    padding: 3rem 2rem;
-    background-color: var(--background-color, #f9f9f9);
+    padding: var(--spacing-xl) var(--spacing-lg);
+    background-color: var(--background-color);
     text-align: center;
   }
 
   .section-title {
     font-size: 2.5rem;
-    margin-bottom: 2rem;
-    color: #333;
+    margin-bottom: var(--spacing-lg);
+    color: var(--color-text);
     font-weight: 700;
-    font-family: var(--primary-font, 'Inter', sans-serif);
+    font-family: var(--primary-font);
   }
 
   .services-grid {
@@ -90,13 +91,13 @@ const services = [
   }
 
   .service-card {
-    background-color: #fff;
-    border-radius: 15px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    background-color: var(--color-secondary);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-lg);
     overflow: hidden;
     padding: 0;
     text-align: left;
-    transition: all 0.3s ease;
+    transition: all var(--transition-duration) ease;
     position: relative;
     border: 2px solid transparent;
   }
@@ -208,12 +209,25 @@ const services = [
   }
 
   @media (max-width: 768px) {
+    .services-section {
+      padding: var(--spacing-lg) var(--spacing-md);
+    }
+
+    .section-title {
+      font-size: 1.75rem;
+    }
+
     .services-grid {
       grid-template-columns: 1fr;
+      gap: var(--spacing-md);
     }
 
     .service-card {
-      padding: 1rem;
+      padding: var(--spacing-md);
+    }
+
+    .service-card.popular {
+      transform: scale(1);
     }
 
     .service-title {
@@ -221,7 +235,30 @@ const services = [
     }
 
     .service-description {
-      font-size: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .popular-badge {
+      font-size: 0.75rem;
+      padding: 0.4rem 0.8rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .service-card {
+      transition: none;
+    }
+
+    .service-card:hover {
+      transform: none;
+    }
+
+    .service-image {
+      transition: none;
+    }
+
+    .service-card:hover .service-image {
+      transform: none;
     }
   }
 </style>

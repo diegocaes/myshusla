@@ -29,66 +29,65 @@ const whatsappLink = "https://wa.me/+50764439110?text=Hola%21%20Llegué%20desde%
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #f7f7f7;
-    padding: 0rem 7rem;
+    background-color: var(--background-color);
+    padding: 0 7rem;
     box-sizing: border-box;
-    overflow: hidden; /* Ensures no overflow */
+    overflow: hidden;
     position: relative;
   }
 
-  /* Hero Content Section */
   .hero-content {
     flex: 1;
     max-width: 50%;
-    padding-bottom: 1rem; /* Adjust for spacing */
+    padding-bottom: var(--spacing-md);
   }
 
   .small-text {
-    font-family: "Inter", sans-serif;
+    font-family: var(--font-primary);
     font-size: 1.1rem;
     font-weight: 500;
     color: #6b705c;
-    margin-bottom: 1.5rem;
+    margin-bottom: var(--spacing-md);
   }
 
   .hero-title {
-    font-family: "Inter", sans-serif;
+    font-family: var(--font-primary);
     font-size: 3.5rem;
     font-weight: 700;
-    color: #000;
-    margin-bottom: 1.5rem;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-md);
   }
 
   .cta-buttons {
     display: flex;
-    gap: 1rem;
-    justify-content: flex-start; /* Aligns buttons to the left */
-    margin-top: 1rem; /* Ensures space between the text and buttons */
+    gap: var(--spacing-md);
+    justify-content: flex-start;
+    margin-top: var(--spacing-md);
   }
 
   .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
-    font-family: "Inter", sans-serif;
+    gap: var(--spacing-sm);
+    font-family: var(--font-primary);
     font-size: 1rem;
-    padding: 0.75rem 1.5rem;
-    border-radius: 5px;
+    padding: 0.75rem var(--spacing-md);
+    border-radius: var(--border-radius-sm);
     text-decoration: none;
     font-weight: 600;
-    transition: all 0.3s ease;
+    transition: all var(--transition-duration) ease;
   }
 
   .btn-primary {
-    background-color: #25d366;
-    color: #fff;
+    background-color: var(--primary-green);
+    color: var(--color-secondary);
     border: none;
   }
 
   .btn-secondary {
-    border: 2px solid #000;
-    color: #000;
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
     background-color: transparent;
   }
 
@@ -117,37 +116,51 @@ const whatsappLink = "https://wa.me/+50764439110?text=Hola%21%20Llegué%20desde%
     max-height: 700px; /* Increased for a larger image */
   }
 
-  /* Hide header image on screens smaller than 768px */
-  @media (max-width: 700px) {
-    .hero-image {
-      display: none;
-    }
-
-    .hero {
-      height: auto; /* Adjust height to avoid empty space */
-      padding: 3rem 1.5rem;
-    }
-  }
-
   /* Responsive Design */
   @media (max-width: 768px) {
     .hero {
       flex-direction: column;
       text-align: center;
-      padding: 3rem 1.5rem;
+      padding: var(--spacing-xl) var(--spacing-md);
+      height: auto;
     }
 
     .hero-content {
       max-width: 100%;
-      margin-bottom: 2rem;
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .hero-title {
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+
+    .small-text {
+      font-size: 1rem;
+    }
+
+    .cta-buttons {
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      width: 100%;
+      max-width: 300px;
     }
 
     .hero-image {
-      max-width: 90%;
+      display: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .btn {
+      transition: none;
     }
 
-    .hero-image img {
-      max-height: 280px;
+    .btn:hover {
+      transform: none;
     }
   }
 </style>

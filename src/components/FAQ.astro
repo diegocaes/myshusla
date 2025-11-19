@@ -1,4 +1,6 @@
 ---
+import { siteConfig } from '../config';
+
 const faqs = [
   {
     question: "¿En qué zonas de Panamá ofrecen el servicio a domicilio?",
@@ -14,7 +16,7 @@ const faqs = [
   },
   {
     question: "¿Es seguro el proceso de limpieza para mis zapatillas?",
-    answer: "Absolutamente. Usamos productos profesionales especializados que son seguros para todos los materiales. Nuestro proceso ha sido probado en más de 70 pares de zapatillas sin daños."
+    answer: `Absolutamente. Usamos productos profesionales especializados que son seguros para todos los materiales. Nuestro proceso ha sido probado en más de ${siteConfig.stats.sneakersCleaned} pares de zapatillas sin daños.`
   },
   {
     question: "¿Ofrecen garantía en el servicio?",
@@ -22,7 +24,7 @@ const faqs = [
   },
   {
     question: "¿Cómo programo una recogida?",
-    answer: "Es muy fácil: contáctanos por WhatsApp al +507 6443-9110, nos cuentas qué necesitas y coordinamos la recogida en tu domicilio u oficina sin costo adicional."
+    answer: `Es muy fácil: contáctanos por WhatsApp al ${siteConfig.contact.phone}, nos cuentas qué necesitas y coordinamos la recogida en tu domicilio u oficina sin costo adicional.`
   }
 ];
 ---
