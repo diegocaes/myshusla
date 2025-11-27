@@ -44,35 +44,40 @@ import { Menu, X } from 'lucide-astro';
 </nav>
 
 <script>
-  const mobileBtn = document.querySelector('.mobile-menu-btn');
-  const mobileMenu = document.querySelector('.mobile-menu');
-  const mobileLinks = document.querySelectorAll('.mobile-menu a');
+  document.addEventListener('DOMContentLoaded', () => {
+    const mobileBtn = document.querySelector('.mobile-menu-btn');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const mobileLinks = document.querySelectorAll('.mobile-menu a');
 
-  // Toggle menu on button click
-  mobileBtn?.addEventListener('click', () => {
-    const isExpanded = mobileBtn.getAttribute('aria-expanded') === 'true';
-    mobileBtn.setAttribute('aria-expanded', (!isExpanded).toString());
-    mobileMenu?.classList.toggle('active');
-    document.body.style.overflow = isExpanded ? 'auto' : 'hidden';
-  });
+    if (!mobileBtn || !mobileMenu) return;
 
-  // Close menu when clicking on any link
-  mobileLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      mobileBtn?.setAttribute('aria-expanded', 'false');
-      mobileMenu?.classList.remove('active');
-      document.body.style.overflow = 'auto';
+    // Toggle menu on button click
+    mobileBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isExpanded = mobileBtn.getAttribute('aria-expanded') === 'true';
+      mobileBtn.setAttribute('aria-expanded', (!isExpanded).toString());
+      mobileMenu.classList.toggle('active');
+      document.body.style.overflow = isExpanded ? 'auto' : 'hidden';
     });
-  });
 
-  // Close menu when clicking outside
-  document.addEventListener('click', (e) => {
-    const target = e.target as HTMLElement;
-    if (!target.closest('.navbar') && mobileMenu?.classList.contains('active')) {
-      mobileBtn?.setAttribute('aria-expanded', 'false');
-      mobileMenu?.classList.remove('active');
-      document.body.style.overflow = 'auto';
-    }
+    // Close menu when clicking on any link
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileBtn.setAttribute('aria-expanded', 'false');
+        mobileMenu.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement;
+      if (!target.closest('.navbar') && mobileMenu.classList.contains('active')) {
+        mobileBtn.setAttribute('aria-expanded', 'false');
+        mobileMenu.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+    });
   });
 </script>
 
@@ -169,9 +174,13 @@ import { Menu, X } from 'lucide-astro';
     display: none;
     background: none;
     border: none;
-    padding: 8px;
+    padding: 12px;
     cursor: pointer;
     color: var(--navbar-text);
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    z-index: 1001;
+    position: relative;
   }
 
   .icon-close {
@@ -223,16 +232,21 @@ import { Menu, X } from 'lucide-astro';
       background-color: var(--background-white);
       transform: translateY(-100%);
       opacity: 0;
-      transition: transform 0.3s var(--transition-easing), opacity 0.3s var(--transition-easing);
+      visibility: hidden;
+      transition: transform 0.3s var(--transition-easing), opacity 0.3s var(--transition-easing), visibility 0.3s;
       padding: var(--spacing-lg) var(--spacing-md);
       gap: var(--spacing-md);
       box-shadow: 0 8px 16px rgba(10, 10, 10, 0.1);
       border-bottom: 1px solid var(--border-color);
+      z-index: 999;
+      max-height: calc(100vh - var(--navbar-height));
+      overflow-y: auto;
     }
 
     .mobile-menu.active {
       transform: translateY(0);
       opacity: 1;
+      visibility: visible;
     }
 
     .mobile-menu a {
