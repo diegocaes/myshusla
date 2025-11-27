@@ -37,7 +37,11 @@ npm run astro
 - `src/layouts/Layout.astro`: Main layout with SEO meta tags, Google Analytics, and global scripts
 - `src/pages/index.astro`: Homepage composing all main components
 - `src/components/`: Reusable UI components (Navbar, Header, Services, etc.)
+- `src/components/PremiumBanner.astro`: Yellow banner showing free pickup/delivery
+- `src/components/Services.astro`: Service cards with pricing (Sencilla $18, Completa $25)
+- `src/components/PromotionExplainer.astro`: Pricing table showing discounts for both services (3+ pairs get discount)
 - `src/styles/global.css`: Global styles and CSS reset
+- `src/config.ts`: Site configuration including WhatsApp links and business stats
 - `astro.config.mjs`: Minimal Astro configuration
 
 ### Styling Architecture
@@ -94,3 +98,19 @@ Components follow this structure:
 - TypeScript enabled but used sparingly
 - Custom favicon and branding assets
 - Mobile-responsive navigation with hamburger menu
+
+## Pricing Structure
+
+The site features two cleaning services with volume discounts:
+
+- **Limpieza Sencilla**: $18 per pair (single), $15 per pair (3+ pairs)
+- **Limpieza Completa**: $25 per pair (single), $22 per pair (3+ pairs)
+
+Volume discounts:
+- 1 pair: Regular price (no discount)
+- 3 pares: 17% discount on per-pair price
+- 5 pares: 17% discount on per-pair price
+
+The pricing is displayed in:
+- `Services.astro`: Individual service cards
+- `PromotionExplainer.astro`: Comparative pricing table showing both services side-by-side

@@ -3,48 +3,81 @@
   --primary-font: 'Inter', sans-serif;
   --font-primary: 'Inter', sans-serif;
 
-  /* Colors */
-  --color-primary: #000;
-  --color-secondary: #fff;
-  --color-text: #333;
-  --color-text-light: #555;
-  --color-text-lighter: #666;
+  /* Vibrant Modern Palette - Startup Energy */
+  /* Primary Colors - Maximum Contrast */
+  --color-primary: #000000;        /* Pure Black - textos y headers */
+  --color-secondary: #FFFFFF;      /* Pure White - backgrounds */
+  --color-text: #000000;           /* Texto primario */
+  --color-text-light: #404040;     /* Texto secundario */
+  --color-text-lighter: #666666;   /* Texto terciario */
 
-  /* Brand Colors */
-  --primary-green: #25d366;
-  --primary-green-hover: #22c35e;
-  --accent-color: #25d366;
-  --color-accent: #e2c6a4;
+  /* Vibrant Accent Colors */
+  --accent-gold: #25D366;          /* WhatsApp Green - CTAs principales */
+  --accent-gold-hover: #20BA5A;    /* Green hover */
+  --accent-bronze: #25D366;        /* Green detalles */
+  --accent-color: #25D366;         /* Color de acento principal */
 
-  /* Background Colors */
-  --background-color: #f9f9f9;
-  --background-light: #f8f9fa;
-  --background-white: #ffffff;
+  /* Neon & Vibrant Highlights */
+  --neon-yellow: #FFEB3B;          /* Bright Yellow - máxima atención */
+  --neon-yellow-hover: #FDD835;    /* Yellow hover */
+  --accent-purple: #9C27B0;        /* Vibrant purple */
+  --accent-orange: #FF6B35;        /* Energetic orange */
+
+  /* Legacy support */
+  --primary-green: #25D366;
+  --primary-green-hover: #20BA5A;
+  --color-accent-legacy: #E0E0E0;
+
+  /* Background Colors - Clean & Bright */
+  --background-color: #F8F9FA;     /* Light gray */
+  --background-light: #F0F2F5;     /* Lighter gray */
+  --background-white: #FFFFFF;     /* Pure white */
+  --background-stone: #E0E0E0;     /* Light divisores */
+  --background-carbon: #000000;    /* Pure black contraste */
 
   /* Navbar */
-  --navbar-height: 60px;
-  --navbar-bg: #000;
-  --navbar-text: #fff;
+  --navbar-height: 70px;
+  --navbar-bg: #000000;            /* Pure Black */
+  --navbar-text: #FFFFFF;          /* Pure White */
+  --navbar-border: rgba(255, 255, 255, 0.1);
 
-  /* Spacing */
-  --spacing-sm: 0.5rem;
-  --spacing-md: 1rem;
-  --spacing-lg: 2rem;
-  --spacing-xl: 3rem;
+  /* Spacing - Premium (más generoso) */
+  --spacing-xs: 0.375rem;          /* 6px */
+  --spacing-sm: 0.75rem;           /* 12px */
+  --spacing-md: 1.5rem;            /* 24px */
+  --spacing-lg: 3rem;              /* 48px */
+  --spacing-xl: 4.5rem;            /* 72px */
+  --spacing-2xl: 6rem;             /* 96px */
 
-  /* Transitions */
-  --transition-speed: 0.3s;
-  --transition-duration: 0.3s;
+  /* Transitions - Suaves y elegantes */
+  --transition-speed: 0.4s;
+  --transition-duration: 0.4s;
+  --transition-fast: 0.2s;
+  --transition-easing: cubic-bezier(0.4, 0, 0.2, 1);
 
-  /* Borders */
-  --border-radius: 15px;
-  --border-radius-sm: 5px;
-  --border-radius-lg: 20px;
+  /* Borders - Más sutiles */
+  --border-radius: 12px;
+  --border-radius-sm: 6px;
+  --border-radius-lg: 16px;
+  --border-radius-xl: 24px;
+  --border-color: var(--background-stone);
+  --border-color-light: rgba(232, 230, 225, 0.3);
 
-  /* Shadows */
-  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.1);
-  --shadow-md: 0 4px 15px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.1);
+  /* Shadows - Más sutiles y premium */
+  --shadow-sm: 0 1px 3px rgba(10, 10, 10, 0.08);
+  --shadow-md: 0 4px 12px rgba(10, 10, 10, 0.08);
+  --shadow-lg: 0 12px 32px rgba(10, 10, 10, 0.12);
+  --shadow-xl: 0 20px 48px rgba(10, 10, 10, 0.15);
+
+  /* Vibrant effects & gradients */
+  --backdrop-blur: blur(12px);
+  --gradient-olive: linear-gradient(135deg, #25D366 0%, #20BA5A 100%);
+  --gradient-green: linear-gradient(135deg, #25D366 0%, #00C853 100%);
+  --gradient-dark: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+
+  /* Glow effects for CTAs */
+  --glow-green: 0 4px 24px rgba(37, 211, 102, 0.5);
+  --glow-yellow: 0 4px 24px rgba(255, 235, 59, 0.6);
 }
 
 *,

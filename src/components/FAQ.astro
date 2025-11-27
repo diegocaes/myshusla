@@ -1,6 +1,7 @@
 ---
 import { siteConfig } from '../config';
 
+// FAQ data for both rendering and schema
 const faqs = [
   {
     question: "¿En qué zonas de Panamá ofrecen el servicio a domicilio?",
@@ -49,11 +50,25 @@ const faqs = [
     <div class="faq-cta">
       <h3>¿Tienes más preguntas?</h3>
       <a href="https://wa.me/+50764439110?text=Hola%21%20Llegué%20desde%20la%20web%20myshusla.com%20(sección%20FAQ)%20y%20tengo%20preguntas%20sobre%20el%20servicio" target="_blank" class="whatsapp-btn" data-track="faq-whatsapp">
-        📱 Chatea con nosotros en WhatsApp
+        Chatea con nosotros en WhatsApp
       </a>
     </div>
   </div>
 </section>
+
+<!-- FAQ Schema for SEO -->
+<script type="application/ld+json" is:inline set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+})} />
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {

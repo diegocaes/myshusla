@@ -1,4 +1,6 @@
 ---
+import { Sparkles, Star, Zap } from 'lucide-astro';
+
 const services = [
   {
     title: "Limpieza Sencilla",
@@ -8,9 +10,10 @@ const services = [
       "Limpieza externa (upper, suela, y midsole)",
       "Eliminación de suciedad superficial",
       "Tratamiento básico de manchas",
-      "PROMO: 3+ pares = $15 c/u"
+      "3+ pares = $15 c/u"
     ],
     image: "/images/sneaker-cleaning.png",
+    icon: Sparkles,
     popular: false
   },
   {
@@ -22,9 +25,10 @@ const services = [
       "Limpieza interna (plantillas y forros)",
       "Lavado y desinfección de cordones",
       "Eliminación de malos olores",
-      "PROMO: 3+ pares = $22 c/u"
+      "3+ pares = $22 c/u"
     ],
     image: "/images/luxury-sneaker-care.png",
+    icon: Star,
     popular: true
   },
   {
@@ -38,183 +42,252 @@ const services = [
       "Servicio Express (24-48 horas): +$5"
     ],
     image: "/images/sports-shoes-cleaning.png",
+    icon: Zap,
     popular: false
   },
 ];
 ---
 
 <section id="services" class="services-section">
-  <h2 class="section-title">Servicios de Limpieza Profesional de Zapatillas</h2>
-  <div class="services-grid">
-    {services.map((service) => (
-      <div class={`service-card ${service.popular ? 'popular' : ''}`}>
-        {service.popular && <div class="popular-badge">🔥 MÁS POPULAR</div>}
-        <div class="service-header">
-          <img src={service.image} alt={service.title} class="service-image" width="300" height="150" loading="lazy" />
-        </div>
-        <div class="service-content">
-          <h3 class="service-title">{service.title}</h3>
-          <div class="service-pricing">
-            <span class="service-price">{service.price}</span>
-            <span class="service-duration">{service.duration}</span>
+  <div class="services-container">
+    <h2 class="section-title">Nuestros Servicios</h2>
+    <p class="section-subtitle">Cuidado profesional adaptado a las necesidades de tu calzado</p>
+
+    <div class="services-grid">
+      {services.map((service) => {
+        const Icon = service.icon;
+        return (
+          <div class={`service-card ${service.popular ? 'popular' : ''}`}>
+            {service.popular && (
+              <div class="popular-badge">
+                <Star size={14} />
+                <span>Más Popular</span>
+              </div>
+            )}
+
+            <div class="service-header">
+              <div class="service-icon-wrapper">
+                <Icon size={28} class="service-icon" />
+              </div>
+              <img
+                src={service.image}
+                alt={service.title}
+                class="service-image"
+                width="400"
+                height="200"
+                loading="lazy"
+              />
+            </div>
+
+            <div class="service-content">
+              <h3 class="service-title">{service.title}</h3>
+
+              <div class="service-pricing">
+                <span class="service-price">{service.price}</span>
+                <span class="service-duration">{service.duration}</span>
+              </div>
+
+              <ul class="service-description">
+                {service.description.map((line) => (
+                  <li>{line}</li>
+                ))}
+              </ul>
+            </div>
           </div>
-          <ul class="service-description">
-            {service.description.map((line) => (
-              <li>{line}</li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    ))}
+        );
+      })}
+    </div>
   </div>
 </section>
 
 <style>
   .services-section {
-    padding: var(--spacing-xl) var(--spacing-lg);
-    background-color: var(--background-color);
-    text-align: center;
+    padding: var(--spacing-xl) var(--spacing-lg) var(--spacing-lg) var(--spacing-lg);
+    background-color: var(--background-white);
+  }
+
+  .services-container {
+    max-width: 1400px;
+    margin: 0 auto;
   }
 
   .section-title {
-    font-size: 2.5rem;
-    margin-bottom: var(--spacing-lg);
-    color: var(--color-text);
-    font-weight: 700;
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-primary);
+    font-weight: 600;
     font-family: var(--primary-font);
+    text-align: center;
+    letter-spacing: -0.02em;
+  }
+
+  .section-subtitle {
+    font-size: 1.125rem;
+    color: var(--color-text-light);
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+    font-weight: 400;
   }
 
   .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--spacing-lg);
   }
 
   .service-card {
-    background-color: var(--color-secondary);
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow-lg);
+    background-color: var(--background-white);
+    border-radius: var(--border-radius-lg);
+    border: 1px solid var(--border-color);
     overflow: hidden;
-    padding: 0;
     text-align: left;
-    transition: all var(--transition-duration) ease;
+    transition: all var(--transition-speed) var(--transition-easing);
     position: relative;
-    border: 2px solid transparent;
+    display: flex;
+    flex-direction: column;
   }
 
   .service-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--accent-gold);
   }
 
   .service-card.popular {
-    border-color: var(--primary-green);
-    transform: scale(1.05);
+    border: 2px solid var(--accent-gold);
+    box-shadow: var(--glow-green);
   }
 
   .popular-badge {
     position: absolute;
-    top: 15px;
-    right: 15px;
-    background: linear-gradient(45deg, #ff6b6b, #ee5a52);
-    color: white;
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+    background: var(--gradient-green);
+    color: #FFFFFF;
     padding: 0.5rem 1rem;
-    border-radius: 20px;
-    font-size: 0.8rem;
+    border-radius: var(--border-radius-lg);
+    font-size: 0.75rem;
     font-weight: 700;
-    z-index: 2;
-    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    box-shadow: var(--glow-green);
   }
 
   .service-header {
     position: relative;
-    height: 180px;
+    height: 200px;
     overflow: hidden;
+    background: var(--background-color);
   }
 
-  .service-icon {
+  .service-icon-wrapper {
     position: absolute;
-    top: 15px;
-    left: 15px;
-    font-size: 2rem;
+    top: var(--spacing-md);
+    left: var(--spacing-md);
+    background: var(--background-white);
+    padding: var(--spacing-sm);
+    border-radius: var(--border-radius);
     z-index: 2;
-    background: rgba(255, 255, 255, 0.9);
-    padding: 0.5rem;
-    border-radius: 50%;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-sm);
+    color: var(--accent-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .service-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.3s ease;
+    transition: transform var(--transition-speed) var(--transition-easing);
+    opacity: 0.9;
   }
 
   .service-card:hover .service-image {
-    transform: scale(1.1);
+    transform: scale(1.05);
+    opacity: 1;
   }
 
   .service-content {
-    padding: 1.5rem;
-    text-align: left;
+    padding: var(--spacing-lg);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
   }
 
   .service-title {
     font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-    color: #333;
-    font-family: var(--primary-font, 'Inter', sans-serif);
+    font-weight: 600;
+    margin-bottom: var(--spacing-md);
+    color: var(--color-primary);
+    font-family: var(--primary-font);
+    letter-spacing: -0.01em;
   }
 
   .service-pricing {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1rem;
-    padding-bottom: 1rem;
-    border-bottom: 2px solid #f0f0f0;
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-md);
+    border-bottom: 1px solid var(--border-color-light);
   }
 
   .service-price {
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: var(--primary-green);
-    font-family: var(--primary-font, 'Inter', sans-serif);
+    font-size: 1.75rem;
+    font-weight: 300;
+    color: var(--accent-gold);
+    font-family: var(--primary-font);
+    letter-spacing: -0.02em;
   }
 
   .service-duration {
-    font-size: 0.9rem;
+    font-size: 0.8125rem;
     font-weight: 500;
-    color: #666;
-    background: #f8f9fa;
-    padding: 0.3rem 0.8rem;
-    border-radius: 15px;
+    color: var(--color-text-light);
+    background: var(--background-color);
+    padding: 0.375rem 0.75rem;
+    border-radius: var(--border-radius);
+    letter-spacing: 0.01em;
   }
 
-
   .service-description {
-    font-size: 1rem;
-    line-height: 1.6;
-    color: #555;
-    font-family: var(--primary-font, 'Inter', sans-serif);
-    margin-top: 0.5rem;
-    padding-left: 1.2rem;
-    list-style: disc;
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: var(--color-text-light);
+    font-family: var(--primary-font);
+    padding-left: 1.25rem;
+    list-style: none;
+    margin: 0;
   }
 
   .service-description li {
-    margin-bottom: 0.5rem;
+    margin-bottom: var(--spacing-sm);
+    position: relative;
   }
 
-  @media (max-width: 768px) {
-    .services-section {
-      padding: var(--spacing-lg) var(--spacing-md);
-    }
+  .service-description li::before {
+    content: '';
+    position: absolute;
+    left: -1.25rem;
+    top: 0.6em;
+    width: 4px;
+    height: 4px;
+    background-color: var(--accent-gold);
+    border-radius: 50%;
+  }
 
-    .section-title {
-      font-size: 1.75rem;
+  .service-description li:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 968px) {
+    .services-section {
+      padding: var(--spacing-xl) var(--spacing-md);
     }
 
     .services-grid {
@@ -222,39 +295,55 @@ const services = [
       gap: var(--spacing-md);
     }
 
-    .service-card {
-      padding: var(--spacing-md);
+    .service-card.popular {
+      border-width: 1px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .section-title {
+      margin-bottom: var(--spacing-xs);
     }
 
-    .service-card.popular {
-      transform: scale(1);
+    .section-subtitle {
+      font-size: 1rem;
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .service-header {
+      height: 160px;
+    }
+
+    .service-content {
+      padding: var(--spacing-md);
     }
 
     .service-title {
       font-size: 1.25rem;
     }
 
+    .service-price {
+      font-size: 1.5rem;
+    }
+
     .service-description {
-      font-size: 0.95rem;
+      font-size: 0.875rem;
     }
 
     .popular-badge {
-      font-size: 0.75rem;
-      padding: 0.4rem 0.8rem;
+      font-size: 0.6875rem;
+      padding: 0.375rem 0.75rem;
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .service-card {
+    .service-card,
+    .service-image {
       transition: none;
     }
 
     .service-card:hover {
       transform: none;
-    }
-
-    .service-image {
-      transition: none;
     }
 
     .service-card:hover .service-image {

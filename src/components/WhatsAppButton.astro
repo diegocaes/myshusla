@@ -1,6 +1,8 @@
 ---
-// src/components/WhatsAppButton.astro
-const whatsappLink = "https://wa.me/+50764439110?text=Hola%21%20Llegué%20desde%20la%20web%20myshusla.com%20(botón%20flotante)%20y%20quiero%20información%20sobre%20limpieza%20de%20zapatillas";
+import { MessageCircle } from 'lucide-astro';
+import { siteConfig } from '../config';
+
+const whatsappLink = siteConfig.whatsappLinks.float;
 ---
 
 <a
@@ -10,39 +12,46 @@ const whatsappLink = "https://wa.me/+50764439110?text=Hola%21%20Llegué%20desde%
   aria-label="Chatea con nosotros por WhatsApp"
   data-track="whatsapp-float"
 >
-  <img src="/images/whatsapp-icon.png" alt="WhatsApp" width="50" height="50" loading="lazy" />
+  <MessageCircle size={28} />
 </a>
 
 <style>
   .whatsapp-float {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: auto;
-    height: auto;
+    bottom: 24px;
+    right: 24px;
+    width: 60px;
+    height: 60px;
+    background: var(--gradient-olive);
+    color: var(--color-secondary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     z-index: 1000;
-    transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
-  }
-
-  .whatsapp-float img {
-    width: 50px;
-    height: 50px;
-    object-fit: contain;
+    box-shadow: var(--shadow-lg);
+    transition: all var(--transition-fast) var(--transition-easing);
   }
 
   .whatsapp-float:hover {
-    transform: scale(1.1);
-    opacity: 0.85;
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: var(--shadow-xl);
+  }
+
+  .whatsapp-float:active {
+    transform: translateY(-2px) scale(1.02);
   }
 
   @media (max-width: 768px) {
     .whatsapp-float {
-      bottom: 80px; /* Avoid overlap with mobile UI */
+      bottom: 80px;
+      width: 56px;
+      height: 56px;
     }
-    
-    .whatsapp-float img {
-      width: 45px;
-      height: 45px;
+
+    .whatsapp-float :global(svg) {
+      width: 24px;
+      height: 24px;
     }
   }
 
@@ -50,9 +59,9 @@ const whatsappLink = "https://wa.me/+50764439110?text=Hola%21%20Llegué%20desde%
     .whatsapp-float {
       transition: none;
     }
-    
+
     .whatsapp-float:hover {
       transform: none;
     }
   }
-</style> 
+</style>

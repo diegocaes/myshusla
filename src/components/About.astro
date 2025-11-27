@@ -1,19 +1,23 @@
+---
+import { MessageCircle, Truck, Sparkles, PackageCheck } from 'lucide-astro';
+---
+
 <section id="about" class="how-it-works">
   <div class="container">
-    <h2 class="section-title">¿Cómo Funciona Nuestro Servicio a Domicilio?</h2>
-    
+    <h2 class="section-title">¿Cómo Funciona Nuestro Servicio?</h2>
+
     <div class="steps-container">
       <!-- Step 1 -->
       <div class="step">
         <div class="step-number">1</div>
         <div class="step-icon-container">
-          <div class="step-emoji">📱</div>
+          <MessageCircle size={32} />
         </div>
         <h3>Agenda por WhatsApp</h3>
-        <p>Escríbenos al +507 6443-9110 con fotos de tus zapatillas. Te daremos un presupuesto inmediato y coordinaremos la recogida.</p>
+        <p>Escríbenos al +507 6443-9110 con fotos de tus zapatillas. Te daremos un <strong>presupuesto inmediato</strong> y coordinaremos la recogida.</p>
         <div class="step-details">
-          <span class="detail-item">• Respuesta en menos de 1 hora</span>
-          <span class="detail-item">• Presupuesto sin compromiso</span>
+          <span class="detail-item highlight">⚡ Respuesta en menos de 1 hora</span>
+          <span class="detail-item">Presupuesto sin compromiso</span>
         </div>
       </div>
 
@@ -21,13 +25,13 @@
       <div class="step">
         <div class="step-number">2</div>
         <div class="step-icon-container">
-          <div class="step-emoji">🚚</div>
+          <Truck size={32} />
         </div>
-        <h3>Recogida GRATIS*</h3>
-        <p>Pasamos por tu casa u oficina en el horario acordado. Revisamos tus zapatillas y confirmamos el servicio contigo.</p>
+        <h3>Recogida Gratis</h3>
+        <p>Pasamos por tu casa u oficina en el <strong>horario acordado</strong>. Revisamos tus zapatillas y confirmamos el servicio contigo.</p>
         <div class="step-details">
-          <span class="detail-item">• Horarios flexibles</span>
-          <span class="detail-item">• Áreas seleccionadas de Panamá</span>
+          <span class="detail-item highlight">🕐 Horarios flexibles</span>
+          <span class="detail-item">Áreas seleccionadas de Panamá</span>
         </div>
       </div>
 
@@ -35,13 +39,13 @@
       <div class="step">
         <div class="step-number">3</div>
         <div class="step-icon-container">
-          <div class="step-emoji">🧡</div>
+          <Sparkles size={32} />
         </div>
         <h3>Limpieza Profesional</h3>
-        <p>Llevamos tus zapatillas a nuestro taller donde aplicamos técnicas especializadas y productos profesionales para cada material.</p>
+        <p>Llevamos tus zapatillas a nuestro taller donde aplicamos <strong>técnicas especializadas</strong> y productos profesionales para cada material.</p>
         <div class="step-details">
-          <span class="detail-item">• 4-7 días de proceso</span>
-          <span class="detail-item">• Seguimiento por WhatsApp</span>
+          <span class="detail-item">4-7 días de proceso</span>
+          <span class="detail-item highlight">📱 Seguimiento por WhatsApp</span>
         </div>
       </div>
 
@@ -49,13 +53,13 @@
       <div class="step">
         <div class="step-number">4</div>
         <div class="step-icon-container">
-          <div class="step-emoji">🎆</div>
+          <PackageCheck size={32} />
         </div>
         <h3>Entrega a Domicilio</h3>
-        <p>Te devolvemos tus zapatillas limpias, desinfectadas y como nuevas. Pago al recibir el trabajo terminado.</p>
+        <p>Te devolvemos tus zapatillas <strong>limpias, desinfectadas y como nuevas</strong>. Pago al recibir el trabajo terminado.</p>
         <div class="step-details">
-          <span class="detail-item">• Inspección antes del pago</span>
-          <span class="detail-item">• Garantía de satisfacción</span>
+          <span class="detail-item highlight">✓ Inspección antes del pago</span>
+          <span class="detail-item">Garantía de satisfacción</span>
         </div>
       </div>
     </div>
@@ -64,202 +68,139 @@
 
 <style>
   .how-it-works {
-    background-color: var(--background-white);
-    border-top: 3px solid var(--primary-green);
-    border-bottom: 3px solid var(--primary-green);
+    background-color: var(--background-color);
+    border-top: 1px solid var(--background-stone);
+    border-bottom: 1px solid var(--background-stone);
     padding: var(--spacing-xl) 0;
-    width: 100%;
-    font-family: var(--font-primary);
-    position: relative;
-    z-index: 1;
-    margin-bottom: 80px;
   }
 
   .container {
-    position: relative;
-    z-index: 2;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 var(--spacing-md);
-    background-color: var(--background-white);
+    padding: 0 var(--spacing-lg);
   }
 
   .section-title {
     text-align: center;
-    font-size: 2rem;
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    font-weight: 600;
+    color: var(--color-primary);
     margin-bottom: var(--spacing-xl);
-    color: var(--color-text);
-    position: relative;
-    display: inline-block;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  .section-title::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 0;
-    width: 60px;
-    height: 3px;
-    background-color: var(--primary-green);
-    left: 50%;
-    transform: translateX(-50%);
+    font-family: var(--primary-font);
+    letter-spacing: -0.02em;
   }
 
   .steps-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-    max-width: 1000px;
-    margin: 0 auto;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-lg);
   }
 
   .step {
     background: var(--background-white);
+    padding: var(--spacing-xl) var(--spacing-lg);
     border-radius: var(--border-radius-lg);
-    padding: var(--spacing-lg);
-    text-align: left;
-    box-shadow: var(--shadow-lg);
-    transition: transform var(--transition-duration) ease, box-shadow var(--transition-duration) ease;
+    text-align: center;
     position: relative;
-    border-left: 4px solid var(--primary-green);
+    border: 1px solid var(--background-stone);
+    transition: all var(--transition-speed) var(--transition-easing);
   }
 
   .step:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(37, 211, 102, 0.15);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--accent-color);
   }
 
   .step-number {
     position: absolute;
-    top: -15px;
-    left: -15px;
-    background: var(--primary-green);
-    color: white;
-    width: 35px;
-    height: 35px;
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
+    background: var(--gradient-green);
+    color: #FFFFFF;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 700;
-    font-size: 1.2rem;
-    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+    font-size: 1.125rem;
+    box-shadow: var(--glow-green);
   }
 
   .step-icon-container {
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-    width: 80px;
-    height: 80px;
-    border-radius: 20px;
+    color: var(--accent-color);
+    margin-bottom: var(--spacing-md);
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 1.5rem;
-    transition: all 0.3s ease;
-  }
-
-  .step-emoji {
-    font-size: 2.5rem;
-  }
-
-  .step:hover .step-icon-container {
-    background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-green-hover) 100%);
-    transform: scale(1.1);
-  }
-
-  .step:hover .step-emoji {
-    filter: grayscale(0) brightness(1.2);
+    filter: drop-shadow(0 2px 8px rgba(37, 211, 102, 0.2));
   }
 
   .step h3 {
-    margin: 0 0 var(--spacing-md);
+    font-size: 1.25rem;
+    font-weight: 600;
     color: var(--color-primary);
-    font-size: 1.4rem;
-    font-family: var(--font-primary);
-    font-weight: 700;
+    margin-bottom: var(--spacing-sm);
+    font-family: var(--primary-font);
   }
 
   .step p {
-    margin: 0 0 var(--spacing-md);
     color: var(--color-text-light);
     line-height: 1.6;
-    font-size: 1rem;
+    margin-bottom: var(--spacing-md);
+    font-size: 0.9375rem;
   }
 
   .step-details {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: var(--spacing-xs);
   }
 
   .detail-item {
-    font-size: 0.9rem;
-    color: var(--primary-green);
+    font-size: 0.875rem;
+    color: var(--color-text-lighter);
     font-weight: 500;
   }
 
-  @media (max-width: 768px) {
+  .detail-item.highlight {
+    color: var(--accent-gold);
+    font-weight: 700;
+  }
+
+  @media (max-width: 968px) {
+    .steps-container {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--spacing-md);
+    }
+  }
+
+  @media (max-width: 640px) {
     .how-it-works {
-      padding: 2rem 0;
-      margin-bottom: 100px;
+      padding: var(--spacing-xl) 0;
     }
 
     .container {
-      padding: 0 1rem;
-    }
-
-    .section-title {
-      font-size: 1.5rem;
-      margin-bottom: 1.5rem;
+      padding: 0 var(--spacing-md);
     }
 
     .steps-container {
       grid-template-columns: 1fr;
-      gap: 2rem;
+      gap: var(--spacing-md);
     }
 
     .step {
-      padding: 1.5rem;
-      text-align: center;
-    }
-
-    .step-icon-container {
-      width: 70px;
-      height: 70px;
-      margin: 0 auto 1rem;
-    }
-
-    .step-emoji {
-      font-size: 2rem;
-    }
-
-    .step-details {
-      align-items: center;
-    }
-
-    .step h3 {
-      font-size: 1.1rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .step p {
-      font-size: 0.9rem;
-      line-height: 1.3;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .how-it-works {
-      margin-bottom: 120px;
+      padding: var(--spacing-lg) var(--spacing-md);
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .step, .step-icon-container {
+    .step {
       transition: none;
     }
+
     .step:hover {
       transform: none;
     }

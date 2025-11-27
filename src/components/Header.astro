@@ -1,165 +1,193 @@
 ---
-const imageSrc = "/images/main-header.png"; 
-const whatsappLink = "https://wa.me/+50764439110?text=Hola%21%20Llegué%20desde%20la%20web%20myshusla.com%20y%20quiero%20información%20sobre%20el%20servicio%20de%20limpieza%20de%20zapatillas"; // 
- 
+import { MessageCircle } from 'lucide-astro';
+import { siteConfig } from '../config';
+
+const imageSrc = "/images/main-header.png";
+const whatsappLink = siteConfig.whatsappLinks.header;
 ---
 
 <header id="home" class="hero">
-  <div class="hero-content">
-    <h1 class="hero-title">Limpieza de Zapatillas en Panamá</h1>
-    <p class="small-text">
-      Servicio profesional de lavado y restauración de zapatillas a domicilio. ¡Recogida y entrega gratis!
-    </p>
-    <div class="cta-buttons">
-      <a href={whatsappLink} target="_blank" class="btn btn-primary" data-track="cta-header">
-        <img src="/images/whatsapp-icon.png" alt="WhatsApp" class="btn-icon" width="20" height="20" loading="eager" />
-        ¡Agenda Tu Limpieza Ahora!
+  <div class="hero-overlay"></div>
+  <div class="hero-container">
+    <div class="hero-content">
+      <h1 class="hero-title">Limpieza de<br />Todo Tipo de Zapatillas</h1>
+      <p class="hero-subtitle">
+        Servicio profesional de limpieza y renovación de zapatillas en Panamá
+      </p>
+      <a href={whatsappLink} target="_blank" class="cta-button" data-track="cta-header">
+        <MessageCircle size={20} />
+        <span>¡Agenda Ahora!</span>
       </a>
     </div>
   </div>
 
-  <!-- Image Section -->
   <div class="hero-image">
-    <img src={imageSrc} alt="Sneaker Cleaning Experts" class="hero-logo" width="600" height="400" loading="eager" />
+    <img src={imageSrc} alt="Servicio de limpieza de zapatillas en Panamá" width="800" height="533" loading="eager" />
   </div>
 </header>
 
 <style>
   .hero {
+    position: relative;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    min-height: 45vh;
     background-color: var(--background-color);
-    padding: 0 7rem;
-    box-sizing: border-box;
     overflow: hidden;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 0.95) 40%,
+      rgba(255, 255, 255, 0) 70%
+    );
+    z-index: 1;
+  }
+
+  .hero-image {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 55%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    z-index: 0;
+    padding-right: var(--spacing-lg);
+  }
+
+  .hero-image img {
+    width: auto;
+    height: 90%;
+    max-width: 600px;
+    object-fit: contain;
+    object-position: right center;
+  }
+
+  .hero-container {
     position: relative;
+    z-index: 2;
+    max-width: 1400px;
+    width: 100%;
+    padding: var(--spacing-xl) var(--spacing-lg);
+    margin: 0 auto;
   }
 
   .hero-content {
-    flex: 1;
-    max-width: 50%;
-    padding-bottom: var(--spacing-md);
-  }
-
-  .small-text {
-    font-family: var(--font-primary);
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: #6b705c;
-    margin-bottom: var(--spacing-md);
+    max-width: 600px;
   }
 
   .hero-title {
-    font-family: var(--font-primary);
-    font-size: 3.5rem;
-    font-weight: 700;
+    font-family: var(--primary-font);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 600;
+    line-height: 1.1;
     color: var(--color-primary);
-    margin-bottom: var(--spacing-md);
+    margin: 0 0 var(--spacing-md) 0;
+    letter-spacing: -0.02em;
   }
 
-  .cta-buttons {
-    display: flex;
-    gap: var(--spacing-md);
-    justify-content: flex-start;
-    margin-top: var(--spacing-md);
+  .hero-subtitle {
+    font-family: var(--primary-font);
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--color-text-light);
+    margin: 0 0 var(--spacing-lg) 0;
+    max-width: 500px;
   }
 
-  .btn {
+  .cta-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: var(--spacing-sm);
-    font-family: var(--font-primary);
-    font-size: 1rem;
-    padding: 0.75rem var(--spacing-md);
-    border-radius: var(--border-radius-sm);
+    padding: 1.125rem 2.5rem;
+    background: var(--accent-gold);
+    color: #FFFFFF;
+    font-family: var(--primary-font);
+    font-size: 1.125rem;
+    font-weight: 700;
     text-decoration: none;
-    font-weight: 600;
-    transition: all var(--transition-duration) ease;
-  }
-
-  .btn-primary {
-    background-color: var(--primary-green);
-    color: var(--color-secondary);
+    border-radius: var(--border-radius);
     border: none;
+    box-shadow: var(--glow-green);
+    transition: all var(--transition-fast) var(--transition-easing);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
   }
 
-  .btn-secondary {
-    border: 2px solid var(--color-primary);
-    color: var(--color-primary);
-    background-color: transparent;
+  .cta-button:hover {
+    transform: translateY(-3px) scale(1.02);
+    background: var(--accent-gold-hover);
+    box-shadow: 0 8px 32px rgba(37, 211, 102, 0.6);
   }
 
-  .btn-primary:hover,
-  .btn-secondary:hover {
-    transform: scale(1.05);
-  }
-
-  .btn-icon {
-    height: 20px;
-    width: 20px;
-    object-fit: contain;
-  }
-
-  /* Hero Image Section */
-  .hero-image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .hero-image img {
-    max-width: 100%;
-    height: auto;
-    object-fit: contain;
-    max-height: 700px; /* Increased for a larger image */
+  .cta-button:active {
+    transform: translateY(0);
   }
 
   /* Responsive Design */
-  @media (max-width: 768px) {
+  @media (max-width: 968px) {
     .hero {
-      flex-direction: column;
+      min-height: 50vh;
+    }
+
+    .hero-image {
+      width: 100%;
+      opacity: 0.15;
+    }
+
+    .hero-container {
+      padding: var(--spacing-lg) var(--spacing-md);
       text-align: center;
-      padding: var(--spacing-xl) var(--spacing-md);
-      height: auto;
     }
 
     .hero-content {
       max-width: 100%;
-      margin-bottom: var(--spacing-lg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .hero-title {
-      font-size: 2rem;
-      line-height: 1.2;
+      text-align: center;
     }
 
-    .small-text {
-      font-size: 1rem;
+    .hero-subtitle {
+      text-align: center;
+      max-width: 100%;
     }
 
-    .cta-buttons {
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .btn {
+    .cta-button {
       width: 100%;
-      max-width: 300px;
+      max-width: 320px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero {
+      min-height: 45vh;
     }
 
-    .hero-image {
-      display: none;
+    .cta-button {
+      padding: 0.875rem 1.5rem;
+      font-size: 0.9375rem;
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .btn {
+    .cta-button {
       transition: none;
     }
 
-    .btn:hover {
+    .cta-button:hover {
       transform: none;
     }
   }

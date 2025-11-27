@@ -1,24 +1,25 @@
 ---
+import { Truck, Zap, ShieldCheck, Sparkles, Award } from 'lucide-astro';
 import { siteConfig } from '../config';
 
 const trustFeatures = [
   {
-    icon: "🚚",
-    title: "Recogida y Entrega GRATIS",
+    icon: Truck,
+    title: "Recogida y Entrega Gratis",
     description: "Servicio a domicilio sin costo adicional en zonas seleccionadas de Panamá"
   },
   {
-    icon: "⚡",
+    icon: Zap,
     title: "Servicio Rápido",
-    description: "Entrega en 6 días hábles o menos. Tu calzado listo cuando lo necesites"
+    description: "Entrega en 6 días hábiles o menos. Tu calzado listo cuando lo necesites"
   },
   {
-    icon: "🛡️",
+    icon: ShieldCheck,
     title: "100% Garantizado",
     description: "Si no quedas satisfecho, repetimos el servicio sin costo"
   },
   {
-    icon: "🧽",
+    icon: Sparkles,
     title: "Productos Profesionales",
     description: "Usamos productos especializados seguros para todo tipo de materiales"
   }
@@ -29,18 +30,26 @@ const trustFeatures = [
   <div class="container">
     <h2 class="section-title">¿Por Qué Elegir MyShus?</h2>
     <div class="trust-grid">
-      {trustFeatures.map((feature) => (
-        <div class="trust-card">
-          <div class="trust-icon">{feature.icon}</div>
-          <h3 class="trust-title">{feature.title}</h3>
-          <p class="trust-description">{feature.description}</p>
-        </div>
-      ))}
+      {trustFeatures.map((feature) => {
+        const Icon = feature.icon;
+        return (
+          <div class="trust-card">
+            <div class="trust-icon">
+              <Icon size={40} />
+            </div>
+            <h3 class="trust-title">{feature.title}</h3>
+            <p class="trust-description">{feature.description}</p>
+          </div>
+        );
+      })}
     </div>
-    
+
     <div class="guarantee-banner">
       <div class="guarantee-content">
-        <h3>🏆 Garantía de Satisfacción 100%</h3>
+        <div class="banner-icon">
+          <Award size={32} />
+        </div>
+        <h3>Garantía de Satisfacción 100%</h3>
         <p>Más de {siteConfig.stats.sneakersCleaned} pares de zapatillas limpiadas con clientes satisfechos en Panamá</p>
       </div>
     </div>
@@ -50,8 +59,7 @@ const trustFeatures = [
 <style>
   .trust-section {
     padding: var(--spacing-xl) var(--spacing-lg);
-    background-color: white;
-    position: relative;
+    background-color: var(--background-white);
   }
 
   .container {
@@ -61,111 +69,119 @@ const trustFeatures = [
 
   .section-title {
     text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    margin-bottom: var(--spacing-xl);
     color: var(--color-primary);
-    font-weight: 700;
+    font-weight: 600;
     font-family: var(--primary-font);
+    letter-spacing: -0.02em;
   }
 
   .trust-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    margin-bottom: 3rem;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
   }
 
   .trust-card {
     text-align: center;
-    padding: 2rem 1rem;
-    background: #f8f9fa;
-    border-radius: 15px;
-    transition: all 0.3s ease;
-    border: 2px solid transparent;
+    padding: var(--spacing-xl) var(--spacing-md);
+    background: var(--background-color);
+    border-radius: var(--border-radius-lg);
+    transition: all var(--transition-speed) var(--transition-easing);
+    border: 1px solid var(--background-stone);
   }
 
   .trust-card:hover {
-    border-color: var(--primary-green);
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(37, 211, 102, 0.1);
+    border-color: var(--accent-color);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
   }
 
   .trust-icon {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    display: block;
+    color: var(--accent-color);
+    margin-bottom: var(--spacing-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .trust-title {
-    font-size: 1.3rem;
+    font-size: 1.25rem;
     font-weight: 600;
     color: var(--color-primary);
-    margin-bottom: 1rem;
+    margin-bottom: var(--spacing-sm);
     font-family: var(--primary-font);
   }
 
   .trust-description {
-    color: #666;
+    color: var(--color-text-light);
     line-height: 1.6;
-    font-size: 1rem;
+    font-size: 0.9375rem;
   }
 
   .guarantee-banner {
-    background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-green-hover) 100%);
-    border-radius: 20px;
-    padding: 2rem;
+    background: var(--gradient-green);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-xl);
     text-align: center;
-    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+    box-shadow: var(--glow-green);
+  }
+
+  .banner-icon {
+    color: var(--color-secondary);
+    margin-bottom: var(--spacing-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .guarantee-content h3 {
-    color: white;
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+    color: var(--color-secondary);
+    font-size: 2rem;
+    margin-bottom: var(--spacing-md);
     font-weight: 700;
+    letter-spacing: -0.01em;
   }
 
   .guarantee-content p {
-    color: white;
-    font-size: 1.1rem;
+    color: var(--color-secondary);
+    font-size: 1.25rem;
     opacity: 0.95;
     margin: 0;
     font-weight: 500;
+    line-height: 1.6;
   }
 
   @media (max-width: 768px) {
     .trust-section {
-      padding: 2rem 1rem;
+      padding: var(--spacing-xl) var(--spacing-md);
     }
 
     .section-title {
-      font-size: 2rem;
-      margin-bottom: 2rem;
+      margin-bottom: var(--spacing-lg);
     }
 
     .trust-grid {
       grid-template-columns: 1fr;
-      gap: 1.5rem;
+      gap: var(--spacing-md);
     }
 
     .trust-card {
-      padding: 1.5rem 1rem;
-    }
-
-    .trust-icon {
-      font-size: 2.5rem;
+      padding: var(--spacing-lg) var(--spacing-md);
     }
 
     .guarantee-banner {
-      padding: 1.5rem;
+      padding: var(--spacing-lg);
     }
 
     .guarantee-content h3 {
-      font-size: 1.3rem;
+      font-size: 1.25rem;
     }
 
     .guarantee-content p {
-      font-size: 1rem;
+      font-size: 0.9375rem;
     }
   }
 
@@ -173,7 +189,7 @@ const trustFeatures = [
     .trust-card {
       transition: none;
     }
-    
+
     .trust-card:hover {
       transform: none;
     }

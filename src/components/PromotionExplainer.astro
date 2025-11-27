@@ -1,0 +1,505 @@
+---
+import { TrendingDown, Check } from 'lucide-astro';
+import { siteConfig } from '../config';
+
+const whatsappLink = siteConfig.whatsappLinks.main;
+
+const pricingTiers = [
+  {
+    quantity: "1 par",
+    sencillaRegular: 18,
+    sencillaPromo: 18,
+    completaRegular: 25,
+    completaPromo: 25,
+    savings: 0,
+  },
+  {
+    quantity: "2 pares",
+    sencillaRegular: 36,
+    sencillaPromo: 36,
+    completaRegular: 50,
+    completaPromo: 50,
+    savings: 0,
+  },
+  {
+    quantity: "3 pares",
+    sencillaRegular: 54,
+    sencillaPromo: 45,
+    completaRegular: 75,
+    completaPromo: 66,
+    savings: 18,
+  },
+  {
+    quantity: "4 pares",
+    sencillaRegular: 72,
+    sencillaPromo: 60,
+    completaRegular: 100,
+    completaPromo: 88,
+    savings: 24,
+  },
+  {
+    quantity: "5 pares",
+    sencillaRegular: 90,
+    sencillaPromo: 75,
+    completaRegular: 125,
+    completaPromo: 110,
+    savings: 30,
+  },
+  {
+    quantity: "6 pares",
+    sencillaRegular: 108,
+    sencillaPromo: 90,
+    completaRegular: 150,
+    completaPromo: 132,
+    savings: 36,
+  },
+  {
+    quantity: "7 pares",
+    sencillaRegular: 126,
+    sencillaPromo: 105,
+    completaRegular: 175,
+    completaPromo: 154,
+    savings: 42,
+  },
+];
+---
+
+<section class="promotion-section">
+  <div class="promotion-container">
+    <div class="promotion-header">
+      <TrendingDown size={32} class="promo-icon" />
+      <h2 class="section-title">Ahorra Más, Limpia Más</h2>
+      <p class="section-subtitle">
+        Obtén descuentos exclusivos al limpiar múltiples pares de zapatillas
+      </p>
+    </div>
+
+    <div class="pricing-table">
+      <div class="table-header">
+        <div class="col">Cantidad</div>
+        <div class="col service-col">
+          <span class="service-name">Sencilla</span>
+          <span class="service-price">$18 → $15</span>
+        </div>
+        <div class="col service-col">
+          <span class="service-name">Completa</span>
+          <span class="service-price">$25 → $22</span>
+        </div>
+        <div class="col highlight">Ahorra</div>
+      </div>
+
+      {pricingTiers.map((tier) => (
+        <div class={`table-row ${tier.savings > 0 ? 'has-discount' : ''}`}>
+          <div class="col quantity">{tier.quantity}</div>
+          <div class="col price-col">
+            {tier.sencillaRegular !== tier.sencillaPromo ? (
+              <>
+                <span class="old-price">${tier.sencillaRegular}</span>
+                <span class="new-price">${tier.sencillaPromo}</span>
+              </>
+            ) : (
+              <span class="single-price">${tier.sencillaPromo}</span>
+            )}
+          </div>
+          <div class="col price-col">
+            {tier.completaRegular !== tier.completaPromo ? (
+              <>
+                <span class="old-price">${tier.completaRegular}</span>
+                <span class="new-price">${tier.completaPromo}</span>
+              </>
+            ) : (
+              <span class="single-price">${tier.completaPromo}</span>
+            )}
+          </div>
+          <div class="col savings">
+            {tier.savings > 0 ? (
+              <span class="savings-badge">${tier.savings}</span>
+            ) : (
+              <span class="no-discount">—</span>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="benefits">
+      <div class="benefit-item">
+        <Check size={20} />
+        <span>Válido para 3 o más pares en el mismo pedido</span>
+      </div>
+      <div class="benefit-item">
+        <Check size={20} />
+        <span>Recogida y entrega totalmente gratis</span>
+      </div>
+      <div class="benefit-item">
+        <Check size={20} />
+        <span>Puedes mezclar Sencilla y Completa</span>
+      </div>
+    </div>
+
+    <div class="cta-container">
+      <a href={whatsappLink} target="_blank" class="cta-button">
+        Consultar Paquetes
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .promotion-section {
+    padding: var(--spacing-xl) var(--spacing-lg);
+    background: linear-gradient(
+      135deg,
+      var(--background-color) 0%,
+      var(--background-light) 100%
+    );
+  }
+
+  .promotion-container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .promotion-header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .promo-icon {
+    color: var(--accent-gold);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: 600;
+    color: var(--color-primary);
+    margin: 0 0 var(--spacing-sm) 0;
+    letter-spacing: -0.02em;
+  }
+
+  .section-subtitle {
+    font-size: 1.125rem;
+    color: var(--color-text-light);
+    margin: 0;
+    font-weight: 400;
+  }
+
+  .pricing-table {
+    background: var(--background-white);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    margin-bottom: var(--spacing-lg);
+    border: 1px solid var(--border-color);
+  }
+
+  .table-header,
+  .table-row {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1.5fr 1fr;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md) var(--spacing-lg);
+    align-items: center;
+  }
+
+  .table-header {
+    background: var(--background-carbon);
+    color: var(--color-secondary);
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .table-header .col.service-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .service-name {
+    font-size: 0.875rem;
+    font-weight: 700;
+  }
+
+  .service-price {
+    font-size: 0.75rem;
+    color: var(--neon-yellow);
+    font-weight: 600;
+  }
+
+  .table-header .col.highlight {
+    color: var(--neon-yellow);
+  }
+
+  .table-row {
+    border-bottom: 1px solid var(--border-color-light);
+    transition: background-color var(--transition-fast) var(--transition-easing);
+  }
+
+  .price-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .old-price {
+    font-size: 0.875rem;
+    color: var(--color-text-lighter);
+    text-decoration: line-through;
+  }
+
+  .new-price {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--accent-gold);
+  }
+
+  .single-price {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .table-row:last-child {
+    border-bottom: none;
+  }
+
+  .table-row:hover {
+    background-color: var(--background-light);
+  }
+
+  .table-row.has-discount {
+    background-color: rgba(37, 211, 102, 0.05);
+    border-left: 3px solid var(--accent-gold);
+  }
+
+  .table-row.has-discount:hover {
+    background-color: rgba(37, 211, 102, 0.1);
+  }
+
+  .col {
+    font-size: 1rem;
+  }
+
+  .quantity {
+    font-weight: 600;
+    color: var(--color-primary);
+  }
+
+  .regular-price {
+    color: var(--color-text-light);
+    text-decoration: line-through;
+    font-weight: 400;
+  }
+
+  .table-row:not(.has-discount) .regular-price {
+    text-decoration: none;
+    color: var(--color-text);
+  }
+
+  .promo-price {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-weight: 600;
+    color: var(--color-primary);
+  }
+
+  .promo-price .price {
+    font-size: 1.125rem;
+    font-weight: 600;
+  }
+
+  .savings-badge {
+    display: inline-block;
+    background: var(--gradient-green);
+    color: #FFFFFF;
+    padding: 0.375rem 0.75rem;
+    border-radius: var(--border-radius-sm);
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    box-shadow: 0 2px 8px rgba(37, 211, 102, 0.3);
+  }
+
+  .savings {
+    text-align: center;
+    font-weight: 700;
+    color: var(--accent-gold);
+    font-size: 1.125rem;
+  }
+
+  .no-discount {
+    color: var(--color-text-lighter);
+    font-weight: 400;
+  }
+
+  .benefits {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-xl);
+    padding: 0 var(--spacing-md);
+  }
+
+  .benefit-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    color: var(--color-text);
+    font-size: 0.9375rem;
+  }
+
+  .benefit-item :global(svg) {
+    color: var(--accent-gold);
+    flex-shrink: 0;
+  }
+
+  .cta-container {
+    text-align: center;
+  }
+
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2.5rem;
+    background: var(--gradient-olive);
+    color: var(--color-secondary);
+    font-family: var(--primary-font);
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    border: none;
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-fast) var(--transition-easing);
+    letter-spacing: 0.01em;
+  }
+
+  .cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .cta-button:active {
+    transform: translateY(0);
+  }
+
+  @media (max-width: 768px) {
+    .promotion-section {
+      padding: var(--spacing-xl) var(--spacing-md);
+    }
+
+    .table-header,
+    .table-row {
+      grid-template-columns: 1fr 1fr 1fr 0.8fr;
+      gap: var(--spacing-sm);
+      padding: var(--spacing-sm) var(--spacing-md);
+      font-size: 0.875rem;
+    }
+
+    .table-header {
+      font-size: 0.75rem;
+    }
+
+    .service-name {
+      font-size: 0.75rem;
+    }
+
+    .service-price {
+      font-size: 0.625rem;
+    }
+
+    .price-col {
+      gap: 0.125rem;
+    }
+
+    .old-price {
+      font-size: 0.75rem;
+    }
+
+    .new-price {
+      font-size: 0.9375rem;
+    }
+
+    .single-price {
+      font-size: 0.875rem;
+    }
+
+    .savings-badge {
+      font-size: 0.6875rem;
+      padding: 0.25rem 0.5rem;
+    }
+
+    .savings {
+      font-size: 1rem;
+    }
+
+    .benefits {
+      padding: 0;
+    }
+
+    .benefit-item {
+      font-size: 0.875rem;
+    }
+
+    .cta-button {
+      width: 100%;
+      max-width: 320px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .table-header .col,
+    .col {
+      font-size: 0.8125rem;
+    }
+
+    .quantity {
+      font-size: 0.875rem;
+    }
+
+    .service-name {
+      font-size: 0.6875rem;
+    }
+
+    .service-price {
+      font-size: 0.5625rem;
+    }
+
+    .old-price {
+      font-size: 0.6875rem;
+    }
+
+    .new-price {
+      font-size: 0.875rem;
+    }
+
+    .single-price {
+      font-size: 0.8125rem;
+    }
+
+    .savings {
+      font-size: 0.9375rem;
+    }
+
+    .savings-badge {
+      font-size: 0.625rem;
+      padding: 0.1875rem 0.375rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .table-row,
+    .cta-button {
+      transition: none;
+    }
+
+    .cta-button:hover {
+      transform: none;
+    }
+  }
+</style>

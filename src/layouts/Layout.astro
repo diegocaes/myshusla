@@ -2,6 +2,18 @@
 import '../styles/global.css';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
 
+interface Props {
+  title?: string;
+  description?: string;
+  keywords?: string;
+}
+
+const {
+  title = "MyShus - Limpieza de Zapatillas Panamá | Servicio a Domicilio",
+  description = "Limpieza profesional de zapatillas en Panamá. Servicio de lavado y restauración de zapatos a domicilio. Recogida y entrega gratis en Panamá Ciudad.",
+  keywords = "limpieza de zapatillas Panamá, limpieza de zapatos a domicilio Panamá, servicio de limpieza de zapatillas Panamá, lavado de zapatillas Panamá, restauración de zapatos Panamá, limpieza profesional calzado Panamá Ciudad"
+} = Astro.props;
+
 // src/layouts/Layout.astro
 const GA_TRACKING_ID = "G-JESF85NFZ1"; // Tu ID de Google Analytics
 ---
@@ -10,32 +22,33 @@ const GA_TRACKING_ID = "G-JESF85NFZ1"; // Tu ID de Google Analytics
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>MyShus - Limpieza de Zapatillas Panamá | Servicio a Domicilio</title>
-    <meta
-      name="description"
-      content="Limpieza profesional de zapatillas en Panamá. Servicio de lavado y restauración de zapatos a domicilio. Recogida y entrega gratis en Panamá Ciudad."
-    />
-    <meta name="keywords" content="limpieza de zapatillas Panamá, limpieza de zapatos a domicilio Panamá, servicio de limpieza de zapatillas Panamá, lavado de zapatillas Panamá, restauración de zapatos Panamá, limpieza profesional calzado Panamá Ciudad" />
+    <!-- SEO Meta Tags -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <meta name="author" content="MyShus" />
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
+
+    <!-- Geo Tags -->
+    <meta name="geo.region" content="PA" />
+    <meta name="geo.placename" content="Panama City" />
+    <meta name="geo.position" content="8.9824;-79.5199" />
+    <meta name="ICBM" content="8.9824, -79.5199" />
 
     <link rel="canonical" href="https://myshusla.com/" />
 
     <link rel="icon" href="/favicon.ico" />
 
-    <meta property="og:title" content="MyShus - Limpieza de Zapatillas Panamá | Servicio a Domicilio" />
-    <meta
-      property="og:description"
-      content="Servicio de limpieza profesional de zapatillas en Panamá. Lavado y restauración de zapatos a domicilio con recogida y entrega gratis."
-    />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
     <meta property="og:image" content="https://myshusla.com/images/preview-image.png" />
     <meta property="og:url" content="https://myshusla.com" />
     <meta property="og:type" content="website" />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="MyShus - Limpieza de Zapatillas Panamá | Servicio a Domicilio" />
-    <meta
-      name="twitter:description"
-      content="Servicio de limpieza profesional de zapatillas en Panamá. Lavado y restauración de zapatos a domicilio con recogida y entrega gratis."
-    />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content="https://myshusla.com/images/preview-image.png" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
