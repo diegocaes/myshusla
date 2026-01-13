@@ -3,7 +3,7 @@ export const siteConfig = {
   // Estadísticas del negocio
   stats: {
     // Actualiza este número periódicamente según vayas limpiando más zapatillas
-    sneakersCleaned: 150,
+    sneakersCleaned: 200,
   },
 
   // Información de contacto
