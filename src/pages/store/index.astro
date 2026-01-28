@@ -4,7 +4,9 @@ import Layout from '../../layouts/Layout.astro';
 import Navbar from '../../components/Navbar.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import Contact from '../../components/Contact.astro';
-import { products } from '../../data/products';
+import { getVisibleProducts } from '../../data/products';
+
+const visibleProducts = getVisibleProducts();
 ---
 
 <Layout
@@ -32,7 +34,7 @@ import { products } from '../../data/products';
   <section class="products-main">
     <div class="products-container">
       <div class="products-grid">
-        {products.map(product => (
+        {visibleProducts.map(product => (
           <ProductCard product={product} />
         ))}
       </div>

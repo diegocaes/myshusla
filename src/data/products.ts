@@ -17,6 +17,7 @@ export interface Product {
     [key: string]: string;
   };
   whatsappMessage?: string; // Mensaje pre-configurado para WhatsApp
+  visible?: boolean; // true = mostrar en tienda, false = oculto (default: true)
 }
 
 export const products: Product[] = [
@@ -53,6 +54,7 @@ export const products: Product[] = [
       'Uso ideal': 'Zapatillas de colección, sneakers premium',
     },
     whatsappMessage: 'Hola! Me interesan las Hormas de Plástico Premium (2 pares) de myshusla.com/store - ¿Están disponibles?',
+    visible: true,
   },
   {
     id: 'cleaning-kit-basic',
@@ -85,15 +87,87 @@ export const products: Product[] = [
       'Durabilidad': '100+ limpiezas',
     },
     whatsappMessage: 'Hola! Quiero el Kit de Limpieza + Toalla Microfibra de myshusla.com/store - ¿Está disponible?',
+    visible: true,
+  },
+  {
+    id: 'silica-gel-pack-50',
+    name: 'Pack 50 Bolsas Sílica Gel',
+    description: 'Pack 50 bolsas de sílica gel desecante para proteger tus zapatillas de la humedad | Previene moho y malos olores | Ideal para clima tropical de Panamá',
+    longDescription: 'Pack de 50 bolsas de sílica gel de alta capacidad, diseñadas específicamente para proteger tus zapatillas de la humedad extrema del clima tropical panameño. Cada bolsa absorbe hasta 40% de su peso en humedad, previniendo efectivamente el moho, malos olores y deterioro de materiales. Perfectas para guardar dentro de cajas de zapatillas, closets y storage. Las bolsas son reutilizables - simplemente sécalas al sol o en microondas para reactivarlas. Indispensables para cualquier coleccionista serio de sneakers en Panamá.',
+    price: 5,
+    originalPrice: 7,
+    images: [
+      '/images/products/silica-gel-50.jpg',
+    ],
+    category: 'storage',
+    inStock: true,
+    stockQuantity: 100,
+    features: [
+      '50 bolsas de sílica gel de alta capacidad',
+      'Absorbe hasta 40% de su peso en humedad',
+      'Previene moho y malos olores efectivamente',
+      'Reutilizables - se reactivan con calor',
+      'Tamaño perfecto para cajas de zapatillas',
+      'Indicador de saturación (cambia de color)',
+      'Esencial para clima húmedo de Panamá',
+    ],
+    specs: {
+      'Cantidad': '50 bolsas',
+      'Capacidad': 'Absorbe 40% de su peso',
+      'Tamaño por bolsa': '5x7cm',
+      'Reutilizable': 'Sí - reactiva con calor (sol/microondas)',
+      'Indicador': 'Cambia de azul a rosa cuando saturado',
+      'Uso recomendado': '2-3 bolsas por caja de zapatillas',
+    },
+    whatsappMessage: 'Hola! Me interesa el Pack de 50 Bolsas Sílica Gel de myshusla.com/store - ¿Está disponible?',
+    visible: false, // OCULTO - cambiar a true para mostrar
+  },
+  {
+    id: 'silica-gel-pack-100',
+    name: 'Pack 100 Bolsas Sílica Gel',
+    description: 'Pack 100 bolsas de sílica gel desecante - mejor valor para coleccionistas | Protege toda tu colección de la humedad | Ideal para sneakerheads en Panamá',
+    longDescription: 'Pack económico de 100 bolsas de sílica gel para los coleccionistas serios. Misma calidad premium que el pack de 50 pero con mejor precio por unidad. Ideal para proteger colecciones grandes de zapatillas, closets completos o para compartir con amigos sneakerheads. Las bolsas de sílica gel son la primera línea de defensa contra la humedad en el clima tropical de Panamá, previniendo el temido "sole separation", amarillamiento de suelas y deterioro de materiales. Pack suficiente para aproximadamente 35-50 pares de zapatillas.',
+    price: 8,
+    originalPrice: 10,
+    images: [
+      '/images/products/silica-gel-100.jpg',
+    ],
+    category: 'storage',
+    inStock: true,
+    stockQuantity: 75,
+    features: [
+      '100 bolsas de sílica gel - mejor valor',
+      'Protege 35-50 pares de zapatillas',
+      'Previene "sole separation" y amarillamiento',
+      'Mismo producto premium que pack 50',
+      'Reutilizables infinitamente con calor',
+      'Ahorro del 20% vs comprar 2 packs de 50',
+      'Ideal para coleccionistas serios',
+    ],
+    specs: {
+      'Cantidad': '100 bolsas',
+      'Capacidad': 'Absorbe 40% de su peso',
+      'Tamaño por bolsa': '5x7cm',
+      'Reutilizable': 'Sí - reactiva con calor (sol/microondas)',
+      'Indicador': 'Cambia de azul a rosa cuando saturado',
+      'Cobertura': '35-50 pares de zapatillas',
+    },
+    whatsappMessage: 'Hola! Quiero el Pack de 100 Bolsas Sílica Gel de myshusla.com/store - ¿Está disponible?',
+    visible: false, // OCULTO - cambiar a true para mostrar
   },
 ];
 
-// Función helper para obtener productos por categoría
-export function getProductsByCategory(category: Product['category']): Product[] {
-  return products.filter(p => p.category === category);
+// Función helper para obtener solo productos visibles
+export function getVisibleProducts(): Product[] {
+  return products.filter(p => p.visible !== false);
 }
 
-// Función helper para obtener producto por ID
+// Función helper para obtener productos por categoría (solo visibles)
+export function getProductsByCategory(category: Product['category']): Product[] {
+  return products.filter(p => p.category === category && p.visible !== false);
+}
+
+// Función helper para obtener producto por ID (incluso ocultos, para URLs directas)
 export function getProductById(id: string): Product | undefined {
   return products.find(p => p.id === id);
 }
