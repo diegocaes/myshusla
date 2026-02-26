@@ -14,6 +14,8 @@ const {
   keywords = "limpieza de zapatillas Panamá, limpieza de zapatos a domicilio Panamá, servicio de limpieza de zapatillas Panamá, lavado de zapatillas Panamá, restauración de zapatos Panamá, limpieza profesional calzado Panamá Ciudad"
 } = Astro.props;
 
+const canonicalURL = new URL(Astro.url.pathname, "https://myshusla.com").href;
+
 // src/layouts/Layout.astro
 const GA_TRACKING_ID = "G-JESF85NFZ1"; // Tu ID de Google Analytics
 ---
@@ -36,7 +38,7 @@ const GA_TRACKING_ID = "G-JESF85NFZ1"; // Tu ID de Google Analytics
     <meta name="geo.position" content="8.9824;-79.5199" />
     <meta name="ICBM" content="8.9824, -79.5199" />
 
-    <link rel="canonical" href="https://myshusla.com/" />
+    <link rel="canonical" href={canonicalURL} />
 
     <link rel="icon" href="/favicon.ico" />
 
