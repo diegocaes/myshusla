@@ -72,6 +72,22 @@ const GA_TRACKING_ID = "G-JESF85NFZ1"; // Tu ID de Google Analytics
       gtag("config", GA_TRACKING_ID);
     </script>
 
+    <script is:inline>
+      document.addEventListener("click", function (event) {
+        const link = event.target.closest('a[href*="wa.me"]');
+        if (!link) return;
+        const source = link.dataset.waSource || link.id || link.getAttribute("aria-label") || link.textContent.trim().slice(0, 40) || "unknown";
+        const page = window.location.pathname;
+        if (typeof gtag === "function") {
+          gtag("event", "whatsapp_click", {
+            event_category: "engagement",
+            event_label: source,
+            page_path: page,
+          });
+        }
+      });
+    </script>
+
     <!-- Structured Data for Local Business -->
     <script type="application/ld+json" is:inline>
       {
@@ -114,6 +130,13 @@ const GA_TRACKING_ID = "G-JESF85NFZ1"; // Tu ID de Google Analytics
           "telephone": "+507-6443-9110",
           "contactType": "Customer Service",
           "availableLanguage": "Spanish"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "5.0",
+          "reviewCount": "4",
+          "bestRating": "5",
+          "worstRating": "1"
         },
         "sameAs": [
           "https://www.instagram.com/myshusla",

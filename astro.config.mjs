@@ -1,5 +1,14 @@
 import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  base: '', // Deja esto vacío para dominios personalizados
+  site: 'https://myshusla.com',
+  base: '',
+  integrations: [
+    sitemap({
+      changefreq: 'weekly',
+      priority: 0.7,
+      lastmod: new Date(),
+    }),
+  ],
 });

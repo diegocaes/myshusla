@@ -120,10 +120,15 @@ Components follow this structure:
 
 ### Cleaning Services Pricing
 
-The site features two cleaning services with volume discounts:
+The site features three services. The two main cleaning tiers have volume discounts; the third is an add-on tier:
 
 - **Limpieza Sencilla**: $18 per pair (single), $15 per pair (3+ pairs)
 - **Limpieza Completa**: $25 per pair (single), $22 per pair (3+ pairs)
+- **Servicios Extras** (add-ons, +1 day):
+  - Impermeabilización: $10
+  - Blanqueamiento de suelas: $10
+  - Restauración de materiales: cotizar
+  - Servicio Express (24-48 horas): +$5
 
 Volume discounts shown in dollar savings:
 - 1-2 pares: Regular price (no discount)

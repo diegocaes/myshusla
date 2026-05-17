@@ -11,7 +11,6 @@ export interface Product {
   images: string[];
   category: 'care' | 'storage' | 'accessories';
   inStock: boolean;
-  stockQuantity: number;
   features: string[];
   specs?: {
     [key: string]: string;
@@ -35,7 +34,6 @@ export const products: Product[] = [
     ],
     category: 'storage',
     inStock: true,
-    stockQuantity: 50,
     features: [
       'Material plástico ABS premium resistente al clima tropical',
       'Color negro profesional discreto',
@@ -68,7 +66,6 @@ export const products: Product[] = [
     ],
     category: 'care',
     inStock: true,
-    stockQuantity: 30,
     features: [
       'Cepillo cerdas naturales suaves - seguro para todos los materiales',
       'Toalla microfibra profesional 30x30cm - sin pelusas',
@@ -101,7 +98,6 @@ export const products: Product[] = [
     ],
     category: 'storage',
     inStock: true,
-    stockQuantity: 100,
     features: [
       '50 bolsas de sílica gel de alta capacidad',
       'Absorbe hasta 40% de su peso en humedad',
@@ -134,7 +130,6 @@ export const products: Product[] = [
     ],
     category: 'storage',
     inStock: true,
-    stockQuantity: 75,
     features: [
       '100 bolsas de sílica gel - mejor valor',
       'Protege 35-50 pares de zapatillas',
@@ -162,31 +157,7 @@ export function getVisibleProducts(): Product[] {
   return products.filter(p => p.visible !== false);
 }
 
-// Función helper para obtener productos por categoría (solo visibles)
-export function getProductsByCategory(category: Product['category']): Product[] {
-  return products.filter(p => p.category === category && p.visible !== false);
-}
-
 // Función helper para obtener producto por ID (incluso ocultos, para URLs directas)
 export function getProductById(id: string): Product | undefined {
   return products.find(p => p.id === id);
 }
-
-// Categorías disponibles
-export const categories = {
-  care: {
-    name: 'Cuidado',
-    description: 'Productos para mantener tus zapatillas impecables',
-    icon: 'sparkles',
-  },
-  storage: {
-    name: 'Almacenamiento',
-    description: 'Mantén la forma y protege tus zapatillas',
-    icon: 'box',
-  },
-  accessories: {
-    name: 'Accesorios',
-    description: 'Complementos esenciales para sneakerheads',
-    icon: 'shopping-bag',
-  },
-};

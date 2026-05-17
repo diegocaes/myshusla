@@ -1,0 +1,225 @@
+---
+import { BookOpen, ArrowRight } from 'lucide-astro';
+import { getRecentBlogPosts } from '../data/blogPosts';
+
+const recentPosts = getRecentBlogPosts(3);
+---
+
+<section id="tips-preview" class="tips-preview-section" aria-labelledby="tips-preview-heading">
+  <div class="tips-preview-container">
+    <header class="tips-preview-header">
+      <div class="header-badge">
+        <BookOpen size={16} />
+        <span>Blog MyShus</span>
+      </div>
+      <h2 id="tips-preview-heading" class="section-title">Consejos para tus sneakers</h2>
+      <p class="section-subtitle">
+        Aprende a cuidar tu calzado con guías escritas por nuestros técnicos profesionales
+      </p>
+    </header>
+
+    <div class="tips-grid">
+      {recentPosts.map((post) => (
+        <a href={`/tips/${post.slug}`} class="tip-card">
+          <span class="tip-category">{post.category}</span>
+          <h3 class="tip-title">{post.title}</h3>
+          <p class="tip-description">{post.description}</p>
+          <div class="tip-meta">
+            <span>{post.readingTime}</span>
+            <span class="tip-arrow">
+              Leer más
+              <ArrowRight size={14} />
+            </span>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <div class="tips-cta">
+      <a href="/tips/" class="tips-cta-button">
+        Ver todos los artículos
+        <ArrowRight size={18} />
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .tips-preview-section {
+    padding: var(--spacing-xl) var(--spacing-lg);
+    background-color: var(--background-white);
+  }
+
+  .tips-preview-container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .tips-preview-header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .header-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.9rem;
+    background: rgba(37, 211, 102, 0.1);
+    color: var(--accent-gold);
+    border-radius: 999px;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin: 0 0 var(--spacing-sm) 0;
+    color: var(--color-primary);
+    font-weight: 600;
+    font-family: var(--primary-font);
+    letter-spacing: -0.02em;
+  }
+
+  .section-subtitle {
+    font-size: 1.125rem;
+    color: var(--color-text-light);
+    margin: 0 auto;
+    max-width: 640px;
+    font-weight: 400;
+  }
+
+  .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .tip-card {
+    background-color: var(--background-white);
+    border-radius: var(--border-radius-lg);
+    border: 1px solid var(--border-color);
+    padding: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    transition: all var(--transition-speed) var(--transition-easing);
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .tip-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--accent-gold);
+  }
+
+  .tip-category {
+    display: inline-block;
+    align-self: flex-start;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--accent-gold);
+    background: rgba(37, 211, 102, 0.1);
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--border-radius-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .tip-title {
+    font-size: 1.1875rem;
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.35;
+    color: var(--color-primary);
+    letter-spacing: -0.01em;
+  }
+
+  .tip-description {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--color-text-light);
+    margin: 0;
+    flex: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .tip-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: var(--spacing-sm);
+    border-top: 1px solid var(--border-color-light);
+    font-size: 0.8125rem;
+    color: var(--color-text-lighter);
+    font-weight: 500;
+  }
+
+  .tip-arrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: var(--accent-gold);
+    font-weight: 700;
+    transition: gap var(--transition-fast) var(--transition-easing);
+  }
+
+  .tip-card:hover .tip-arrow {
+    gap: 0.5rem;
+  }
+
+  .tips-cta {
+    text-align: center;
+  }
+
+  .tips-cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.75rem;
+    background-color: var(--color-primary);
+    color: var(--background-white);
+    border-radius: var(--border-radius-lg);
+    font-weight: 600;
+    font-size: 0.9375rem;
+    text-decoration: none;
+    transition: all var(--transition-speed) var(--transition-easing);
+  }
+
+  .tips-cta-button:hover {
+    background-color: var(--accent-gold);
+    transform: translateY(-2px);
+    box-shadow: var(--glow-green);
+  }
+
+  @media (max-width: 768px) {
+    .tips-preview-section {
+      padding: var(--spacing-xl) var(--spacing-md);
+    }
+
+    .tips-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tip-card,
+    .tips-cta-button,
+    .tip-arrow {
+      transition: none;
+    }
+
+    .tip-card:hover,
+    .tips-cta-button:hover {
+      transform: none;
+    }
+  }
+</style>
