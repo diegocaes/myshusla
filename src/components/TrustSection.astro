@@ -1,197 +1,74 @@
 ---
-import { Truck, Zap, ShieldCheck, Sparkles, Award } from 'lucide-astro';
 import { siteConfig } from '../config';
 
-const trustFeatures = [
-  {
-    icon: Truck,
-    title: "Recogida y Entrega Gratis",
-    description: "Servicio a domicilio sin costo adicional en zonas seleccionadas de Panamá"
-  },
-  {
-    icon: Zap,
-    title: "Servicio Rápido",
-    description: "Entrega en 6 días hábiles o menos. Tu calzado listo cuando lo necesites"
-  },
-  {
-    icon: ShieldCheck,
-    title: "100% Garantizado",
-    description: "Si no quedas satisfecho, repetimos el servicio sin costo"
-  },
-  {
-    icon: Sparkles,
-    title: "Productos Profesionales",
-    description: "Usamos productos especializados seguros para todo tipo de materiales"
-  }
+const stats = [
+  { value: `+${siteConfig.stats.sneakersCleaned}`, label: "pares limpiados" },
+  { value: "5.0 ⭐", label: "promedio en Google" },
+  { value: "100%", label: "garantía de satisfacción" },
+  { value: "Gratis", label: "recogida y entrega" },
 ];
 ---
 
-<section class="trust-section">
-  <div class="container">
-    <h2 class="section-title">¿Por Qué Elegir MyShus?</h2>
-    <div class="trust-grid">
-      {trustFeatures.map((feature) => {
-        const Icon = feature.icon;
-        return (
-          <div class="trust-card">
-            <div class="trust-icon">
-              <Icon size={40} />
-            </div>
-            <h3 class="trust-title">{feature.title}</h3>
-            <p class="trust-description">{feature.description}</p>
-          </div>
-        );
-      })}
-    </div>
-
-    <div class="guarantee-banner">
-      <div class="guarantee-content">
-        <div class="banner-icon">
-          <Award size={32} />
-        </div>
-        <h3>Garantía de Satisfacción 100%</h3>
-        <p>Más de {siteConfig.stats.sneakersCleaned} pares de zapatillas limpiadas con clientes satisfechos en Panamá</p>
+<section class="stats-section">
+  <div class="stats-container">
+    {stats.map((stat, i) => (
+      <div class="stat-item">
+        <div class="stat-value">{stat.value}</div>
+        <div class="stat-label">{stat.label}</div>
       </div>
-    </div>
+    ))}
   </div>
 </section>
 
 <style>
-  .trust-section {
-    padding: var(--spacing-xl) var(--spacing-lg);
-    background-color: var(--background-white);
+  .stats-section {
+    padding: 5rem 2rem;
+    background: #0A0A0A;
   }
 
-  .container {
+  .stats-container {
     max-width: 1200px;
     margin: 0 auto;
-  }
-
-  .section-title {
-    text-align: center;
-    font-size: clamp(2rem, 4vw, 2.5rem);
-    margin-bottom: var(--spacing-xl);
-    color: var(--color-primary);
-    font-weight: 600;
-    font-family: var(--primary-font);
-    letter-spacing: -0.02em;
-  }
-
-  .trust-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: var(--spacing-lg);
-    margin-bottom: var(--spacing-xl);
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
   }
 
-  .trust-card {
+  .stat-item {
     text-align: center;
-    padding: var(--spacing-xl) var(--spacing-md);
-    background: var(--background-color);
-    border-radius: var(--border-radius-lg);
-    transition: all var(--transition-speed) var(--transition-easing);
-    border: 1px solid var(--background-stone);
+    padding: 1rem 0;
   }
 
-  .trust-card:hover {
-    border-color: var(--accent-color);
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
+  .stat-value {
+    font-size: clamp(2rem, 3vw, 2.75rem);
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-bottom: 0.625rem;
   }
 
-  .trust-icon {
-    color: var(--accent-color);
-    margin-bottom: var(--spacing-md);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .trust-title {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: var(--color-primary);
-    margin-bottom: var(--spacing-sm);
-    font-family: var(--primary-font);
-  }
-
-  .trust-description {
-    color: var(--color-text-light);
-    line-height: 1.6;
-    font-size: 0.9375rem;
-  }
-
-  .guarantee-banner {
-    background: var(--gradient-green);
-    border-radius: var(--border-radius-lg);
-    padding: var(--spacing-xl);
-    text-align: center;
-    box-shadow: var(--glow-green);
-  }
-
-  .banner-icon {
-    color: var(--color-secondary);
-    margin-bottom: var(--spacing-sm);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .guarantee-content h3 {
-    color: var(--color-secondary);
-    font-size: 2rem;
-    margin-bottom: var(--spacing-md);
-    font-weight: 700;
-    letter-spacing: -0.01em;
-  }
-
-  .guarantee-content p {
-    color: var(--color-secondary);
-    font-size: 1.25rem;
-    opacity: 0.95;
-    margin: 0;
+  .stat-label {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.45);
     font-weight: 500;
-    line-height: 1.6;
+    letter-spacing: 0.01em;
   }
 
   @media (max-width: 768px) {
-    .trust-section {
-      padding: var(--spacing-xl) var(--spacing-md);
+    .stats-section {
+      padding: 3.5rem 1.5rem;
     }
 
-    .section-title {
-      margin-bottom: var(--spacing-lg);
-    }
-
-    .trust-grid {
-      grid-template-columns: 1fr;
-      gap: var(--spacing-md);
-    }
-
-    .trust-card {
-      padding: var(--spacing-lg) var(--spacing-md);
-    }
-
-    .guarantee-banner {
-      padding: var(--spacing-lg);
-    }
-
-    .guarantee-content h3 {
-      font-size: 1.25rem;
-    }
-
-    .guarantee-content p {
-      font-size: 0.9375rem;
+    .stats-container {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.5rem 1.5rem;
     }
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    .trust-card {
-      transition: none;
-    }
-
-    .trust-card:hover {
-      transform: none;
+  @media (max-width: 400px) {
+    .stats-container {
+      grid-template-columns: 1fr 1fr;
     }
   }
 </style>

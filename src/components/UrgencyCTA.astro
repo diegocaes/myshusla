@@ -1,244 +1,109 @@
 ---
-import { Gift, Check } from 'lucide-astro';
 import { siteConfig } from '../config';
 
 const whatsappLink = siteConfig.whatsappLinks.urgency;
 ---
 
-<section class="welcome-offer">
-  <div class="offer-container">
-    <div class="offer-badge">
-      <Gift size={24} />
-    </div>
-
-    <div class="offer-content">
-      <h2 class="offer-title">Bienvenida Exclusiva</h2>
-      <p class="offer-description">
-        <span class="discount-amount">20% de descuento</span> en tu primer servicio de limpieza completa
-      </p>
-
-      <ul class="offer-benefits">
-        <li>
-          <Check size={18} />
-          <span>Válido para nuevos clientes en Ciudad de Panamá</span>
-        </li>
-        <li>
-          <Check size={18} />
-          <span>Incluye recogida y entrega sin costo</span>
-        </li>
-        <li>
-          <Check size={18} />
-          <span>Garantía de satisfacción 100%</span>
-        </li>
-      </ul>
-
-      <a href={whatsappLink} target="_blank" class="offer-button" data-track="urgency-cta">
-        Solicitar Oferta
-      </a>
-    </div>
+<section class="cta-section">
+  <div class="cta-container">
+    <p class="cta-label">Oferta de bienvenida</p>
+    <h2 class="cta-title">
+      20% de descuento<br />en tu primer servicio.
+    </h2>
+    <p class="cta-sub">
+      Válido para nuevos clientes en Ciudad de Panamá.<br />
+      Recogida y entrega gratis incluida.
+    </p>
+    <a href={whatsappLink} target="_blank" class="cta-btn" data-wa-source="urgency">
+      Solicitar oferta por WhatsApp
+    </a>
+    <p class="cta-fine">Garantía de satisfacción 100%. Pagas al recibir.</p>
   </div>
 </section>
 
 <style>
-  .welcome-offer {
-    padding: var(--spacing-xl) var(--spacing-lg);
-    background: var(--gradient-dark);
-    position: relative;
-    overflow: hidden;
+  .cta-section {
+    padding: 8rem 2rem;
+    background: #000000;
   }
 
-  .welcome-offer::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    right: -10%;
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(
-      circle,
-      rgba(201, 168, 106, 0.15) 0%,
-      transparent 70%
-    );
-    pointer-events: none;
-  }
-
-  .welcome-offer::after {
-    content: '';
-    position: absolute;
-    bottom: -30%;
-    left: -5%;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(
-      circle,
-      rgba(201, 168, 106, 0.1) 0%,
-      transparent 70%
-    );
-    pointer-events: none;
-  }
-
-  .offer-container {
-    max-width: 800px;
+  .cta-container {
+    max-width: 680px;
     margin: 0 auto;
-    position: relative;
-    z-index: 1;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
 
-  .offer-badge {
-    width: 72px;
-    height: 72px;
-    background: var(--gradient-green);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #FFFFFF;
-    margin-bottom: var(--spacing-lg);
-    box-shadow: var(--glow-green);
-  }
-
-  .offer-content {
-    width: 100%;
-  }
-
-  .offer-title {
-    font-size: clamp(2rem, 4vw, 2.75rem);
-    font-weight: 600;
-    color: var(--color-secondary);
-    margin: 0 0 var(--spacing-md) 0;
-    letter-spacing: -0.02em;
-  }
-
-  .offer-description {
-    font-size: 1.125rem;
-    color: rgba(255, 255, 255, 0.85);
-    margin: 0 0 var(--spacing-xl) 0;
-    line-height: 1.6;
-  }
-
-  .discount-amount {
-    color: var(--neon-yellow);
+  .cta-label {
+    font-size: 0.8125rem;
     font-weight: 700;
-    font-size: 1.375rem;
-    text-shadow: 0 0 12px rgba(255, 235, 59, 0.4);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.4);
+    margin: 0 0 1.25rem 0;
   }
 
-  .offer-benefits {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 var(--spacing-xl) 0;
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-md);
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+  .cta-title {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin: 0 0 1.5rem 0;
   }
 
-  .offer-benefits li {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-sm);
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 1rem;
-    text-align: left;
+  .cta-sub {
+    font-size: 1.0625rem;
+    color: rgba(255, 255, 255, 0.55);
+    line-height: 1.65;
+    margin: 0 0 2.5rem 0;
   }
 
-  .offer-benefits li :global(svg) {
-    color: var(--accent-gold);
-    flex-shrink: 0;
-  }
-
-  .offer-button {
+  .cta-btn {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    padding: 1.125rem 3rem;
-    background: var(--background-white);
-    color: var(--color-primary);
-    font-family: var(--primary-font);
-    font-size: 1.0625rem;
-    font-weight: 600;
+    padding: 1.125rem 2.25rem;
+    background: #25D366;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 700;
     text-decoration: none;
-    border-radius: var(--border-radius);
-    border: none;
-    box-shadow: 0 8px 24px rgba(255, 255, 255, 0.15);
-    transition: all var(--transition-fast) var(--transition-easing);
+    border-radius: 10px;
     letter-spacing: 0.01em;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    margin-bottom: 1.5rem;
   }
 
-  .offer-button:hover {
+  .cta-btn:hover {
+    opacity: 0.88;
     transform: translateY(-2px);
-    box-shadow: 0 12px 32px rgba(255, 255, 255, 0.25);
-    background: var(--background-light);
   }
 
-  .offer-button:active {
-    transform: translateY(0);
+  .cta-fine {
+    font-size: 0.8125rem;
+    color: rgba(255, 255, 255, 0.3);
+    margin: 0;
+    font-weight: 500;
   }
 
   @media (max-width: 768px) {
-    .welcome-offer {
-      padding: var(--spacing-xl) var(--spacing-md);
+    .cta-section {
+      padding: 5rem 1.5rem;
     }
 
-    .offer-badge {
-      width: 56px;
-      height: 56px;
-      margin-bottom: var(--spacing-md);
-    }
-
-    .offer-badge :global(svg) {
-      width: 20px;
-      height: 20px;
-    }
-
-    .offer-description {
-      font-size: 1rem;
-      margin-bottom: var(--spacing-lg);
-    }
-
-    .discount-amount {
-      font-size: 1.125rem;
-    }
-
-    .offer-benefits {
-      gap: var(--spacing-sm);
-      margin-bottom: var(--spacing-lg);
-    }
-
-    .offer-benefits li {
-      font-size: 0.9375rem;
-    }
-
-    .offer-button {
+    .cta-btn {
       width: 100%;
-      max-width: 320px;
-      padding: 1rem 2rem;
-      font-size: 1rem;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .offer-title {
-      margin-bottom: var(--spacing-sm);
-    }
-
-    .offer-benefits li {
-      font-size: 0.875rem;
+      justify-content: center;
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .offer-button {
+    .cta-btn {
       transition: none;
     }
-
-    .offer-button:hover {
+    .cta-btn:hover {
       transform: none;
     }
   }

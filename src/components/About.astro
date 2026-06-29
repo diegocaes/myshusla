@@ -1,208 +1,177 @@
 ---
 import { MessageCircle, Truck, Sparkles, PackageCheck } from 'lucide-astro';
+
+const steps = [
+  {
+    number: "01",
+    icon: MessageCircle,
+    title: "Agenda por WhatsApp",
+    description: "Escríbenos con fotos de tus zapatillas. Te damos presupuesto inmediato y coordinamos la recogida.",
+    highlight: "Respuesta en menos de 1 hora"
+  },
+  {
+    number: "02",
+    icon: Truck,
+    title: "Recogida gratis",
+    description: "Pasamos por tu casa u oficina en el horario acordado, sin costo adicional.",
+    highlight: "Horarios flexibles"
+  },
+  {
+    number: "03",
+    icon: Sparkles,
+    title: "Limpieza profesional",
+    description: "Aplicamos técnicas especializadas y productos profesionales adaptados a cada material.",
+    highlight: "4–7 días de proceso"
+  },
+  {
+    number: "04",
+    icon: PackageCheck,
+    title: "Entrega a domicilio",
+    description: "Te devolvemos tus zapatillas limpias y renovadas. Pagas al recibir, sin sorpresas.",
+    highlight: "Inspección antes del pago"
+  },
+];
 ---
 
-<section id="about" class="how-it-works">
-  <div class="container">
-    <h2 class="section-title">¿Cómo Funciona Nuestro Servicio?</h2>
+<section id="about" class="process-section">
+  <div class="process-container">
+    <div class="section-header">
+      <p class="section-label">Cómo funciona</p>
+      <h2 class="section-title">Tu calzado renovado<br />en 4 pasos.</h2>
+    </div>
 
-    <div class="steps-container">
-      <!-- Step 1 -->
-      <div class="step">
-        <div class="step-number">1</div>
-        <div class="step-icon-container">
-          <MessageCircle size={32} />
-        </div>
-        <h3>Agenda por WhatsApp</h3>
-        <p>Escríbenos al +507 6443-9110 con fotos de tus zapatillas. Te daremos un <strong>presupuesto inmediato</strong> y coordinaremos la recogida.</p>
-        <div class="step-details">
-          <span class="detail-item highlight">⚡ Respuesta en menos de 1 hora</span>
-          <span class="detail-item">Presupuesto sin compromiso</span>
-        </div>
-      </div>
-
-      <!-- Step 2 -->
-      <div class="step">
-        <div class="step-number">2</div>
-        <div class="step-icon-container">
-          <Truck size={32} />
-        </div>
-        <h3>Recogida Gratis</h3>
-        <p>Pasamos por tu casa u oficina en el <strong>horario acordado</strong>. Revisamos tus zapatillas y confirmamos el servicio contigo.</p>
-        <div class="step-details">
-          <span class="detail-item highlight">🕐 Horarios flexibles</span>
-          <span class="detail-item">Áreas seleccionadas de Panamá</span>
-        </div>
-      </div>
-
-      <!-- Step 3 -->
-      <div class="step">
-        <div class="step-number">3</div>
-        <div class="step-icon-container">
-          <Sparkles size={32} />
-        </div>
-        <h3>Limpieza Profesional</h3>
-        <p>Llevamos tus zapatillas a nuestro taller donde aplicamos <strong>técnicas especializadas</strong> y productos profesionales para cada material.</p>
-        <div class="step-details">
-          <span class="detail-item">4-7 días de proceso</span>
-          <span class="detail-item highlight">📱 Seguimiento por WhatsApp</span>
-        </div>
-      </div>
-
-      <!-- Step 4 -->
-      <div class="step">
-        <div class="step-number">4</div>
-        <div class="step-icon-container">
-          <PackageCheck size={32} />
-        </div>
-        <h3>Entrega a Domicilio</h3>
-        <p>Te devolvemos tus zapatillas <strong>limpias, desinfectadas y como nuevas</strong>. Pago al recibir el trabajo terminado.</p>
-        <div class="step-details">
-          <span class="detail-item highlight">✓ Inspección antes del pago</span>
-          <span class="detail-item">Garantía de satisfacción</span>
-        </div>
-      </div>
+    <div class="steps-grid">
+      {steps.map((step) => {
+        const Icon = step.icon;
+        return (
+          <div class="step-item">
+            <div class="step-top">
+              <span class="step-number">{step.number}</span>
+              <div class="step-icon">
+                <Icon size={22} />
+              </div>
+            </div>
+            <h3 class="step-title">{step.title}</h3>
+            <p class="step-description">{step.description}</p>
+            <span class="step-highlight">{step.highlight}</span>
+          </div>
+        );
+      })}
     </div>
   </div>
 </section>
 
 <style>
-  .how-it-works {
-    background-color: var(--background-color);
-    border-top: 1px solid var(--background-stone);
-    border-bottom: 1px solid var(--background-stone);
-    padding: var(--spacing-xl) 0;
+  .process-section {
+    padding: 8rem 2rem;
+    background: #F8F8F8;
   }
 
-  .container {
+  .process-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 var(--spacing-lg);
+  }
+
+  .section-header {
+    margin-bottom: 4rem;
+  }
+
+  .section-label {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #999;
+    margin: 0 0 1rem 0;
   }
 
   .section-title {
-    text-align: center;
-    font-size: clamp(2rem, 4vw, 2.5rem);
-    font-weight: 600;
-    color: var(--color-primary);
-    margin-bottom: var(--spacing-xl);
-    font-family: var(--primary-font);
-    letter-spacing: -0.02em;
+    font-size: clamp(2.5rem, 4vw, 4rem);
+    font-weight: 800;
+    line-height: 1.08;
+    color: #000000;
+    margin: 0;
+    letter-spacing: -0.03em;
   }
 
-  .steps-container {
+  .steps-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: var(--spacing-lg);
+    gap: 2rem;
   }
 
-  .step {
-    background: var(--background-white);
-    padding: var(--spacing-xl) var(--spacing-lg);
-    border-radius: var(--border-radius-lg);
-    text-align: center;
-    position: relative;
-    border: 1px solid var(--background-stone);
-    transition: all var(--transition-speed) var(--transition-easing);
+  .step-item {
+    display: flex;
+    flex-direction: column;
   }
 
-  .step:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
-    border-color: var(--accent-color);
+  .step-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   }
 
   .step-number {
-    position: absolute;
-    top: var(--spacing-md);
-    right: var(--spacing-md);
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: var(--gradient-green);
-    color: #FFFFFF;
+    font-size: 2rem;
+    font-weight: 800;
+    color: #000000;
+    letter-spacing: -0.04em;
+    line-height: 1;
+  }
+
+  .step-icon {
+    width: 44px;
+    height: 44px;
+    background: #ffffff;
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 700;
+    color: #000000;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .step-title {
     font-size: 1.125rem;
-    box-shadow: var(--glow-green);
-  }
-
-  .step-icon-container {
-    color: var(--accent-color);
-    margin-bottom: var(--spacing-md);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    filter: drop-shadow(0 2px 8px rgba(37, 211, 102, 0.2));
-  }
-
-  .step h3 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: var(--color-primary);
-    margin-bottom: var(--spacing-sm);
-    font-family: var(--primary-font);
-  }
-
-  .step p {
-    color: var(--color-text-light);
-    line-height: 1.6;
-    margin-bottom: var(--spacing-md);
-    font-size: 0.9375rem;
-  }
-
-  .step-details {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-xs);
-  }
-
-  .detail-item {
-    font-size: 0.875rem;
-    color: var(--color-text-lighter);
-    font-weight: 500;
-  }
-
-  .detail-item.highlight {
-    color: var(--accent-gold);
     font-weight: 700;
+    color: #000000;
+    margin: 0 0 0.75rem 0;
+    letter-spacing: -0.01em;
   }
 
-  @media (max-width: 968px) {
-    .steps-container {
+  .step-description {
+    font-size: 0.9375rem;
+    color: #666;
+    line-height: 1.65;
+    margin: 0 0 1.25rem 0;
+    flex: 1;
+  }
+
+  .step-highlight {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: #25D366;
+    letter-spacing: 0.01em;
+  }
+
+  @media (max-width: 900px) {
+    .process-section {
+      padding: 5rem 1.5rem;
+    }
+
+    .steps-grid {
       grid-template-columns: repeat(2, 1fr);
-      gap: var(--spacing-md);
+      gap: 2rem 1.5rem;
     }
   }
 
-  @media (max-width: 640px) {
-    .how-it-works {
-      padding: var(--spacing-xl) 0;
-    }
-
-    .container {
-      padding: 0 var(--spacing-md);
-    }
-
-    .steps-container {
+  @media (max-width: 560px) {
+    .steps-grid {
       grid-template-columns: 1fr;
-      gap: var(--spacing-md);
-    }
-
-    .step {
-      padding: var(--spacing-lg) var(--spacing-md);
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .step {
-      transition: none;
-    }
-
-    .step:hover {
-      transform: none;
+      gap: 2rem;
     }
   }
 </style>

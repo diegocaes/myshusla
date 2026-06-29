@@ -1,0 +1,107 @@
+---
+const steps = [
+  {
+    n: '01',
+    title: 'Escríbenos',
+    text: 'Mándanos fotos de tus zapatillas por WhatsApp. Te damos un presupuesto al instante y coordinamos la recogida.',
+  },
+  {
+    n: '02',
+    title: 'Recogemos gratis',
+    text: 'Pasamos por tu casa u oficina en el horario que prefieras. Revisamos cada par contigo antes de empezar.',
+  },
+  {
+    n: '03',
+    title: 'Limpieza profesional',
+    text: 'En el taller aplicamos técnicas y productos específicos para cada material, con seguimiento por WhatsApp.',
+  },
+  {
+    n: '04',
+    title: 'Entrega impecable',
+    text: 'Te las devolvemos limpias, desinfectadas y como nuevas. Pagas al recibir el trabajo terminado.',
+  },
+];
+---
+
+<section id="proceso" class="process">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow"><span class="dot"></span>Cómo funciona</span>
+      <h2 class="display sec-title">Cuatro pasos.<br />Cero complicaciones.</h2>
+    </div>
+
+    <ol class="steps">
+      {steps.map((s) => (
+        <li class="step reveal">
+          <span class="step-n">{s.n}</span>
+          <h3 class="step-title">{s.title}</h3>
+          <p class="step-text">{s.text}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .process {
+    background: var(--bg-2);
+    padding: 6rem 0;
+  }
+
+  .sec-head { max-width: 40rem; margin-bottom: 3.5rem; }
+  .sec-head .eyebrow { margin-bottom: 1.1rem; }
+
+  .sec-title { font-size: clamp(2.2rem, 4.6vw, 3.4rem); margin: 0; }
+
+  .steps {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    counter-reset: step;
+  }
+
+  .step {
+    padding: 2rem 0 0;
+    border-top: 2px solid var(--ink);
+  }
+
+  .step-n {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--accent-deep);
+    margin-bottom: 1.25rem;
+  }
+
+  .step-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 0 0 0.6rem;
+    letter-spacing: -0.01em;
+  }
+
+  .step-text {
+    margin: 0;
+    font-size: 0.98rem;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+
+  .step.reveal:nth-child(1) { transition-delay: 0.04s; }
+  .step.reveal:nth-child(2) { transition-delay: 0.12s; }
+  .step.reveal:nth-child(3) { transition-delay: 0.2s; }
+  .step.reveal:nth-child(4) { transition-delay: 0.28s; }
+
+  @media (max-width: 900px) {
+    .steps { grid-template-columns: 1fr 1fr; gap: 2rem 1.5rem; }
+  }
+
+  @media (max-width: 520px) {
+    .process { padding: 4.5rem 0; }
+    .steps { grid-template-columns: 1fr; }
+  }
+</style>

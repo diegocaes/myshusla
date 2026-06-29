@@ -1,0 +1,76 @@
+---
+const items = [
+  'Recogida y entrega gratis',
+  '5.0 ★ en Google',
+  '+250 pares limpiados',
+  'Express 24–48 h',
+  'Garantía 100%',
+  'Todo tipo de zapatillas',
+  'Ciudad de Panamá',
+];
+// Duplicado para loop continuo y sin saltos
+const loop = [...items, ...items];
+---
+
+<section class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    {loop.map((t) => (
+      <span class="marquee-item">{t}<span class="sep"></span></span>
+    ))}
+  </div>
+</section>
+
+<style>
+  .marquee {
+    background: var(--ink);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    overflow: hidden;
+    padding: 1.05rem 0;
+  }
+
+  .marquee-track {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    will-change: transform;
+    animation: marquee 32s linear infinite;
+  }
+
+  .marquee:hover .marquee-track {
+    animation-play-state: paused;
+  }
+
+  .marquee-item {
+    display: inline-flex;
+    align-items: center;
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--bg);
+    padding: 0 0.25rem;
+  }
+
+  .sep {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    margin: 0 1.85rem;
+  }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  @media (max-width: 600px) {
+    .marquee-item { font-size: 0.95rem; }
+    .sep { margin: 0 1.25rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track { animation: none; }
+  }
+</style>

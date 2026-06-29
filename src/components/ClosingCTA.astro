@@ -1,0 +1,84 @@
+---
+import { siteConfig } from '../config';
+
+const whatsappLink = siteConfig.whatsappLinks.main;
+const cleaned = siteConfig.stats.sneakersCleaned;
+---
+
+<section class="closing">
+  <div class="wrap closing-inner reveal">
+    <h2 class="display closing-title">¿Listo para estrenar<br />tus zapatillas otra vez?</h2>
+    <p class="closing-sub">
+      Mándanos una foto por WhatsApp y recibe tu presupuesto en minutos.
+      Recogida y entrega gratis en Ciudad de Panamá.
+    </p>
+    <a href={whatsappLink} class="closing-btn" target="_blank" rel="noopener" data-wa-source="closing">
+      <span class="wa-dot"></span> Agenda por WhatsApp
+    </a>
+    <p class="closing-proof">+{cleaned} pares limpiados · 5.0 ★ en Google · Garantía 100%</p>
+  </div>
+</section>
+
+<style>
+  .closing { background: var(--bg); padding: 2rem 0 6rem; }
+
+  .closing-inner {
+    background: var(--ink);
+    border-radius: var(--border-radius-xl);
+    padding: 5rem 2rem;
+    text-align: center;
+  }
+
+  .closing-title {
+    color: var(--bg);
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    margin-bottom: 1.25rem;
+  }
+
+  .closing-sub {
+    max-width: 34rem;
+    margin: 0 auto 2.25rem;
+    font-size: 1.12rem;
+    line-height: 1.6;
+    color: rgba(244, 241, 233, 0.72);
+  }
+
+  .closing-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 1.05rem 2rem;
+    background: var(--accent);
+    color: #06340f;
+    font-size: 1.05rem;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 999px;
+    transition: transform var(--transition-fast) var(--transition-easing),
+      box-shadow var(--transition-fast) ease;
+  }
+
+  .closing-btn .wa-dot { background: #06340f; }
+
+  .closing-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--glow-green);
+  }
+
+  .closing-proof {
+    margin: 1.75rem 0 0;
+    font-size: 0.9rem;
+    color: rgba(244, 241, 233, 0.5);
+    font-weight: 500;
+  }
+
+  @media (max-width: 600px) {
+    .closing { padding: 1rem 0 4rem; }
+    .closing-inner { padding: 3.5rem 1.5rem; border-radius: var(--border-radius-lg); }
+    .closing-btn { width: 100%; justify-content: center; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .closing-btn { transition: none; }
+  }
+</style>

@@ -1,317 +1,142 @@
 ---
-import { Star, ExternalLink } from 'lucide-astro';
+import { Star } from 'lucide-astro';
 import { googleReviews, googleBusinessProfile } from '../data/reviews';
-
-const fullStars = Math.floor(googleBusinessProfile.averageRating);
-const hasHalfStar = googleBusinessProfile.averageRating % 1 >= 0.5;
 ---
 
-<section id="reviews" class="reviews-section" aria-labelledby="reviews-heading">
-  <div class="reviews-container">
-    <div class="reviews-header">
-      <div class="google-badge">
-        <svg class="google-logo" viewBox="0 0 24 24" width="32" height="32" aria-hidden="true">
-          <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-          <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-          <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
-          <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
-        </svg>
-        <span class="google-label">Reseñas de Google</span>
+<section id="resenas" class="reviews">
+  <div class="wrap">
+    <div class="reviews-head reveal">
+      <div>
+        <span class="eyebrow"><span class="dot"></span>Reseñas de Google</span>
+        <h2 class="display sec-title">Clientes que<br />volverían a hacerlo.</h2>
       </div>
-
-      <h2 id="reviews-heading" class="section-title">Lo que dicen nuestros clientes</h2>
-
-      <div class="rating-summary">
-        <span class="rating-number">{googleBusinessProfile.averageRating.toFixed(1)}</span>
-        <div class="stars" aria-label={`${googleBusinessProfile.averageRating} de 5 estrellas`}>
-          {Array.from({ length: 5 }).map((_, i) => (
-            <Star
-              size={20}
-              class={i < fullStars || (i === fullStars && hasHalfStar) ? 'star-filled' : 'star-empty'}
-              fill={i < fullStars || (i === fullStars && hasHalfStar) ? '#FBBC04' : 'none'}
-              stroke={i < fullStars || (i === fullStars && hasHalfStar) ? '#FBBC04' : '#D1D5DB'}
-            />
-          ))}
+      <div class="rating-card">
+        <div class="rating-num">{googleBusinessProfile.averageRating.toFixed(1)}</div>
+        <div class="rating-stars" aria-label={`${googleBusinessProfile.averageRating} de 5 estrellas`}>
+          {Array.from({ length: 5 }).map(() => <Star size={18} class="st" />)}
         </div>
-        <span class="review-count">Basado en {googleBusinessProfile.totalReviews} reseñas</span>
+        <div class="rating-meta">{googleBusinessProfile.totalReviews} reseñas en Google</div>
       </div>
     </div>
 
-    <div class="reviews-scroll" role="region" aria-label="Carrusel de reseñas de Google" tabindex="0">
-      {googleReviews.map((review) => (
-        <article class="review-card">
-          <header class="review-card-header">
-            <div class="avatar" aria-hidden="true">{review.avatarInitial}</div>
-            <div class="review-author-info">
-              <span class="author-name">{review.author}</span>
-              <span class="review-date">{review.date}</span>
-            </div>
-            <svg class="google-mini" viewBox="0 0 24 24" width="18" height="18" aria-label="Verificado en Google">
-              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-              <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
-              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
-            </svg>
-          </header>
-
-          <div class="review-stars" aria-label={`${review.rating} de 5 estrellas`}>
-            {Array.from({ length: 5 }).map((_, i) => (
-              <Star
-                size={16}
-                fill={i < review.rating ? '#FBBC04' : 'none'}
-                stroke={i < review.rating ? '#FBBC04' : '#D1D5DB'}
-              />
-            ))}
+    <div class="rgrid">
+      {googleReviews.map((r) => (
+        <figure class="rcard reveal">
+          <div class="rcard-stars" aria-label={`${r.rating} de 5 estrellas`}>
+            {Array.from({ length: r.rating }).map(() => <Star size={15} class="st" />)}
           </div>
-
-          <p class="review-comment">{review.comment}</p>
-        </article>
+          <blockquote class="rcard-text">{r.comment}</blockquote>
+          <figcaption class="rcard-by">
+            <span class="avatar">{r.avatarInitial}</span>
+            <span class="by-meta">
+              <span class="by-name">{r.author}</span>
+              <span class="by-date">{r.date}</span>
+            </span>
+          </figcaption>
+        </figure>
       ))}
     </div>
 
-    <div class="reviews-cta">
-      <a
-        href={googleBusinessProfile.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="reviews-cta-button"
-        aria-label="Ver todas las reseñas de MyShus en Google"
-      >
-        <span>Ver todas las reseñas en Google</span>
-        <ExternalLink size={18} />
+    <div class="reviews-link reveal">
+      <a href={googleBusinessProfile.url} target="_blank" rel="noopener" class="btn-ghost">
+        Ver reseñas en Google
       </a>
     </div>
   </div>
 </section>
 
 <style>
-  .reviews-section {
-    padding: var(--spacing-xl) var(--spacing-lg);
-    background-color: var(--background-color);
-  }
+  .reviews { background: var(--bg-2); padding: 6rem 0; }
 
-  .reviews-container {
-    max-width: 1400px;
-    margin: 0 auto;
-  }
-
-  .reviews-header {
-    text-align: center;
-    margin-bottom: var(--spacing-xl);
-  }
-
-  .google-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 1rem;
-    background: var(--background-white);
-    border-radius: 999px;
-    box-shadow: var(--shadow-sm);
-    margin-bottom: var(--spacing-md);
-  }
-
-  .google-label {
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: var(--color-text);
-    letter-spacing: 0.01em;
-  }
-
-  .section-title {
-    font-size: clamp(2rem, 4vw, 3rem);
-    margin: 0 0 var(--spacing-md) 0;
-    color: var(--color-primary);
-    font-weight: 600;
-    font-family: var(--primary-font);
-    letter-spacing: -0.02em;
-  }
-
-  .rating-summary {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.75rem;
+  .reviews-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 2rem;
+    margin-bottom: 3rem;
     flex-wrap: wrap;
-    justify-content: center;
   }
 
-  .rating-number {
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--color-primary);
+  .reviews-head .eyebrow { margin-bottom: 1.1rem; }
+  .sec-title { font-size: clamp(2.2rem, 4.6vw, 3.4rem); margin: 0; }
+
+  .rating-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--border-radius);
+    padding: 1.25rem 1.5rem;
+  }
+
+  .rating-num {
+    font-size: 2.6rem;
+    font-weight: 800;
+    letter-spacing: -0.04em;
     line-height: 1;
+    color: var(--ink);
   }
 
-  .stars {
-    display: inline-flex;
-    gap: 2px;
-    align-items: center;
+  .rating-stars { display: flex; gap: 2px; }
+  .reviews :global(.st) { color: var(--accent); fill: var(--accent); }
+  .rating-meta { font-size: 0.85rem; color: var(--ink-faint); }
+
+  .rgrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
   }
 
-  .review-count {
-    font-size: 0.9375rem;
-    color: var(--color-text-light);
-    font-weight: 500;
-  }
-
-  .reviews-scroll {
-    display: flex;
-    gap: var(--spacing-md);
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-padding: var(--spacing-md);
-    -webkit-overflow-scrolling: touch;
-    padding: var(--spacing-xs) var(--spacing-xs) var(--spacing-lg) var(--spacing-xs);
-    margin: 0 calc(var(--spacing-xs) * -1) var(--spacing-md) calc(var(--spacing-xs) * -1);
-    scrollbar-width: thin;
-    scrollbar-color: var(--border-color) transparent;
-  }
-
-  .reviews-scroll::-webkit-scrollbar {
-    height: 6px;
-  }
-
-  .reviews-scroll::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  .reviews-scroll::-webkit-scrollbar-thumb {
-    background: var(--border-color);
-    border-radius: 999px;
-  }
-
-  .reviews-scroll::-webkit-scrollbar-thumb:hover {
-    background: var(--color-text-lighter);
-  }
-
-  .review-card {
-    background-color: var(--background-white);
+  .rcard {
+    background: var(--surface);
+    border: 1px solid var(--line);
     border-radius: var(--border-radius-lg);
-    border: 1px solid var(--border-color);
-    padding: var(--spacing-md);
+    padding: 1.6rem;
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
-    transition: all var(--transition-speed) var(--transition-easing);
-    flex: 0 0 340px;
-    scroll-snap-align: start;
-  }
-
-  .review-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
-    border-color: var(--accent-gold);
-  }
-
-  .review-card-header {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-
-  .avatar {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: var(--gradient-green);
-    color: #FFFFFF;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 600;
-    font-size: 1.125rem;
-    flex-shrink: 0;
-  }
-
-  .review-author-info {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    min-width: 0;
-  }
-
-  .author-name {
-    font-weight: 600;
-    font-size: 0.9375rem;
-    color: var(--color-primary);
-    line-height: 1.3;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-
-  .review-date {
-    font-size: 0.8125rem;
-    color: var(--color-text-lighter);
-    font-weight: 400;
-  }
-
-  .google-mini {
-    flex-shrink: 0;
-  }
-
-  .review-stars {
-    display: flex;
-    gap: 2px;
-  }
-
-  .review-comment {
-    font-size: 0.9375rem;
-    line-height: 1.6;
-    color: var(--color-text-light);
     margin: 0;
   }
 
-  .reviews-cta {
-    text-align: center;
+  .rcard-stars { display: flex; gap: 2px; margin-bottom: 1rem; }
+
+  .rcard-text {
+    margin: 0 0 1.4rem;
+    font-size: 0.96rem;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    flex: 1;
   }
 
-  .reviews-cta-button {
-    display: inline-flex;
+  .rcard-by { display: flex; align-items: center; gap: 0.7rem; }
+
+  .avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--ink);
+    color: var(--bg);
+    display: flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.875rem 1.75rem;
-    background-color: var(--background-white);
-    color: var(--color-primary);
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius-lg);
-    font-weight: 600;
-    font-size: 0.9375rem;
-    text-decoration: none;
-    transition: all var(--transition-speed) var(--transition-easing);
-    box-shadow: var(--shadow-sm);
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+    flex-shrink: 0;
   }
 
-  .reviews-cta-button:hover {
-    background-color: var(--color-primary);
-    color: var(--background-white);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
+  .by-meta { display: flex; flex-direction: column; line-height: 1.3; }
+  .by-name { font-size: 0.85rem; font-weight: 600; color: var(--ink); }
+  .by-date { font-size: 0.78rem; color: var(--ink-faint); }
+
+  .reviews-link { margin-top: 2.25rem; }
+
+  @media (max-width: 1000px) {
+    .rgrid { grid-template-columns: 1fr 1fr; }
   }
 
-  @media (max-width: 768px) {
-    .reviews-section {
-      padding: var(--spacing-xl) var(--spacing-md);
-    }
-
-    .review-card {
-      flex: 0 0 85%;
-    }
-
-    .rating-number {
-      font-size: 1.75rem;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .review-card,
-    .reviews-cta-button {
-      transition: none;
-    }
-
-    .review-card:hover,
-    .reviews-cta-button:hover {
-      transform: none;
-    }
+  @media (max-width: 560px) {
+    .reviews { padding: 4.5rem 0; }
+    .rgrid { grid-template-columns: 1fr; }
   }
 </style>

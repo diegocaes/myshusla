@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
+import { googleBusinessProfile } from '../data/reviews';
 
 interface Props {
   title?: string;
@@ -18,6 +19,85 @@ const canonicalURL = new URL(Astro.url.pathname, "https://myshusla.com").href;
 
 // src/layouts/Layout.astro
 const GA_TRACKING_ID = "G-JESF85NFZ1"; // Tu ID de Google Analytics
+
+// Datos estructurados (Schema.org) para Google y asistentes de IA.
+// El rating y el número de reseñas se toman automáticamente de src/data/reviews.ts
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://myshusla.com/#business",
+  "name": "MyShus",
+  "alternateName": "MyShus - Limpieza de Zapatillas Panamá",
+  "description": "Servicio profesional de limpieza, lavado y restauración de zapatillas y sneakers en Ciudad de Panamá. Especialistas en calzado deportivo y de lujo, con recogida y entrega gratis a domicilio. Limpieza Sencilla desde $18 y Limpieza Completa desde $25 por par, con descuentos por volumen.",
+  "url": "https://myshusla.com",
+  "image": "https://myshusla.com/images/main-header.png",
+  "logo": "https://myshusla.com/images/myshus-logo-dark.png",
+  "telephone": "+507-6443-9110",
+  "priceRange": "$$",
+  "currenciesAccepted": "USD",
+  "knowsLanguage": "es",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Ciudad de Panamá",
+    "addressRegion": "Panamá",
+    "addressCountry": "PA",
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 8.9824, "longitude": -79.5199 },
+  "areaServed": { "@type": "City", "name": "Ciudad de Panamá" },
+  "serviceType": [
+    "Limpieza de zapatillas", "Limpieza de sneakers", "Lavado de zapatos",
+    "Restauración de calzado", "Impermeabilización de zapatillas", "Blanqueamiento de suelas",
+  ],
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "08:00",
+      "closes": "16:30",
+    },
+  ],
+  "makesOffer": [
+    {
+      "@type": "Offer",
+      "name": "Limpieza Sencilla",
+      "description": "Limpieza externa (upper, suela y midsole), eliminación de suciedad superficial y tratamiento básico de manchas. Entrega en 4-5 días hábiles. $15 por par desde 3 pares.",
+      "price": "18",
+      "priceCurrency": "USD",
+      "category": "Sneaker Cleaning",
+    },
+    {
+      "@type": "Offer",
+      "name": "Limpieza Completa",
+      "description": "Limpieza externa e interna (plantillas y forros), lavado y desinfección de cordones y eliminación de malos olores. Entrega en 5-7 días hábiles. $22 por par desde 3 pares.",
+      "price": "25",
+      "priceCurrency": "USD",
+      "category": "Sneaker Cleaning",
+    },
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Servicios extras",
+    "itemListElement": [
+      { "@type": "Offer", "name": "Impermeabilización", "price": "10", "priceCurrency": "USD" },
+      { "@type": "Offer", "name": "Blanqueamiento de suelas", "price": "10", "priceCurrency": "USD" },
+      { "@type": "Offer", "name": "Servicio Express 24-48 horas", "price": "5", "priceCurrency": "USD" },
+    ],
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+507-6443-9110",
+    "contactType": "Customer Service",
+    "availableLanguage": "Spanish",
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": googleBusinessProfile.averageRating.toFixed(1),
+    "reviewCount": String(googleBusinessProfile.totalReviews),
+    "bestRating": "5",
+    "worstRating": "1",
+  },
+  "sameAs": ["https://www.instagram.com/myshusla", "https://wa.me/+50764439110"],
+};
 ---
 <html lang="es">
   <head>
@@ -56,7 +136,7 @@ const GA_TRACKING_ID = "G-JESF85NFZ1"; // Tu ID de Google Analytics
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
 
@@ -89,61 +169,7 @@ const GA_TRACKING_ID = "G-JESF85NFZ1"; // Tu ID de Google Analytics
     </script>
 
     <!-- Structured Data for Local Business -->
-    <script type="application/ld+json" is:inline>
-      {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "MyShus",
-        "description": "Servicio profesional de limpieza, lavado y restauración de zapatillas y zapatos en Panamá. Especialistas en limpieza de calzado deportivo y de lujo con servicio de recogida y entrega a domicilio.",
-        "url": "https://myshusla.com",
-        "telephone": "+507-6443-9110",
-        "areaServed": {
-          "@type": "Country",
-          "name": "Panama"
-        },
-        "serviceType": ["Sneaker Cleaning Service", "Shoe Cleaning", "Footwear Restoration", "Limpieza de Zapatillas", "Lavado de Zapatos"],
-        "openingHours": [
-          "Mo-Fr 08:00-16:30"
-        ],
-        "hasOfferCatalog": {
-          "@type": "OfferCatalog",
-          "name": "Servicios de Limpieza",
-          "itemListElement": [
-            {
-              "@type": "Offer",
-              "name": "Limpieza Sencilla",
-              "description": "Limpieza externa (upper, suela, y midsole). Eliminación de suciedad superficial.",
-              "price": "18",
-              "priceCurrency": "USD"
-            },
-            {
-              "@type": "Offer", 
-              "name": "Limpieza Completa",
-              "description": "Limpieza externa + interna (plantillas y forros interiores). Cordones y eliminación de malos olores.",
-              "price": "25",
-              "priceCurrency": "USD"
-            }
-          ]
-        },
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "telephone": "+507-6443-9110",
-          "contactType": "Customer Service",
-          "availableLanguage": "Spanish"
-        },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "5.0",
-          "reviewCount": "4",
-          "bestRating": "5",
-          "worstRating": "1"
-        },
-        "sameAs": [
-          "https://www.instagram.com/myshusla",
-          "https://wa.me/+50764439110"
-        ]
-      }
-    </script>
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(structuredData)} />
   </head>
 
   <body>
@@ -161,6 +187,27 @@ const GA_TRACKING_ID = "G-JESF85NFZ1"; // Tu ID de Google Analytics
             imageEl.removeAttribute("data-src");
           }
         });
+
+        // Reveal sutil al hacer scroll (respeta prefers-reduced-motion)
+        const reveals = document.querySelectorAll(".reveal");
+        const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        if (prefersReduced || !("IntersectionObserver" in window)) {
+          reveals.forEach((el) => el.classList.add("in"));
+        } else {
+          const io = new IntersectionObserver(
+            (entries, obs) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add("in");
+                  obs.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+          );
+          reveals.forEach((el) => io.observe(el));
+        }
       });
     </script>
   </body>
